@@ -2,7 +2,7 @@
     --title-color: #ba3f21ff;
     --dark: rgb(16, 8, 3);
     --light: rgb(250, 248, 248);
-    --background-color: #ba3f21ce;
+    --background-color: #c9c9c943;
 
     --border-radius:8px;
 
@@ -17,7 +17,30 @@
     --spacing-section: calc(var(--spacing) * 8);
 }
 
-.title {
+h1, h2 {
     color : var(--title-color);
-    font-family : var(--title-font-family)
+    font-family : var(--title-font-family);
+    text-align: center;
+}
+
+/* quote_form */
+
+.form-title {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--background-color);
+}
+
+.form-subtitle {
+    margin-top : var(--spacing-6);
+}
+
+@media screen and (max-width: 740px) {
+    .form-title {
+        font-size:32px;
+    }
+
+    .form-subtitle {
+        font-size:24px;
+    }
 }
