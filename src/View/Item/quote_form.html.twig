@@ -1,4 +1,7 @@
-{% include 'layout.html.twig' %}
+{% extends 'layout.html.twig' %}
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/form.css"> {% endblock %}
+{% block title %}{{ parent() }} | Demande de devis{% endblock %}
+
 
 {% block header %}{% endblock %}
 

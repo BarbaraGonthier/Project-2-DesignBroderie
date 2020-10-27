@@ -1,0 +1,25 @@
+h1, h2 {
+    color : var(--title-color);
+    font-family : var(--title-font-family);
+    text-align: center;
+}
+
+.form-title {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--secondary-background-color);
+}
+
+.form-subtitle {
+    margin-top : var(--spacing-6);
+}
+
+@media screen and (max-width: 740px) {
+    .form-title {
+        font-size:32px;
+    }
+
+    .form-subtitle {
+        font-size:24px;
+    }
+}
