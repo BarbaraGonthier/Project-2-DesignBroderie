@@ -1,5 +1,27 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/home.css">
+{% endblock %}
+
 {% block content %}
-    <h1 class="title">Design Broderie</h1>
+    <section class="banner">
+        <div class="title">
+            <h1>Design broderie</h1>
+            <h2>Notre metier à de l'avenir</h2>
+        </div>
+    </section>
+    <section class="clothingCategory">
+        <h2>Nos vêtement à personnaliser</h2>
+        <div class="containerImagePersonal">
+            <a href=""><img src="/assets/images/clothing.jpg" alt="vetements"></a>
+            <a href=""><img src="/assets/images/clothing.jpg" alt="vetements"></a>
+            <a href=""><img src="/assets/images/clothing.jpg" alt="vetements"></a>
+            <a href=""><img src="/assets/images/clothing.jpg" alt="vetements"></a>
+            <a href=""><img src="/assets/images/clothing.jpg" alt="vetements"></a>
+            <a href=""><img src="/assets/images/clothing.jpg" alt="vetements"></a>
+
+        </div>
+        <div class="buttonOrdered"><a href="#ordered">Voir le catalogue</a></div>
+    </section>
 {% endblock %}

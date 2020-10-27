@@ -1,0 +1,61 @@
+.banner {
+    display: flex;
+    justify-content: flex-end;
+    background-image: url('/assets/images/sewing.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 600px;
+}
+
+.title {
+    align-self: center;
+    padding-right: 150px;
+    font-family : var(--title-font-family)
+}
+
+.clothingCategory {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: var(--spacing);
+}
+
+.clothingCategory h2 {
+    align-self: center;
+    margin-top: var(--spacing);
+}
+
+.containerImagePersonal {
+    display: flex;
+    justify-content: space-around;
+}
+
+.containerImagePersonal a:hover {
+    opacity: var(--opacity);
+}
+
+.containerImagePersonal img {
+    width: 200px;
+    height: 200px;
+    border-radius: var(--border-radius);
+}
+
+.buttonOrdered {
+    align-self: center;
+    background-color: var(--background-color-2);
+    margin-top: var(--spacing);
+    padding: var(--spacing);
+    border-radius: var(--border-radius);
+}
+
+.buttonOrdered a {
+    text-decoration: none;
+    color: black;
+}
+
+.buttonOrdered a:hover {
+    opacity: var(--opacity);
+}
+
