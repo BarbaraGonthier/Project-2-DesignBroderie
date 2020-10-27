@@ -18,6 +18,16 @@
     --spacing-section: calc(var(--spacing) * 8);
 }
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding-top: 80px;
+}
+
 .title {
     color : var(--title-color);
     font-family : var(--title-font-family)
