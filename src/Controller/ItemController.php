@@ -113,9 +113,4 @@ class ItemController extends AbstractController
         $itemManager->delete($id);
         header('Location:/item/index');
     }
-
-    public function quoteForm()
-    {
-        return $this->twig->render('Item/quote_form.html.twig');
-    }
 }
