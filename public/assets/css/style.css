@@ -17,7 +17,7 @@
     --spacing-section: calc(var(--spacing) * 8);
 }
 
-h1 {
+.title {
     color : var(--title-color);
     font-family : var(--title-font-family)
 }
