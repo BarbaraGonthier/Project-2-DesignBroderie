@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-size: 100%;
     height: 600px;
+    padding-top: var(--padding-barre);
 }
 
 .title {
@@ -24,13 +25,13 @@
 
 .clothingCategory h2 {
     align-self: center;
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-4);
 }
 
 .containerImagePersonal {
     display: flex;
     justify-content: space-around;
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-4);
 }
 
 .containerImagePersonal a:hover {
@@ -45,8 +46,8 @@
 
 .buttonCatalog {
     align-self: center;
-    margin-top: var(--spacing-2);
-    margin-bottom: var(--spacing-2);
+    margin-top: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
 }
 
 .buttonCatalog a {
@@ -72,7 +73,7 @@
 .containerOrderStep {
     display: flex;
     justify-content: space-around;
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-4);
 
 }
 
@@ -89,7 +90,7 @@
 }
 
 .containerNumber img {
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-4);
     width: 30px;
     height: 30px;
 }
@@ -97,18 +98,22 @@
 .containerInformation {
     display: flex;
     justify-content: space-around;
-    margin-top: var(--spacing);
+    margin-top: var(--spacing-4);
 
 }
 
 .containerInformation p {
     width: 300px;
 }
+.containerInformation p a {
+    font-weight: bold;
+    color: var(--dark);
+}
 
 .buttonDevis {
     align-self: center;
-    margin-top: var(--spacing-2);
-    margin-bottom: var(--spacing-2);
+    margin-top: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
 }
 
 .buttonDevis a {
@@ -119,4 +124,6 @@
 .buttonDevis a:hover {
     opacity: var(--opacity);
 }
+
+
 
