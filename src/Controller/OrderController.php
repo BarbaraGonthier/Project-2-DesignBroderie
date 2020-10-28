@@ -21,26 +21,25 @@ class OrderController extends AbstractController
 {
     public function sendOrder(int $id)
     {
+        $order = [];
+        $errors = [];
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
-
-        $errors = [];
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $orderManager = new OrderManager();
             $order = array_map('trim', $_POST);
-            $order = [
-                'productId' => $id,
-            ];
             $errors = $this->orderValidate($order);
 
             if (empty($errors)) {
-                $orderManager->saveOrder($order);
-                header('Location: /');
+                $orderManager->saveOrder($order, $product);
+                header('Location:/home/index/');
             }
         }
 
-        return $this->twig->render('Order/order_form.html.twig', ['product' => $product]);
+        return $this->twig->render('Order/order_form.html.twig', ['product' => $product,
+            'order' => $order,
+            'errors' => $errors]);
     }
 
     /**
@@ -87,10 +86,10 @@ class OrderController extends AbstractController
         if (!empty($order['postcode']) && strlen($order['postcode']) > 20) {
             $errors[] = 'Le champ code postal doit contenir moins de 20 caractères';
         }
-        if (empty($order['ville'])) {
+        if (empty($order['city'])) {
             $errors[] = 'Le champ ville est obligatoire';
         }
-        if (!empty($order['ville']) && strlen($order['ville']) > 100) {
+        if (!empty($order['city']) && strlen($order['city']) > 100) {
             $errors[] = 'Le champ ville doit contenir moins de 100 caractères';
         }
 
