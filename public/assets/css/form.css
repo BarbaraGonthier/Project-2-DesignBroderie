@@ -4,22 +4,28 @@ h1, h2 {
     text-align: center;
 }
 
-.form-title {
+h1 {
     margin : var(--spacing-6);
     padding : var(--spacing-2);
     background-color : var(--secondary-background-color);
 }
 
-.form-subtitle {
+h2 {
     margin-top : var(--spacing-6);
 }
 
 @media screen and (max-width: 740px) {
-    .form-title {
-        font-size:32px;
+
+    body {
+        --title-font-size : 32px;
+        --subtitle-font-size : 24px;
     }
 
-    .form-subtitle {
-        font-size:24px;
+    h1 {
+        font-size : var(--title-font-size);
+    }
+
+    h2 {
+        font-size : var(--subtitle-font-size);
     }
 }
