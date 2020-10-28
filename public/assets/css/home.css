@@ -30,6 +30,7 @@
 .containerImagePersonal {
     display: flex;
     justify-content: space-around;
+    margin-top: var(--spacing);
 }
 
 .containerImagePersonal a:hover {
@@ -38,24 +39,84 @@
 
 .containerImagePersonal img {
     width: 200px;
-    height: 200px;
+    height: 250px;
     border-radius: var(--border-radius);
 }
 
-.buttonOrdered {
+.buttonCatalog {
     align-self: center;
-    background-color: var(--background-color-2);
-    margin-top: var(--spacing);
-    padding: var(--spacing);
-    border-radius: var(--border-radius);
+    margin-top: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
 }
 
-.buttonOrdered a {
+.buttonCatalog a {
     text-decoration: none;
-    color: black;
+    color: var(--light);
 }
 
-.buttonOrdered a:hover {
+.buttonCatalog a:hover {
+    opacity: var(--opacity);
+}
+
+.orderStep {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
+
+.orderStep h2 {
+    align-self: center;
+    margin-top: 10px;
+}
+
+.containerOrderStep {
+    display: flex;
+    justify-content: space-around;
+    margin-top: var(--spacing);
+
+}
+
+.containerOrderStep img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
+}
+
+.containerNumber {
+    display: flex;
+    justify-content: space-around;
+}
+
+.containerNumber img {
+    margin-top: var(--spacing);
+    width: 30px;
+    height: 30px;
+}
+
+.containerInformation {
+    display: flex;
+    justify-content: space-around;
+    margin-top: var(--spacing);
+
+}
+
+.containerInformation p {
+    width: 300px;
+}
+
+.buttonDevis {
+    align-self: center;
+    margin-top: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+}
+
+.buttonDevis a {
+    text-decoration: none;
+    color: var(--light);
+}
+
+.buttonDevis a:hover {
     opacity: var(--opacity);
 }
 
