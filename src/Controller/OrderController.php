@@ -27,11 +27,11 @@ class OrderController extends AbstractController
         $product = $productManager->selectOneById($id);
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-            $orderManager = new OrderManager();
             $order = array_map('trim', $_POST);
             $errors = $this->orderValidate($order);
 
             if (empty($errors)) {
+                $orderManager = new OrderManager();
                 $orderManager->saveOrder($order, $product);
                 header('Location:/home/index/');
             }
