@@ -11,45 +11,65 @@
             <h2>Notre metier à de l'avenir</h2>
         </div>
     </section>
-    <section class="clothingCategory">
-        <h2>Nos vêtement a personnaliser</h2>
-        <div class="containerImagePersonal">
-            <a href=""><img src="/assets/images/tshirt.jpg" alt="Tee-shirts" title="Tee-shirts"></a>
-            <a href=""><img src="/assets/images/polo.jpg" alt="Polos" title="Polos"></a>
-            <a href=""><img src="/assets/images/chemise.jpg" alt="Chemises" title="Chemises"></a>
-            <a href=""><img src="/assets/images/sweat.jpg" alt="Sweats" title="Sweats"></a>
-            <a href=""><img src="/assets/images/fleece.jpg" alt="Polaires" title="Polaires"></a>
-            <a href=""><img src="/assets/images/cap.jpg" alt="Casquettes" title="Casquettes"></a>
 
-        </div>
-        <div class="buttonCatalog">
-            <button type="button" class="btn btn-dark"><a href="#catalogue">Notre catalogue</a></button>
-        </div>
-    </section>
     <section class="orderStep">
         <h2>Nos étapes de commande</h2>
-        <div class="containerOrderStep">
-            <img src="/assets/images/porte.jpg" alt="Vêtements" title="Nos vêtements">
-            <img src="/assets/images/formulaire.jpg" alt="Formulaire" title="Sourire">
-            <img src="/assets/images/machine.jpg" alt="Barudan" title="Barudan">
-            <img src="/assets/images/transport.jpg" alt="Transport" title="Transport">
-        </div>
-        <div class="containerNumber">
-            <img src="/assets/images/one.png" alt="1" title="1">
-            <img src="/assets/images/two.png" alt="2" title="2">
-            <img src="/assets/images/three.png" alt="3" title="3">
-            <img src="/assets/images/four.png" alt="4" title="4">
-        </div>
-        <div class="containerInformation">
-            <p>Choisissez vos vêtements sur <a href="#catalog">notre site</a> ou envoyez-nous les votres</p>
-            <p>Remplissez <a href="#catalog">notre formulaire</a> et faites-nous parvenir votre ou vos visuels</p>
-            <p>Votre visuel est transformé en programme de broderie. Il est stocké pendant plusieurs années dans une
-                base de données, ce qui vous permet de refaire vos broderies quand vous le souhaitez !</p>
-            <p>Nos livraisons (24/48h) sont effectuées par transporteur routier</p>
-        </div>
+
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <img class="imageOrder" src="/assets/images/porte.jpg" alt="Vêtements" title="Nos vêtements">
+                            <img class="imageStep" src="/assets/images/one.png" alt="1" title="1">
+                            <p>Choisissez vos vêtements sur <a href="#catalog">notre site</a> ou envoyez-nous les votres</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <img class="imageOrder" src="/assets/images/formulaire.jpg" alt="Formulaire" title="Sourire">
+                            <img class="imageStep" src="/assets/images/two.png" alt="2" title="2">
+                            <p>Remplissez <a href="#catalog">notre formulaire</a> et faites-nous parvenir votre ou vos visuels</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <img class="imageOrder" src="/assets/images/machine.jpg" alt="Barudan" title="Barudan">
+                            <img class="imageStep" src="/assets/images/three.png" alt="3" title="3">
+                            <p>Votre visuel est transformé en programme de broderie. Il est stocké pendant plusieurs années dans une
+                                base de données, ce qui vous permet de refaire vos broderies quand vous le souhaitez !</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <img class="imageOrder" src="/assets/images/transport.jpg" alt="Transport" title="Transport">
+                            <img class="imageStep" src="/assets/images/four.png" alt="4" title="4">
+                            <p>Nos livraisons (24/48h) sont effectuées par transporteur routier</p>
+                        </div>
+                    </div>
+            </div>
 
         <div class="buttonDevis">
             <button type="button" class="btn btn-dark"><a href="#devis">Demander un devis</a></button>
+        </div>
+    </section>
+
+    <section class="carousel">
+        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="imageCarousel carousel-item active"><img class="d-block w-100" src="/assets/images/broderie1.jpg" alt="First slide"></div>
+                <div class="imageCarousel carousel-item"><img class="d-block w-100" src="/assets/images/broderie2.jpg" alt="Second slide"></div>
+                <div class="imageCarousel carousel-item"><img class="d-block w-100" src="/assets/images/broderie3.jpg" alt="Third slide"></div>
+                <div class="imageCarousel carousel-item"><img class="d-block w-100" src="/assets/images/broderie4.jpg" alt="Four slide"></div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </section>
 {% endblock %}

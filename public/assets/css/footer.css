@@ -5,3 +5,17 @@
 .utile a {
     color: var(--light);
 }
+
+.containerFooter {
+    background-color: var(--background-color);
+    padding-top: var(--spacing-4);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+hr {
+    width: 60px;
+}
+

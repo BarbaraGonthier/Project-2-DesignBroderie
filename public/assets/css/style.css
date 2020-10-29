@@ -9,6 +9,7 @@
 
     --title-font-family: 'MANIFESTO';
     --font-family:'Montserrat', sans-serif;
+    --font-size-h3: 16pt;
 
     --spacing:8px;
     --spacing-2:calc(var(--spacing) * 2);

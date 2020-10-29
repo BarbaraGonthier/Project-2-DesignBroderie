@@ -16,103 +16,48 @@
     font-family : var(--title-font-family)
 }
 
-.clothingCategory {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--background-color);
-    padding: var(--spacing);
-}
-
-.clothingCategory h2 {
-    align-self: center;
-    margin-top: var(--spacing-4);
-}
-
-.containerImagePersonal {
-    display: flex;
-    justify-content: space-around;
-    margin-top: var(--spacing-4);
-}
-
-.containerImagePersonal a:hover {
-    opacity: var(--opacity);
-}
-
-.containerImagePersonal img {
-    width: 200px;
-    height: 250px;
-    border-radius: var(--border-radius);
-}
-
-.buttonCatalog {
-    align-self: center;
-    margin-top: var(--spacing-4);
-    margin-bottom: var(--spacing-4);
-}
-
-.buttonCatalog a {
-    text-decoration: none;
-    color: var(--light);
-}
-
-.buttonCatalog a:hover {
-    opacity: var(--opacity);
-}
-
 .orderStep {
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-}
-
-.orderStep h2 {
-    align-self: center;
-    margin-top: 10px;
-}
-
-.containerOrderStep {
-    display: flex;
-    justify-content: space-around;
     margin-top: var(--spacing-4);
-
 }
 
-.containerOrderStep img {
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.imageOrder {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
 }
 
-.containerNumber {
-    display: flex;
-    justify-content: space-around;
-}
-
-.containerNumber img {
-    margin-top: var(--spacing-4);
+.imageStep {
     width: 30px;
     height: 30px;
+    margin-top: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
 }
 
-.containerInformation {
-    display: flex;
-    justify-content: space-around;
-    margin-top: var(--spacing-4);
-
-}
-
-.containerInformation p {
+.container p {
     width: 300px;
 }
-.containerInformation p a {
-    font-weight: bold;
-    color: var(--dark);
+
+.container-fluid {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
+
+}
+
+.col-lg-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .buttonDevis {
-    align-self: center;
-    margin-top: var(--spacing-4);
+    display: flex;
+    justify-content: center;
     margin-bottom: var(--spacing-4);
 }
 
@@ -123,7 +68,7 @@
 
 .buttonDevis a:hover {
     opacity: var(--opacity);
+    text-decoration: none;
+    color: var(--light);
 }
-
-
 
