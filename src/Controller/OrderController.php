@@ -49,35 +49,36 @@ class OrderController extends AbstractController
      */
     private function orderValidate(array $order): array
     {
+        $inputLength = 100;
         $errors = [];
         if (empty($order['firstname'])) {
             $errors[] = 'Le champ prénom est obligatoire';
         }
-        if (!empty($order['firstname']) && strlen($order['firstname']) > 100) {
+        if (!empty($order['firstname']) && strlen($order['firstname']) > $inputLength) {
             $errors[] = 'Le champ prénom doit contenir moins de 100 caractères';
         }
         if (empty($order['lastname'])) {
             $errors[] = 'Le champ nom est obligatoire';
         }
-        if (!empty($order['lastname']) && strlen($order['lastname']) > 100) {
+        if (!empty($order['lastname']) && strlen($order['lastname']) > $inputLength) {
             $errors[] = 'Le champ nom doit faire contenir de 100 caractères';
         }
         if (empty($order['email'])) {
             $errors[] = 'Le champ email est obligatoire';
         }
-        if (!empty($order['email']) && strlen($order['email']) > 100) {
+        if (!empty($order['email']) && strlen($order['email']) > $inputLength) {
             $errors[] = 'Le champ email doit contenir moins de 100 caractères';
         }
         if (!empty($order['phone']) && strlen($order['phone']) > 20) {
             $errors[] = 'Le champ téléphone doit contenir moins de 20 caractères';
         }
-        if (!empty($order['companyName']) && strlen($order['companyName']) > 100) {
+        if (!empty($order['companyName']) && strlen($order['companyName']) > $inputLength) {
             $errors[] = 'Le champ raison sociale doit contenir moins de 100 caractères';
         }
         if (empty($order['address'])) {
             $errors[] = 'Le champ adresse est obligatoire';
         }
-        if (!empty($order['address']) && strlen($order['address']) > 100) {
+        if (!empty($order['address']) && strlen($order['address']) > $inputLength) {
             $errors[] = 'Le champ addresse doit contenir moins de 100 caractères';
         }
         if (empty($order['postcode'])) {
@@ -89,7 +90,7 @@ class OrderController extends AbstractController
         if (empty($order['city'])) {
             $errors[] = 'Le champ ville est obligatoire';
         }
-        if (!empty($order['city']) && strlen($order['city']) > 100) {
+        if (!empty($order['city']) && strlen($order['city']) > $inputLength) {
             $errors[] = 'Le champ ville doit contenir moins de 100 caractères';
         }
 
