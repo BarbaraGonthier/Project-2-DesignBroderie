@@ -15,7 +15,7 @@ namespace App\Model;
  */
 class OrderManager extends AbstractManager
 {
-    public const TABLE = 'order';
+    public const TABLE = "`order`";
 
     public function __construct()
     {
@@ -26,7 +26,7 @@ class OrderManager extends AbstractManager
     public function saveOrder(array $order, $product)
     {
         $query = "INSERT INTO " . self::TABLE .
-            "(`firstname`, `lastname`, `email`, `phone`, `company_name`, 
+            " (`firstname`, `lastname`, `email`, `phone`, `company_name`, 
             `address`, `city`, `postcode`, `size`, `quantity`, `message`, `product_id`) 
             VALUES 
             (:firstname, :lastname, :email, :phone, :company_name, 
