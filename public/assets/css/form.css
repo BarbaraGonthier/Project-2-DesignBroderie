@@ -20,12 +20,4 @@ h2 {
         --title-font-size : 32px;
         --title-2-font-size : 24px;
     }
-
-    h1 {
-        font-size : var(--title-font-size);
-    }
-
-    h2 {
-        font-size : var(--title-2-font-size);
-    }
 }

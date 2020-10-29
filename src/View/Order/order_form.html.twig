@@ -25,35 +25,35 @@
                 <h2>Vos Coordonnees</h2>
                 <form action="" method="post">
                     <div class="form-group">
-                        <label for="lastname"> Nom : *</label>
+                        <label for="lastname"> Nom : </label>
                         <input type="text" name="lastname" id="lastname" placeholder="Nom" value="{{ order.lastname }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="firstname"> Prénom : *</label>
+                        <label for="firstname"> Prénom : </label>
                         <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="{{ order.firstname }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="email"> Adresse email : *</label>
+                        <label for="email"> Adresse email : </label>
                         <input type="email" name="email" id="email" placeholder="Adresse email" value="{{ order.email }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="phone"> Téléphone :</label>
+                        <label for="phone"> Téléphone (optionnel) :</label>
                         <input type="tel" name="phone" id="phone" placeholder="Téléphone" value="{{ order.phone }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="companyName"> Raison sociale : </label>
+                        <label for="companyName"> Raison sociale (optionnel) : </label>
                         <input type="text" name="companyName" id="companyName" placeholder="Entreprise/Association" value="{{ order.companyName }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="address"> Adresse (numéro et voie) : * </label>
+                        <label for="address"> Adresse (numéro et voie) : </label>
                         <input type="text" name="address" id="address" placeholder="Numéro et voie" value="{{ order.address }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="postcode"> Code postal : * </label>
+                        <label for="postcode"> Code postal : </label>
                         <input type="text" name="postcode" id="postcode" placeholder="Code postal" value="{{ order.postcode }}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="city"> Ville : * </label>
+                        <label for="city"> Ville : </label>
                         <input type="text" name="city" id="city" placeholder="Ville" value="{{ order.city }}" class="form-control">
                     </div>
 
@@ -67,14 +67,14 @@
                         <input type="text" name="product-name" id="product-name" value="{{ product.name ?? ' ' }}" class="form-control" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="size"> Taille : *</label>
+                        <label for="size"> Taille : </label>
                         <select name="size" id="size" class="form-control">
                             <option value="">--Choisissez la taille--</option>
                             <option value="">S</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="quantity"> Quantité : *</label>
+                        <label for="quantity"> Quantité : </label>
                         <input type="text" name="quantity" id="quantity" value="{{ quantity }}" class="form-control">
 
                     </div>
@@ -83,13 +83,12 @@
                         <textarea name="message" id="message" value="{{ message }}"  class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="userLogo">Votre logo à imprimer :</label>
+                        <label for="userLogo">Votre logo à imprimer (optionnel) :</label>
                         <input type="file" id="userLogo" name="userLogo" class="form-control-file">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-dark">Envoyer</button>
                     </div>
-                    <p> * ces champs sont obligatoires </p>
                 </form>
             </div>
         </div>
