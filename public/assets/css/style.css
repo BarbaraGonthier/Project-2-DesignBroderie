@@ -2,22 +2,54 @@
     --title-color: #ba3f21ff;
     --dark: rgb(16, 8, 3);
     --light: rgb(250, 248, 248);
-    --background-color: #ba3f21ce;
 
-    --border-radius:8px;
+    --secondary-background-color: #c9c9c943;
+    --background-color: rgba(186, 63, 33, 0.81);
+    --background-color-2: #C9C9C9;
+
+
+    --border-radius: 8px;
+
 
     --title-font-family: 'MANIFESTO';
+
+    --font-family: 'Montserrat', sans-serif;
+
     --font-family:'Montserrat', sans-serif;
+
+    --title-font-size: 2.5rem;
+    --title-2-font-size: 2rem;
+
+    --font-size-h3: 16pt;
 
     --spacing:8px;
     --spacing-2:calc(var(--spacing) * 2);
     --spacing-4:calc(var(--spacing) * 4);
     --spacing-6:calc(var(--spacing) * 6);
+    --opacity: 0.70;
 
     --spacing-section: calc(var(--spacing) * 8);
+    --padding-barre: 180px;
 }
 
-.title {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding-top: 80px;
+}
+
+h1 {
+    font-size:  var(--title-font-size);
+    color : var(--title-color);
+    font-family : var(--title-font-family)
+}
+
+h2 {
+    font-size:  var(--title-2-font-size);
     color : var(--title-color);
     font-family : var(--title-font-family)
 }
