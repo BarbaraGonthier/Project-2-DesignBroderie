@@ -16,12 +16,5 @@
 
 
 body {
-    padding-top: var(--padding-barre);
-}
-
-@media screen and (max-width: 767px) {
-    .img, .high {
-        display: none;
-
-    }
+    padding-top: 180px;
 }
