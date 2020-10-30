@@ -1,0 +1,23 @@
+h1, h2 {
+    color : var(--title-color);
+    font-family : var(--title-font-family);
+    text-align: center;
+}
+
+h1 {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--secondary-background-color);
+}
+
+h2 {
+    margin-top : var(--spacing-6);
+}
+
+@media screen and (max-width: 740px) {
+
+    :root {
+        --title-font-size : 32px;
+        --title-2-font-size : 24px;
+    }
+}
