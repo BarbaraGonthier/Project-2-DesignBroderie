@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/embroidery-examples.css"> {% endblock %}
+{% block title %}{{ parent() }} | Nos réalisations{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1> Nos réalisations </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
+            </div>
+        </div>
+    </div>
+{% endblock %}
