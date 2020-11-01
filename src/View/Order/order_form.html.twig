@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <h2>Vos Coordonnees</h2>
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="lastname"> Nom : </label>
                         <input type="text" name="lastname" id="lastname" placeholder="Nom" value="{{ order.lastname }}" class="form-control">
@@ -81,6 +81,7 @@
                     </div>
                     <div class="form-group">
                         <label for="userLogo">Votre logo à imprimer (optionnel) :</label>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
                         <input type="file" id="userLogo" name="userLogo" class="form-control-file">
                     </div>
                     <div class="form-group">
