@@ -10,18 +10,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
-            </div>
-            <div class="col-md-4">
-                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
-            </div>
-            <div class="col-md-4">
-                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
-            </div>
-            <div class="col-md-4">
-                <img src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" class="img-fluid">
-            </div>
+            {% for file in files %}
+                <div class="col-md-4">
+                    <img src="/{{ file.pathName }}" class="img-fluid " alt="{{ file.fileName }}">
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
