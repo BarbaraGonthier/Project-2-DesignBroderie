@@ -3,7 +3,7 @@
     --dark: rgb(16, 8, 3);
     --light: rgb(250, 248, 248);
 
-    --secondary-background-color: #c9c9c943;
+    --secondary-background-color: rgba(201, 201, 201, 0.26);
     --background-color: rgba(186, 63, 33, 0.81);
     --background-color-2: #C9C9C9;
 
@@ -29,7 +29,7 @@
     --opacity: 0.70;
 
     --spacing-section: calc(var(--spacing) * 8);
-    --padding-barre: 180px;
+    --padding-barre: 160px;
 }
 
 * {
@@ -39,7 +39,7 @@
 body {
     font-family: var(--font-family);
     margin: 0;
-    padding-top: 80px;
+
 }
 
 h1 {

@@ -16,5 +16,5 @@
 
 
 body {
-    padding-top: 180px;
+    padding-top: var(--padding-barre);
 }
