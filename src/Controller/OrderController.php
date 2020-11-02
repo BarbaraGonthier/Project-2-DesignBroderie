@@ -58,10 +58,10 @@ class OrderController extends AbstractController
     {
         $inputLength = 100;
         $shortInputLength = 20;
-        $extensions = ['.png', '.gif', '.jpg', '.jpeg'];
+        $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
         $maxSize = 100000;
 
-        $extension = strrchr($_FILES['userLogo']['name'], '.');
+        $mimeType = ($_FILES['userLogo']['type']);
         $size = filesize($_FILES['userLogo']['tmp_name']);
 
         $errors = [];
@@ -108,7 +108,7 @@ class OrderController extends AbstractController
         if (!empty($order['city']) && strlen($order['city']) > $inputLength) {
             $errors[] = 'Le champ ville doit contenir moins de ' . $inputLength . ' caractères';
         }
-        if (!in_array($extension, $extensions)) {
+        if (!in_array($mimeType, $extensions)) {
             $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
         }
         if ($size > $maxSize) {
