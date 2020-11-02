@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/productadmin.css"> {% endblock %}
+
+{% block content %}
+
+    <h1 class="titre">
+        Liste des produits diponibles
+    </h1>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+
+            <th>Catégorie</th>
+            <th>Nom</th>
+            <th>Genre</th>
+            <th>Référence</th>
+            <th>Photo</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+
+                <td>{{ product.category }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.gender }}</td>
+                <td>{{ product.reference }}</td>
+                <td>{{ product.image }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td class="align-left" style="text-align: right">
+                    <a href='/product/show/{{ product.id }}'>
+                        <button type="button" class="btn btn-secondary btn-sm">
+                            Détails
+                        </button>
+                    </a>
+                    <a href='/product/edit/{{ product.id }}'>
+                        <button type="button" class="btn btn-secondary btn-sm">
+                            modifier
+                        </button>
+                    </a>
+                    <a href='/product/delete/{{ product.id }}'>
+                        <button type="button" class="btn btn-secondary btn-sm">
+                            Supprimer
+                        </button>
+                    </a>
+                </td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/product/add">
+        <button type="button" class="btn btn-danger btn-lg ">Ajouter un produit
+        </button>
+    </a>
+
+{% endblock %}

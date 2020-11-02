@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+
+
+
+{% block content %}
+    <br>
+    <h1>Détail du produit {{ product.name }}</h1>
+    <p>{{ product.id }}. {{ product.title }}.</p>
+    <a href="/item/edit/{{ item.id }}">Edit</a>
+    <a href="/item/delete/{{item.id}}">Supprimer</a>
+    <a href="/item/index">Back</a>
+{% endblock %}
