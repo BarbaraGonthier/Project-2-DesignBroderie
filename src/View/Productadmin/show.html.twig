@@ -6,8 +6,33 @@
 {% block content %}
     <br>
     <h1>Détail du produit {{ product.name }}</h1>
-    <p>{{ product.id }}. {{ product.title }}.</p>
-    <a href="/item/edit/{{ item.id }}">Edit</a>
-    <a href="/item/delete/{{item.id}}">Supprimer</a>
-    <a href="/item/index">Back</a>
+
+<div class="card-group mb-5">
+    <div class="card">
+        <div class="card-header">{{product.category}}</div>
+        <div class="card-body">
+            <h3 class="card-title">{{product.name}}</h3>
+                <p class="card-text">photo</p>
+                <p class="card-text">{{product.gender}}</p>
+                <p class="card-text"><small class="text-muted">{{ product.description}}</small></p>
+        </div>
+        <div class="card-footer">{{ product.price }} €</div>
+    </div>
+</div>
+    <a href='/product/edit/{{ product.id }}'>
+        <button type="button" class="btn btn-secondary btn-sm">
+            Modifier
+        </button>
+    </a>
+    <a href='/product/delete/{{ product.id }}'>
+        <button type="button" class="btn btn-secondary btn-sm">
+            Supprimer
+        </button>
+    </a>
+    <a href='/product/index/'>
+        <button type="button" class="btn btn-secondary btn-sm">
+            Retour
+        </button>
+    </a>
+
 {% endblock %}
