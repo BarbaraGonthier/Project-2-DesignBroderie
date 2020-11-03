@@ -1,4 +1,3 @@
-
 .small {
     font-size: 12px;
 }
@@ -14,7 +13,39 @@
     padding-bottom: var(--spacing-2);
 }
 
-
 body {
     padding-top: var(--padding-barre);
+}
+
+.fixed-top {
+    background-color: #c55543;
+    opacity: 1;
+}
+
+#light a {
+    color: var(--light);
+    font-size: var(--font-size-a);
+}
+
+#light a:hover {
+    opacity: var(--opacity);
+}
+
+#light span {
+    color: var(--light);
+}
+
+#logo {
+    margin-top: var(--spacing);
+    padding-bottom: var(--spacing);
+}
+
+#linkNav a {
+    color: var(--light);
+    font-size: 18pt;
+
+}
+
+#linkNav a:hover{
+    opacity: var(--opacity);
 }
