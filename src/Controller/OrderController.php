@@ -29,11 +29,18 @@ class OrderController extends AbstractController
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $order = array_map('trim', $_POST);
+
             $errors = $this->orderValidate($order);
 
             if (empty($errors)) {
+                $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
+                $newFileName = uniqid() . '.' . $fileExtension;
+                $uploadDir = 'uploads/';
+                move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                $userLogo = ['id' => $newFileName];
+
                 $orderManager = new OrderManager();
-                $orderManager->saveOrder($order, $product);
+                $orderManager->saveOrder($order, $product, $userLogo);
                 header('Location:/home/index/');
             }
         }
@@ -52,7 +59,14 @@ class OrderController extends AbstractController
     {
         $inputLength = 100;
         $shortInputLength = 20;
+        $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
+        $maxSize = 100000;
+
+        $mimeType = mime_content_type($_FILES['userLogo']['name']);
+        $size = filesize($_FILES['userLogo']['tmp_name']);
+
         $errors = [];
+
         if (empty($order['firstname'])) {
             $errors[] = 'Le champ prénom est obligatoire';
         }
@@ -94,6 +108,12 @@ class OrderController extends AbstractController
         }
         if (!empty($order['city']) && strlen($order['city']) > $inputLength) {
             $errors[] = 'Le champ ville doit contenir moins de ' . $inputLength . ' caractères';
+        }
+        if (!in_array($mimeType, $extensions)) {
+            $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
+        }
+        if ($size > $maxSize) {
+            $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 100000 . " Mo";
         }
 
         return $errors ?? [];

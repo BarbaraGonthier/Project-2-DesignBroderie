@@ -72,3 +72,18 @@ h2 {
     color: var(--light);
 }
 
+.carousel {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
+    background-color: var(--background-color);
+}
+
+.carousel div img{
+    border-radius: var(--border-radius);
+}
+
+.carousel div p {
+    text-align: center;
+    color: var(--light);
+}
+

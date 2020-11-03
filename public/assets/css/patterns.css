@@ -1,0 +1,25 @@
+img {
+    padding : var(--spacing-6);
+}
+
+h1 {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--secondary-background-color);
+    text-align : center;
+}
+
+img {
+    transition:transform 0.25s ease;
+}
+
+img:hover {
+    -webkit-transform:scale(1.5);
+    transform:scale(1.5);
+}
+
+@media screen and (max-width: 740px) {
+    .examples-title {
+        --title-font-size : 24px;
+    }
+}
