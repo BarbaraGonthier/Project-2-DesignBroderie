@@ -10,6 +10,6 @@ class LogoController extends AbstractController
     {
         $logoManager = new LogoManager();
         $logos = $logoManager->selectAll();
-        return $this->twig->render('Logos/logo-examples.html.twig', ['logos' => $logos]);
+        return $this->twig->render('Logos/logo-examples.html.twig', ['logo-examples' => $logos]);
     }
 }
