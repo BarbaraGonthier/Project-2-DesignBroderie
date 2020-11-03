@@ -23,14 +23,14 @@ class OrderManager extends AbstractManager
     }
 
 
-    public function saveOrder(array $order, $product)
+    public function saveOrder(array $order, $product, $userLogo)
     {
         $query = "INSERT INTO " . self::TABLE .
             " (`firstname`, `lastname`, `email`, `phone`, `company_name`, 
-            `address`, `city`, `postcode`, `size`, `quantity`, `message`, `product_id`) 
+            `address`, `city`, `postcode`, `size`, `quantity`, `message`, `product_id`, `user_logo`) 
             VALUES 
             (:firstname, :lastname, :email, :phone, :company_name, 
-            :address, :city, :postcode, :size, :quantity, :message, :product_id)";
+            :address, :city, :postcode, :size, :quantity, :message, :product_id, :user_logo)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
@@ -44,6 +44,8 @@ class OrderManager extends AbstractManager
         $statement->bindValue(':quantity', $order['quantity'], \PDO::PARAM_INT);
         $statement->bindValue(':message', $order['message'], \PDO::PARAM_STR);
         $statement->bindValue(':product_id', $product['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':user_logo', $userLogo['id'], \PDO::PARAM_INT);
+
 
 
         $statement->execute();
