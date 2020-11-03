@@ -39,10 +39,6 @@ h2 {
     margin-bottom: var(--spacing-2);
 }
 
-.container p {
-    width: 300px;
-}
-
 .container-fluid {
     padding-top: var(--spacing-4);
     padding-bottom: var(--spacing-4);
@@ -80,5 +76,10 @@ h2 {
 
 .carousel div img{
     border-radius: var(--border-radius);
+}
+
+.carousel div p {
+    text-align: center;
+    color: var(--light);
 }
 
