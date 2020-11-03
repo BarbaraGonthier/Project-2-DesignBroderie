@@ -2,9 +2,9 @@
 
 namespace App\Model;
 
-class LogoManager extends AbstractManager
+class PatternManager extends AbstractManager
 {
-    public const TABLE = "logo";
+    public const TABLE = "pattern";
 
     public function __construct()
     {
