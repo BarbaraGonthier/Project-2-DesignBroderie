@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/logo-examples.css"> {% endblock %}
+{% block title %}{{ parent() }} | Nos logos {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="examples-title"> Nos logos à broder </h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for logo in logos %}
+                <div class="col-md-4">
+                    <img src="/assets/images/logo-examples/{{ logo.name }}" class="img-fluid" alt="{{ logo.name }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
