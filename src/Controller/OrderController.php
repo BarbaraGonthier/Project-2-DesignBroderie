@@ -61,7 +61,7 @@ class OrderController extends AbstractController
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
         $maxSize = 100000;
 
-        $mimeType = ($_FILES['userLogo']['type']);
+        $mimeType = mime_content_type($_FILES['userLogo']['name']);
         $size = filesize($_FILES['userLogo']['tmp_name']);
 
         $errors = [];
