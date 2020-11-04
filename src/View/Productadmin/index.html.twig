@@ -14,12 +14,8 @@
         <thead class="thead-dark">
         <tr>
 
-            <th>Catégorie</th>
             <th>Nom</th>
-            <th>Genre</th>
             <th>Référence</th>
-            <th>Photo</th>
-            <th>Description</th>
             <th>Prix</th>
             <th>Actions</th>
 
@@ -29,12 +25,9 @@
         {% for product in products %}
             <tr>
 
-                <td>{{ product.category }}</td>
+
                 <td>{{ product.name }}</td>
-                <td>{{ product.gender }}</td>
                 <td>{{ product.reference }}</td>
-                <td>{{ product.image }}</td>
-                <td>{{ product.description }}</td>
                 <td>{{ product.price }}</td>
                 <td class="align-left" style="text-align: right">
                     <a href='/product/show/{{ product.id }}'>

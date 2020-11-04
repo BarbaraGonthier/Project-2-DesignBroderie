@@ -10,7 +10,6 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $products = $productManager->selectAll();
-        /* return var_dump($products); */
         return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
 
