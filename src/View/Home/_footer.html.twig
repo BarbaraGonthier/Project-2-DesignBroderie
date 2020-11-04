@@ -1,51 +1,63 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
 {% endblock %}
 
 {% block footer %}
 
-    <footer>
-        <div class="containerFooter">
-            <div class="container">
-                <div class="container text-center text-md-left mt-5">
-                    <div class="row mt-3">
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <h3 class="text-uppercase font-weight-bold">Design Broderie</h3>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto">
-                            <p>Pour donner à votre entreprise, tous les éléments d'une communication exceptionnelle et de
-                                qualité, n'hésitez pas à afficher votre publicité sur vos vêtements professionnels. De par son
-                                élégance et sa solidité, la broderie apporte à votre image une haute valeur ajoutée. </p>
-                        </div>
-                        <div class="catalog col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h3 class="text-uppercase font-weight-bold">Catalogue</h3>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto">
-                            <p><a href="#!">Tee-shirts</a></p>
-                            <p><a href="#!">Polos</a></p>
-                            <p><a href="#!">Chemises</a></p>
-                            <p><a href="#!">Sweats</a></p>
-                            <p><a href="#!">Polaires</a></p>
-                            <p><a href="#!">Casquettes</a></p>
-                        </div>
-                        <div class="utile col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <h3 class="text-uppercase font-weight-bold">Liens utiles</h3>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto">
-                            <p><a href="#!">Demander un devis</a></p>
-                            <p><a href="#!">Nous contacte</a></p>
-                        </div>
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <h3 class="text-uppercase font-weight-bold">Contact</h3>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto">
-                            <p><i class="fas fa-home mr-3">49 Rue de Manthelon, 45370 Mézières-lez-Cléry</i></p>
-                            <p><i class="fas fa-phone mr-3">02 38 45 95 78</i></p>
-                            <p><i class="fas fa-print mr-3">06 48 60 09 71</i></p>
-                        </div>
-                    </div>
+    <footer class="page-footer font-small stylish-color-dark pt-4">
+
+        <div class="container text-center text-md-left">
+
+            <div class="row">
+
+                <div class="col-md-4 mx-auto">
+                    <h3 class="font-weight-bold text-uppercase mt-3 mb-4">Design Broderie</h3>
+                    <p>Pour donner à votre entreprise, tous les éléments d'une communication exceptionnelle et de
+                        qualité, n'hésitez pas à afficher votre publicité sur vos vêtements professionnels. De par son
+                        élégance et sa solidité, la broderie apporte à votre image une haute valeur ajoutée.</p>
                 </div>
-                    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                        <p>Siret : 484 849 120 00015 - APE : 1399Z - TVA Intra Com. FR 71 484849120 </p>
-                    </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h3 class="font-weight-bold text-uppercase mt-3 mb-4">Catalogue</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#!">Tee-shirts</a></li>
+                        <li><a href="#!">Polos</a></li>
+                        <li><a href="#!">Chemises</a></li>
+                        <li><a href="#!">Sweats</a></li>
+                        <li><a href="#!">Polaires</a></li>
+                        <li><a href="#!">Casquettes</a></li>
+                    </ul>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h3 class="font-weight-bold text-uppercase mt-3 mb-4">Liens utiles</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#!">Demander un devis</a></li>
+                        <li><a href="#!">Nous contacter</a></li>
+                    </ul>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h3 class="font-weight-bold text-uppercase mt-3 mb-4">Contact</h3>
+                    <ul class="list-unstyled">
+                        <li><p> 49 Rue de Manthelon, 45370 Mézières-lez-Cléry</p></li>
+                        <li><p></p></li>
+                        <li><p><img src="/assets/images/phone.png" alt="Fixe"> 02 38 45 95 78</p></li>
+                        <li><p><img src="/assets/images/phone-call.png" alt="Portable"> 06 48 60 09 71</p></li>
+                    </ul>
+                </div>
             </div>
+        </div>
+
+        <div class="footer-copyright text-center py-3">Siret : 484 849 120 00015 - APE : 1399Z - TVA Intra Com. FR 71 484849120 <br>
+            <a class="mention" href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F31228" target="_blank"> Mentions légales</a>
         </div>
     </footer>
 {% endblock %}

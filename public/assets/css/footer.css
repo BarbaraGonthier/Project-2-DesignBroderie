@@ -1,12 +1,25 @@
-.catalog a {
+li a {
     color: var(--light);
 }
 
-.utile a {
+li a:hover {
+    text-decoration: none;
+    color: var(--light);
+    opacity: var(--opacity);
+
+}
+
+.mention {
     color: var(--light);
 }
 
-.containerFooter {
+.mention:hover {
+    text-decoration: none;
+    color: var(--light);
+    opacity: var(--opacity);
+
+}
+footer {
     background-color: var(--background-color);
     padding-top: var(--spacing-4);
 }
@@ -18,4 +31,5 @@ h3 {
 hr {
     width: 60px;
 }
+
 

@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/patterns.css"> {% endblock %}
+{% block title %}{{ parent() }} | Nos modèles {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="examples-title"> Nos modèles </h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for pattern in patterns %}
+                <div class="col-md-3">
+                    <img src="/assets/images/patterns/{{ pattern.name }}" class="img-fluid" alt="{{ pattern.name }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
