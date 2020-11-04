@@ -10,7 +10,7 @@
         Liste des produits diponibles
     </h1>
 
-    <table class="table table-hover">
+    <table class="table table-striped table-hover">
         <thead class="thead-dark">
         <tr>
 
@@ -29,7 +29,7 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.reference }}</td>
                 <td>{{ product.price }}</td>
-                <td class="align-left" style="text-align: right">
+                <td>
                     <a href='/product/show/{{ product.id }}'>
                         <button type="button" class="btn btn-secondary btn-sm">
                             Détails
