@@ -7,6 +7,9 @@
 {% block content %}
 
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 col-12">
     <h1>Détail du produit {{ product.name }}</h1>
 
 
@@ -17,7 +20,7 @@
         <div class="card-header">{{product.category}}</div>
         <div class="card-body">
             <h3 class="card-title">{{product.name}}</h3>
-            <img src="{{ product.image ?? '/assets/images/machine.jpg' }}" alt="{{ product.name }}"/>
+            <img class="card-image" src="/assets/images/{{ product.image }}" alt="{{ product.name }}"/>
                 <p class="card-text">{{product.gender}}</p>
                 <p class="card-text"><small class="text-muted">{{ product.description}}</small></p>
         </div>
@@ -25,21 +28,17 @@
     </div>
 </div>
 
+            <a href='/product/edit/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
 
-    <a href='/product/edit/{{ product.id }}'>
-        <button type="button" class="btn btn-secondary btn-sm">
-            Modifier
-        </button>
-    </a>
-    <a href='/product/delete/{{ product.id }}'>
-        <button type="button" class="btn btn-secondary btn-sm">
-            Supprimer
-        </button>
-    </a>
-    <a href='/product/index/'>
-        <button type="button" class="btn btn-secondary btn-sm">
-            Retour
-        </button>
-    </a>
+            <a href='/product/delete/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Supprimer</a>
 
+            <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour</a>
+
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+        {% block footer %}
+
+        {% endblock %}
