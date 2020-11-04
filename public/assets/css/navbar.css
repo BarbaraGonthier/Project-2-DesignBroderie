@@ -1,20 +1,23 @@
-
 .small {
     font-size: 12px;
 }
 
 .spacenav ul li {
     margin: 0 var(--spacing-6);
+}
 
+body {
+    padding-top: var(--padding-barre);
+}
+
+.fixed-top {
+    background-color: #c55543;
+    opacity: 1;
 }
 
 .logo {
     width: 30%;
     height: 70%;
-    padding-bottom: var(--spacing-2);
-}
-
-
-body {
-    padding-top: 180px;
+    margin-top: var(--spacing);
+    padding-bottom: var(--spacing);
 }

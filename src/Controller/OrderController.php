@@ -23,6 +23,7 @@ class OrderController extends AbstractController
     {
         $order = [];
         $errors = [];
+
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
 

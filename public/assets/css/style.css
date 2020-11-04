@@ -1,7 +1,8 @@
 :root {
-    --title-color: #ba3f21ff;
+    --title-color: #ba3f21;
     --dark: rgb(16, 8, 3);
     --light: rgb(250, 248, 248);
+
 
     --secondary-background-color: #c9c9c943;
     --background-color: #c55543;
@@ -11,15 +12,16 @@
     --border-radius: 8px;
 
 
-    --title-font-family: 'MANIFESTO';
+    --title-font-family: 'Advent Pro';
 
     --font-family: 'Montserrat', sans-serif;
 
     --font-family:'Montserrat', sans-serif;
 
-    --title-font-size: 2.5rem;
-    --title-2-font-size: 2rem;
+    --title-font-size: 4rem;
+    --title-2-font-size: 2.5rem;
 
+    --font-size-a: 10pt;
     --font-size-h3: 16pt;
 
     --spacing:8px;
@@ -29,7 +31,7 @@
     --opacity: 0.70;
 
     --spacing-section: calc(var(--spacing) * 8);
-    --padding-barre: 180px;
+    --padding-barre: 160px;
 }
 
 * {
@@ -39,7 +41,7 @@
 body {
     font-family: var(--font-family);
     margin: 0;
-    padding-top: 80px;
+
 }
 
 h1 {
