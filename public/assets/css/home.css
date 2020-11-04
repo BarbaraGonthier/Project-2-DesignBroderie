@@ -16,7 +16,7 @@
     font-family : var(--title-font-family)
 }
 
-.orderStep {
+.orderStep, .localisation {
     margin-top: var(--spacing-4);
 }
 
