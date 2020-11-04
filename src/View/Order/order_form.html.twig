@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1> Commande </h1>
+                <h1 class="order-title"> Commande </h1>
             </div>
         </div>
         <div class="row">
@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h2>Vos Coordonnees</h2>
+                <h2 class="order-title2">Vos Coordonnées</h2>
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="lastname"> Nom : </label>
@@ -54,7 +54,7 @@
                         <input type="text" name="city" id="city" placeholder="Ville" value="{{ order.city }}" class="form-control">
                     </div>
 
-                <h2> Votre produit</h2>
+                <h2 class="order-title2"> Votre produit</h2>
                     <div class="form-group">
                         <label for="product-category"> Catégorie de produit : </label>
                         <input type="text" name="product-category" id="product-category" value="{{ product.category ?? ' ' }}" class="form-control" disabled>
