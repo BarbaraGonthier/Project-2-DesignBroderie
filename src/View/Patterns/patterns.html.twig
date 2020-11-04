@@ -6,13 +6,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1 class="examples-title"> Nos modèles </h1>
+                <h1 class="pattern-title"> Nos modèles </h1>
             </div>
         </div>
         <div class="row">
             {% for pattern in patterns %}
                 <div class="col-md-3">
-                    <img src="/assets/images/patterns/{{ pattern.name }}" class="img-fluid" alt="{{ pattern.name }}">
+                    <img src="/assets/images/patterns/{{ pattern.name }}" class="img-fluid pattern-img" alt="{{ pattern.name }}">
                 </div>
             {% endfor %}
         </div>

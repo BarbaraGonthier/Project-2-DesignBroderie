@@ -8,7 +8,9 @@ li a:hover {
     opacity: var(--opacity);
 
 }
-
+.footerText {
+    width: 250px;
+}
 .mention {
     color: var(--light);
 }
