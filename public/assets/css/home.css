@@ -39,10 +39,6 @@ h2 {
     margin-bottom: var(--spacing-2);
 }
 
-.container p {
-    width: 250px;
-}
-
 .container-fluid {
     padding-top: var(--spacing-4);
     padding-bottom: var(--spacing-4);
