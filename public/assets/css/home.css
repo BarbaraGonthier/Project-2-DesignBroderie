@@ -39,10 +39,6 @@ h2 {
     margin-bottom: var(--spacing-2);
 }
 
-.container p {
-    width: 250px;
-}
-
 .container-fluid {
     padding-top: var(--spacing-4);
     padding-bottom: var(--spacing-4);
@@ -61,16 +57,6 @@ h2 {
     margin-bottom: var(--spacing-4);
 }
 
-.buttonDevis a {
-    text-decoration: none;
-    color: var(--light);
-}
-
-.buttonDevis a:hover {
-    opacity: var(--opacity);
-    text-decoration: none;
-    color: var(--light);
-}
 
 .carousel {
     padding-top: var(--spacing-4);
