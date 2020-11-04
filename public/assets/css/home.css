@@ -21,8 +21,8 @@
 }
 
 h2 {
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    padding-top: var(--spacing-4);
 }
 
 .imageOrder {
@@ -85,5 +85,13 @@ h2 {
 .carousel div p {
     text-align: center;
     color: var(--light);
+}
+
+.categories img {
+    border-radius: var(--border-radius);
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    margin-top: var(--spacing-2);
 }
 
