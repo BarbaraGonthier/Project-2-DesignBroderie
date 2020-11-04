@@ -30,21 +30,14 @@
                 <td>{{ product.reference }}</td>
                 <td>{{ product.price }}</td>
                 <td>
-                    <a href='/product/show/{{ product.id }}'>
-                        <button type="button" class="btn btn-secondary btn-sm">
-                            Détails
-                        </button>
-                    </a>
-                    <a href='/product/edit/{{ product.id }}'>
-                        <button type="button" class="btn btn-secondary btn-sm">
-                            Modifier
-                        </button>
-                    </a>
-                    <a href='/product/delete/{{ product.id }}'>
-                        <button type="button" class="btn btn-secondary btn-sm">
-                            Supprimer
-                        </button>
-                    </a>
+                    <a href='/product/show/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Détails</a>
+
+
+
+                    <a href='/product/edit/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
+
+                    <a href='/product/delete/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Supprimer</a>
+
                 </td>
 
             </tr>
@@ -52,9 +45,7 @@
         </tbody>
     </table>
 
-    <a href="/product/add">
-        <button type="button" class="btn btn-danger btn-lg ">Ajouter un produit
-        </button>
-    </a>
+    <a href="/product/add" class="btn btn-danger btn-lg" role="button">Ajouter un produit</a>
 
 {% endblock %}
+
