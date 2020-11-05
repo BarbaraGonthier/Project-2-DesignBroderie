@@ -22,7 +22,6 @@ class ProductController extends AbstractController
 
         return $this->twig->render('Productadmin/show.html.twig', ['product' => $product]);
     }
-  
     public function index()
     {
         $productManager = new ProductManager();
