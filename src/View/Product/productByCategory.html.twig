@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/product.css">
+{% endblock %}
+
+{% block title %}Catalogue de vêtements{% endblock %}
+
+{% block header %}
+    <header>
+        <div class="title">
+            <h1>Nos vêtements</h1>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-sm-12 col-md-6 col-lg-4 .mx-auto">
+                    <div class="card bg-warning">
+                        <img src="/assets/images/product/{{ product.image }}" class="card-img-top" alt="image de {{ product.name }}">
+                        <div class="card-body">
+                            <div title="Categorie {{ product.name }}">
+                                <p><strong>{{ product.name }}</strong></p>
+                                <p>Réf : {{ product.reference }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
