@@ -6,46 +6,53 @@
 
 {% block content %}
 
-    <h1 class="titre">
-        Liste des produits diponibles
-    </h1>
-
-    <table class="table table-striped table-hover">
-        <thead class="thead-dark">
-        <tr>
-
-            <th>Nom</th>
-            <th>Référence</th>
-            <th>Prix</th>
-            <th>Actions</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-
-
-                <td>{{ product.name }}</td>
-                <td>{{ product.reference }}</td>
-                <td>{{ product.price }}</td>
-                <td>
-                    <a href='/product/show/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Détails</a>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="titre">
+                    Liste des produits diponibles
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Référence</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
 
 
-                    <a href='/product/edit/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.reference }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>
+                                <a href='/product/show/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Détails</a>
 
-                    <a href='/product/delete/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Supprimer</a>
 
-                </td>
 
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                                <a href='/product/edit/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
 
-    <a href="/product/add" class="btn btn-danger btn-lg" role="button">Ajouter un produit</a>
+                                <a href='/product/delete/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Supprimer</a>
 
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a href="/product/add" class="btn btn-dark" role="button">Ajouter un produit</a>
+    </div>
 {% endblock %}
 
