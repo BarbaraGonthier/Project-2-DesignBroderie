@@ -1,10 +1,7 @@
 .banner {
     display: flex;
     justify-content: flex-end;
-    background-image: url('/assets/images/sewing.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url("/assets/images/sewing.jpg") no-repeat fixed center;
     background-size: 100%;
     height: 600px;
     padding-top: var(--padding-barre);
@@ -17,12 +14,27 @@
 }
 
 .orderStep {
-    margin-top: var(--spacing-4);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+    background-color: var(--background-color);
+}
+
+.orderStep h2 {
+    padding: var(--spacing);
+    color: var(--dark);
+}
+
+.localisation {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+}
+
+.localisation h2 {
+    padding: var(--spacing);
 }
 
 h2 {
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
 .imageOrder {
@@ -39,16 +51,6 @@ h2 {
     margin-bottom: var(--spacing-2);
 }
 
-.container p {
-    width: 300px;
-}
-
-.container-fluid {
-    padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-4);
-
-}
-
 .col-lg-3 {
     display: flex;
     flex-direction: column;
@@ -58,17 +60,39 @@ h2 {
 .buttonDevis {
     display: flex;
     justify-content: center;
-    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
 }
 
-.buttonDevis a {
-    text-decoration: none;
-    color: var(--light);
+
+.description {
+    background-color: var(--background-color);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
 }
 
-.buttonDevis a:hover {
-    opacity: var(--opacity);
-    text-decoration: none;
-    color: var(--light);
+.description h2 {
+    color: var(--dark);
+    padding: var(--spacing);
 }
+
+.carousel {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+}
+
+.carousel h2 {
+    padding: var(--spacing);
+}
+
+.carousel div img{
+    border-radius: var(--border-radius);
+}
+
+.carousel div p {
+    text-align: center;
+    color: var(--dark);
+    padding: var(--spacing);
+}
+
+
 

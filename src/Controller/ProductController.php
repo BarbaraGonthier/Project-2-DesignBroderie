@@ -6,7 +6,6 @@ use App\Model\ProductManager;
 
 class ProductController extends AbstractController
 {
-
     /**
      * Display item informations specified by $id
      *
@@ -22,5 +21,12 @@ class ProductController extends AbstractController
         $product = $productManager->selectOneById($id);
 
         return $this->twig->render('Productadmin/show.html.twig', ['product' => $product]);
+    }
+  
+    public function index()
+    {
+        $productManager = new ProductManager();
+        $products = $productManager->selectAll();
+        return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
 }

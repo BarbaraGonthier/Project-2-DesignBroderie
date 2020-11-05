@@ -64,6 +64,7 @@ class Connection
                 $this->user,
                 $this->password
             );
+
             $this->pdoConnection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
             // show errors in DEV environment
