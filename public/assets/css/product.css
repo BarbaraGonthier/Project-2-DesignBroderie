@@ -1,0 +1,22 @@
+.card-body > div > p {
+    margin: 0;
+    text-align: center;
+}
+
+.card {
+    margin-bottom : var(--spacing-4);
+}
+
+.title {
+    padding: var(--spacing-6);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    background-color : var(--secondary-background-color);
+    font-family : var(--title-font-family);
+    padding: var(--spacing-2);
+    width: 55vw;
+}
