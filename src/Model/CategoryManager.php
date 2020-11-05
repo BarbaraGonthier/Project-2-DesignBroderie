@@ -4,7 +4,7 @@ namespace App\Model;
 
 class CategoryManager extends AbstractManager
 {
-    public const TABLE = 'categories';
+    public const TABLE = 'category';
 
     public function __construct()
     {
