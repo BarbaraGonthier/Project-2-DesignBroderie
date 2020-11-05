@@ -19,13 +19,28 @@
 }
 
 .localisation {
-    margin-top: var(--spacing-4);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+    background-color: var(--background-color);
+}
+
+.orderStep h2 {
+    padding: var(--spacing);
+    color: var(--dark);
+}
+
+.localisation {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+}
+
+.localisation h2 {
+    padding: var(--spacing);
 }
 
 h2 {
     text-align: center;
     padding-top: var(--spacing-4);
-    color: black;
 }
 
 .imageOrder {
@@ -42,12 +57,6 @@ h2 {
     margin-bottom: var(--spacing-2);
 }
 
-.container-fluid {
-    padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-4);
-
-}
-
 .col-lg-3 {
     display: flex;
     flex-direction: column;
@@ -60,9 +69,11 @@ h2 {
     padding-bottom: var(--spacing-4);
 }
 
-.buttonDevis a {
-    text-decoration: none;
-    color: var(--light);
+
+.description {
+    background-color: var(--background-color);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
 }
 
 .buttonDevis a:hover {
@@ -70,8 +81,18 @@ h2 {
     color: var(--light);
 }
 
+.description h2 {
+    color: var(--dark);
+    padding: var(--spacing);
+}
+
 .carousel {
-    padding-top: var(--spacing-2);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+}
+
+.carousel h2 {
+    padding: var(--spacing);
 }
 
 .carousel div img{
@@ -90,5 +111,8 @@ h2 {
     height: auto;
     box-shadow: none;
     margin-top: var(--spacing-2);
+    padding: var(--spacing);
 }
+
+
 
