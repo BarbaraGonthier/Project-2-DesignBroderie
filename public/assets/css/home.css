@@ -13,29 +13,20 @@
     font-family : var(--title-font-family)
 }
 
-.orderStep {
-    margin-top: var(--spacing-4);
-    background-color: var(--background-color);
+.buttonCatalogue {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--spacing-6);
 }
 
-.localisation {
-    padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-2);
+.orderStep {
+    margin-top: var(--spacing-4);
     background-color: var(--background-color);
 }
 
 .orderStep h2 {
     padding: var(--spacing);
     color: var(--dark);
-}
-
-.localisation {
-    padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-2);
-}
-
-.localisation h2 {
-    padding: var(--spacing);
 }
 
 h2 {
@@ -66,19 +57,19 @@ h2 {
 .buttonDevis {
     display: flex;
     justify-content: center;
-    padding-bottom: var(--spacing-4);
-}
-
-
-.description {
-    background-color: var(--background-color);
     padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-2);
+    padding-bottom: var(--spacing-4);
 }
 
 .buttonDevis a:hover {
     text-decoration: none;
     color: var(--light);
+}
+
+.description {
+    background-color: var(--background-color);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
 }
 
 .description h2 {
@@ -111,8 +102,14 @@ h2 {
     height: auto;
     box-shadow: none;
     margin-top: var(--spacing-2);
-    padding: var(--spacing);
 }
 
+.localisation {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+}
 
+.localisation h2 {
+    padding: var(--spacing);
+}
 
