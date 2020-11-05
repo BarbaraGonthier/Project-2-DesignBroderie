@@ -1,10 +1,7 @@
 .banner {
     display: flex;
     justify-content: flex-end;
-    background-image: url('/assets/images/sewing.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url("/assets/images/sewing.jpg") no-repeat fixed center;
     background-size: 100%;
     height: 600px;
     padding-top: var(--padding-barre);
@@ -16,13 +13,28 @@
     font-family : var(--title-font-family)
 }
 
-.orderStep, .localisation {
-    margin-top: var(--spacing-4);
+.orderStep {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+    background-color: var(--background-color);
+}
+
+.orderStep h2 {
+    padding: var(--spacing);
+    color: var(--dark);
+}
+
+.localisation {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+}
+
+.localisation h2 {
+    padding: var(--spacing);
 }
 
 h2 {
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
 .imageOrder {
@@ -39,12 +51,6 @@ h2 {
     margin-bottom: var(--spacing-2);
 }
 
-.container-fluid {
-    padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-4);
-
-}
-
 .col-lg-3 {
     display: flex;
     flex-direction: column;
@@ -54,14 +60,28 @@ h2 {
 .buttonDevis {
     display: flex;
     justify-content: center;
-    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
 }
 
 
+.description {
+    background-color: var(--background-color);
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+}
+
+.description h2 {
+    color: var(--dark);
+    padding: var(--spacing);
+}
+
 .carousel {
     padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-4);
-    background-color: var(--background-color);
+    padding-bottom: var(--spacing-2);
+}
+
+.carousel h2 {
+    padding: var(--spacing);
 }
 
 .carousel div img{
@@ -70,6 +90,9 @@ h2 {
 
 .carousel div p {
     text-align: center;
-    color: var(--light);
+    color: var(--dark);
+    padding: var(--spacing);
 }
+
+
 
