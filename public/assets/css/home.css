@@ -14,6 +14,11 @@
 }
 
 .orderStep {
+    margin-top: var(--spacing-4);
+    background-color: var(--background-color);
+}
+
+.localisation {
     padding-top: var(--spacing-4);
     padding-bottom: var(--spacing-2);
     background-color: var(--background-color);
@@ -35,6 +40,7 @@
 
 h2 {
     text-align: center;
+    padding-top: var(--spacing-4);
 }
 
 .imageOrder {
@@ -70,6 +76,11 @@ h2 {
     padding-bottom: var(--spacing-2);
 }
 
+.buttonDevis a:hover {
+    text-decoration: none;
+    color: var(--light);
+}
+
 .description h2 {
     color: var(--dark);
     padding: var(--spacing);
@@ -91,6 +102,15 @@ h2 {
 .carousel div p {
     text-align: center;
     color: var(--dark);
+    padding-top: var(--spacing-2);
+}
+
+.categories img {
+    border-radius: var(--border-radius);
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    margin-top: var(--spacing-2);
     padding: var(--spacing);
 }
 

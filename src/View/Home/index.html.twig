@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
     <section class="banner">
         <div class="title">
             <h1>Design broderie</h1>
@@ -12,8 +13,24 @@
         </div>
     </section>
 
+    <section class="categories">
+        <h2>Nos vêtements à personnaliser</h2>
+        <div class="container-fluid">
+            <div class="row">
+                {% for category in categories %}
+                    <div class="d-flex col-md-2 justify-content-center">
+                        <img class="imageOrder" src="/assets/images/{{ category.image }}" alt="Vêtements" title="Nos vêtements">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="buttonDevis">
+            <button type="button" class="btn btn-dark"><a href="#devis">Voir notre catalogue</a></button>
+        </div>
+    </section>
+
     <section class="orderStep">
-        <h2>Nos etapes de commande</h2>
+        <h2>Nos étapes de commande</h2>
 
         <div class="container-fluid">
             <div class="row">
@@ -44,7 +61,7 @@
         </div>
 
         <div class="buttonDevis">
-            <a class="btn btn-dark" href="#devis">Voir nos réalisations</a>
+            <a class="btn btn-dark" href="/pattern/show">Voir nos modèles</a>
         </div>
     </section>
 
@@ -98,7 +115,9 @@
                     <span class="sr-only">Next</span></a>
             </div>
             <div class="buttonDevis">
-                <a class="btn btn-dark" href="#devis">Voir nos réalisations</a>
+
+               <a class="btn btn-dark" href="/embroidery/examples">Voir nos réalisations</a>
+
             </div>
         </div>
     </section>
