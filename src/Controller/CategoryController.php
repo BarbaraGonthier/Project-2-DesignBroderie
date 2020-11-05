@@ -12,6 +12,7 @@ class CategoryController extends AbstractController
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
         return $this->twig->render('/Product/category.html.twig', ['categories' => $categories]);
+    }
     public function list(int $categoryId)
     {
         $categoryManager = new CategoryManager();
@@ -21,5 +22,6 @@ class CategoryController extends AbstractController
         return $this->twig->render(
             'Product/productByCategory.html.twig',
             ['products' => $products, 'categories' => $categories]
+        );
     }
 }
