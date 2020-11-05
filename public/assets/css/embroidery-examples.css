@@ -1,0 +1,27 @@
+.examples-title  {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--secondary-background-color);
+    text-align : center;
+}
+
+.embroidery-img {
+    transition:transform 0.25s ease;
+    padding : var(--spacing-6);
+}
+
+.embroidery-img:hover {
+    -webkit-transform:scale(1.5);
+    transform:scale(1.5);
+}
+
+.container {
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+}
+
+@media screen and (max-width: 740px) {
+    .examples-title {
+        --title-font-size : 24px;
+    }
+}

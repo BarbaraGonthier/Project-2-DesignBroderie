@@ -1,76 +1,121 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
 {% endblock %}
 
 {% block content %}
     <section class="banner">
         <div class="title">
             <h1>Design broderie</h1>
-            <h2>Notre metier à de l'avenir</h2>
+            <h2>Notre métier a de l'avenir</h2>
         </div>
     </section>
 
     <section class="orderStep">
-        <h2>Nos étapes de commande</h2>
+        <h2>Nos etapes de commande</h2>
 
-            <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <img class="imageOrder" src="/assets/images/porte.jpg" alt="Vêtements" title="Nos vêtements">
-                            <img class="imageStep" src="/assets/images/one.png" alt="1" title="1">
-                            <p>Choisissez vos vêtements sur <a href="#catalog">notre site</a> ou envoyez-nous les votres</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <img class="imageOrder" src="/assets/images/formulaire.jpg" alt="Formulaire" title="Sourire">
-                            <img class="imageStep" src="/assets/images/two.png" alt="2" title="2">
-                            <p>Remplissez <a href="#catalog">notre formulaire</a> et faites-nous parvenir votre ou vos visuels</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <img class="imageOrder" src="/assets/images/machine.jpg" alt="Barudan" title="Barudan">
-                            <img class="imageStep" src="/assets/images/three.png" alt="3" title="3">
-                            <p>Votre visuel est transformé en programme de broderie. Il est stocké pendant plusieurs années dans une
-                                base de données, ce qui vous permet de refaire vos broderies quand vous le souhaitez !</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <img class="imageOrder" src="/assets/images/transport.jpg" alt="Transport" title="Transport">
-                            <img class="imageStep" src="/assets/images/four.png" alt="4" title="4">
-                            <p>Nos livraisons (24/48h) sont effectuées par transporteur routier</p>
-                        </div>
-                    </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <img class="imageOrder" src="/assets/images/porte.jpg" alt="Vêtements" title="Nos vêtements">
+                    <img class="imageStep" src="/assets/images/one.png" alt="1" title="1">
+                    <p>Choisissez vos vêtements sur <a href="#catalog">notre site</a> ou envoyez-nous les votres</p>
+                </div>
+                <div class="col-lg-3">
+                    <img class="imageOrder" src="/assets/images/formulaire.jpg" alt="Formulaire" title="Sourire">
+                    <img class="imageStep" src="/assets/images/two.png" alt="2" title="2">
+                    <p>Remplissez <a href="#catalog">notre formulaire</a> et faites-nous parvenir votre ou vos visuels
+                    </p>
+                </div>
+                <div class="col-lg-3">
+                    <img class="imageOrder" src="/assets/images/machine.jpg" alt="Barudan" title="Barudan">
+                    <img class="imageStep" src="/assets/images/three.png" alt="3" title="3">
+                    <p>Votre visuel est transformé en programme de broderie. Il est stocké pendant plusieurs années dans
+                        une
+                        base de données, ce qui vous permet de refaire vos broderies quand vous le souhaitez !</p>
+                </div>
+                <div class="col-lg-3">
+                    <img class="imageOrder" src="/assets/images/transport.jpg" alt="Transport" title="Transport">
+                    <img class="imageStep" src="/assets/images/four.png" alt="4" title="4">
+                    <p>Nos livraisons (24/48h) sont effectuées par transporteur routier</p>
+                </div>
             </div>
+        </div>
 
         <div class="buttonDevis">
-            <button type="button" class="btn btn-dark"><a href="#devis">Demander un devis</a></button>
+            <a class="btn btn-dark" href="#devis">Voir nos réalisations</a>
         </div>
     </section>
 
     <section class="carousel">
-        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-                <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+        <div class="container">
+            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+                </ol>
 
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="imageCarousel carousel-item active"><img class="d-block w-100" src="/assets/images/broderie1.jpg" alt="First slide"></div>
-                <div class="imageCarousel carousel-item"><img class="d-block w-100" src="/assets/images/broderie2.jpg" alt="Second slide"></div>
-                <div class="imageCarousel carousel-item"><img class="d-block w-100" src="/assets/images/broderie3.jpg" alt="Third slide"></div>
-                <div class="imageCarousel carousel-item"><img class="d-block w-100" src="/assets/images/broderie4.jpg" alt="Four slide"></div>
+                <div class="carousel-inner" role="listbox">
+                    <div class="imageCarousel carousel-item active"><a href="#"><img class="d-block w-100"
+                                                                                     src="/assets/images/broderie1.jpg"
+                                                                                     alt="Première slide"
+                                                                                     title="Nos réalisations"></a>
+                        <p>Nos réalisations</p>
+                    </div>
+                    <div class="imageCarousel carousel-item"><a href="#"><img class="d-block w-100"
+                                                                              src="/assets/images/broderie2.jpg"
+                                                                              alt="Deuxième slide"
+                                                                              title="Nos réalisations"></a>
+                        <p>Nos réalisations</p>
+                    </div>
+                    <div class="imageCarousel carousel-item"><a href="#"><img class="d-block w-100"
+                                                                              src="/assets/images/broderie3.jpg"
+                                                                              alt="Troisième slide" title="Nos réalisations"></a>
+                        <p>Nos réalisations</p>
+                    </div>
+                    <div class="imageCarousel carousel-item"><a href="#"><img class="d-block w-100"
+                                                                              src="/assets/images/broderie4.jpg"
+                                                                              alt="Quatrième slide" title="Nos réalisations"></a>
+                        <p>Nos réalisations</p>
+                    </div>
 
+                </div>
+                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span></a>
+                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span></a>
             </div>
-            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="buttonDevis">
+               <a class="btn btn-dark" href="#devis">Voir nos réalisations</a>
+            </div>
         </div>
+    </section>
+    <section class="localisation">
+        <h2>Nous trouver</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3>Adresse</h3>
+                    <p>49, rue de Manthelon </br>
+                    45370 Mézières-lez-Cléry</p>
+                    <h3>Horaires</h3>
+                    <p>Lundi 9h-12h, 14h-18h </br>
+                        Mardi 9h-12h, 14h-18h </br>
+                        Mercredi 9h-12h, 14h-18h </br>
+                        Jeudi 9h-12h, 14h-18h </br>
+                        Vendredi 9h-12h, 14h-18h </br>
+                        Samedi fermé </br>
+                        Dimanche fermé </p>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 {% endblock %}
 

@@ -1,22 +1,13 @@
-h1, h2 {
+h1 {
     color : var(--title-color);
     font-family : var(--title-font-family);
     text-align: center;
 }
 
-.order-title {
+h1 {
     margin : var(--spacing-6);
     padding : var(--spacing-2);
     background-color : var(--secondary-background-color);
-}
-
-.order-title2 {
-    margin-top : var(--spacing-6);
-}
-
-.container {
-    margin-top: var(--spacing-6);
-    margin-bottom: var(--spacing-6);
 }
 
 @media screen and (max-width: 740px) {

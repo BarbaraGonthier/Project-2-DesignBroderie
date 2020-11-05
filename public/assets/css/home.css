@@ -16,7 +16,7 @@
     font-family : var(--title-font-family)
 }
 
-.orderStep {
+.orderStep, .localisation {
     margin-top: var(--spacing-4);
 }
 
@@ -39,10 +39,6 @@ h2 {
     margin-bottom: var(--spacing-2);
 }
 
-.container p {
-    width: 300px;
-}
-
 .container-fluid {
     padding-top: var(--spacing-4);
     padding-bottom: var(--spacing-4);
@@ -61,14 +57,19 @@ h2 {
     margin-bottom: var(--spacing-4);
 }
 
-.buttonDevis a {
-    text-decoration: none;
-    color: var(--light);
+
+.carousel {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
+    background-color: var(--background-color);
 }
 
-.buttonDevis a:hover {
-    opacity: var(--opacity);
-    text-decoration: none;
+.carousel div img{
+    border-radius: var(--border-radius);
+}
+
+.carousel div p {
+    text-align: center;
     color: var(--light);
 }
 
