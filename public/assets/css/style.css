@@ -13,7 +13,9 @@
 
 
     --title-font-family: 'Advent Pro';
-    --font-family:'Montserrat', sans-serif;
+
+    --font-family: 'Montserrat', sans-serif;
+
 
     --title-font-size: 4rem;
     --title-2-font-size: 2.5rem;
@@ -51,4 +53,13 @@ h2 {
     font-size:  var(--title-2-font-size);
     color : var(--title-color);
     font-family : var(--title-font-family)
+}
+
+@media screen and (max-width: 740px) {
+
+    :root {
+        --title-font-size : 3rem;
+        --title-2-font-size : 2rem;
+        --padding-barre: 40px;
+    }
 }
