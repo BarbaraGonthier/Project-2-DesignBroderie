@@ -1,0 +1,48 @@
+.title {
+    padding: var(--spacing-6);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    background-color : var(--secondary-background-color);
+    font-family : var(--title-font-family);
+    padding: var(--spacing-2);
+    width: 55vw;
+}
+
+a > p {
+    background-color: var(--background-color);
+    padding: var(--spacing) var(--spacing-2);
+    border : 2px solid var(--dark);
+    border-radius: var(--border-radius);
+    color : var(--light);
+    font-size: 20px;
+    font-family: var(--font-family);
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    margin: 50px;
+    border: 2px solid var(--dark);
+    border-radius: 10px;
+}
+
+.buttonCategory {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-4);
+}
+
+.buttonCategory a {
+    text-decoration: none;
+    color: var(--light);
+}
+
+.buttonCategory a:hover {
+    opacity: var(--opacity);
+    text-decoration: none;
+    color: var(--light);
+}
