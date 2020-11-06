@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/admin.css"> {% endblock %}
+{% block title %} Admin | Page d'accueil {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="title">
+        <h1> BIENVENUE </h1>
+        <p>Ici vous pourrez ajouter modifer et supprimer les vêtements de votre fournisseur ainsi que les mêmes
+            fonctions pour vos logos préfaits</p>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card-text-center">
+                <img src="/assets/images/t-shirt.png" class="card-img-top" >
+                <div class="card-body">
+                    <h2 class="card-title">VÊTEMENTS</h2>
+                    <p class="card-text">Les vêtements fournisseurs</p>
+                    <a href="#" class="btn btn-dark">Diversifie tes vêtements dans ta catalogue !</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card-text-center">
+                <img src="/assets/images/needle.png" class="card-img-top" >
+                <div class="card-body">
+                    <h2 class="card-title">LOGOS</h2>
+                        <p class="card-text">Les logos réalisésit </p>
+                    <a href="#" class="btn btn-dark">Ajoute de nouveaux logos à ta collection !</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card-text-center">
+                <img src="/assets/images/shopping-cart.png" class="card-img-top" >
+                <div class="card-body">
+                    <h2 class="card-title">COMMANDES</h2>
+                    <p class="card-text">Les commandes passées</p>
+                    <a href="#" class="btn btn-dark">Regarde les différentes commandes faites !</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
