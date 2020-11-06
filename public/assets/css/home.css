@@ -68,8 +68,7 @@ h2 {
 
 .description {
     background-color: var(--background-color);
-    padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-2);
+    padding: var(--spacing-4);
 }
 
 .description h2 {
