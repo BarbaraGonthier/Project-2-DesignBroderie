@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/orderadmin.css"> {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="titre">
+                    Liste des commandes
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Etat de la commande</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.firstname }}</td>
+                            <td>{{ order.lastname }}</td>
+                            <td>{{ product.reference }}</td>
+                            <td>{{ order.quantity }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>
+                                <a href="/order/show/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
+                                <a href="/order/edit/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
+                                <a href="/order/delete/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
