@@ -1,0 +1,23 @@
+.titre {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--secondary-background-color);
+    text-align: center;
+}
+
+th {
+    width : 25%;
+}
+
+.container-fluid, .container {
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+}
+
+@media screen and (max-width: 740px) {
+
+    :root {
+        --title-font-size : 32px;
+        --title-2-font-size : 24px;
+    }
+}
