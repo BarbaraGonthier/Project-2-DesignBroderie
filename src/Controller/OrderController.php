@@ -19,6 +19,12 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public function index()
+    {
+        $orderManager = new OrderManager();
+        $orders = $orderManager->selectAllJoinProduct();
+        return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders]);
+    }
     public function sendOrder(int $id)
     {
         $order = [];

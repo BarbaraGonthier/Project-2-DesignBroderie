@@ -21,8 +21,12 @@ class OrderManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
-
-
+    public function selectAllJoinProduct(): array
+    {
+        return $this->pdo->query("SELECT o.firstname, o.lastname, o.email, o.phone, o.company_name, 
+            o.address, o.city, postcode, o.size, o.quantity, o.message, o.product_id, o.user_logo, p.name 
+            FROM " . self::TABLE . ' o JOIN product p ON p.id=o.product_id;')->fetchAll();
+    }
     public function saveOrder(array $order, $product, $userLogo)
     {
         $query = "INSERT INTO " . self::TABLE .

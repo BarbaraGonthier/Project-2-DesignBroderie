@@ -21,11 +21,12 @@
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prénom</th>
-                        <th scope="col">Produit</th>
-                        <th scope="col">Quantité</th>
-                        <th scope="col">Etat de la commande</th>
+                        <th scope="col w-20">Nom</th>
+                        <th scope="col w-20">Prénom</th>
+                        <th scope="col w-20">Produit</th>
+                        <th scope="col w-10">Quantité</th>
+                        <th scope="col w-10">Etat de la commande</th>
+                        <th scope="col w-20">Options</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -33,7 +34,7 @@
                         <tr>
                             <td>{{ order.firstname }}</td>
                             <td>{{ order.lastname }}</td>
-                            <td>{{ product.reference }}</td>
+                            <td>{{ order.name }}</td>
                             <td>{{ order.quantity }}</td>
                             <td>{{ order.status }}</td>
                             <td>
