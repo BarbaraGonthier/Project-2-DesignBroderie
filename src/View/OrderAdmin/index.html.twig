@@ -21,8 +21,7 @@
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Prénom</th>
+                        <th class="w-25" scope="col">Client</th>
                         <th scope="col">Produit</th>
                         <th scope="col">Quantité</th>
                         <th scope="col">Etat de la commande</th>
@@ -32,8 +31,7 @@
                     <tbody>
                     {% for order in orders %}
                         <tr>
-                            <td>{{ order.firstname }}</td>
-                            <td>{{ order.lastname }}</td>
+                            <td>{{ order.fullname}}</td>
                             <td>{{ order.name }}</td>
                             <td>{{ order.quantity }}</td>
                             <td>{{ order.status }}</td>
