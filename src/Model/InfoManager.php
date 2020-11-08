@@ -21,6 +21,8 @@ class InfoManager extends AbstractManager
         $statement->bindValue(':firstname', $info['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $info['lastname'], \PDO::PARAM_STR);
         $statement->bindValue(':email', $info['email'], \PDO::PARAM_STR);
+        $statement->bindValue(':message', $info['message'], \PDO::PARAM_STR);
+
 
         $statement->execute();
     }
