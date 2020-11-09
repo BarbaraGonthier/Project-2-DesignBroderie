@@ -5,4 +5,4 @@
 db.php
 .idea
 uploads/*
-!uploads/.gitkeeper
+!uploads/.gitignore
