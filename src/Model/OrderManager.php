@@ -23,9 +23,9 @@ class OrderManager extends AbstractManager
     }
     public function selectAllJoinProduct(): array
     {
-        return $this->pdo->query("SELECT CONCAT(o.firstname,' ', o.lastname) AS fullname, o.email, o.phone, 
+        return $this->pdo->query("SELECT o.firstname, o.lastname, o.email, o.phone, 
             o.company_name, o.address, o.city, postcode, o.size, o.quantity, o.message, o.product_id, o.user_logo, 
-            o.status, p.name FROM " . self::TABLE . ' o JOIN product p ON p.id=o.product_id;')->fetchAll();
+            o.status, p.name product_name FROM " . self::TABLE . ' o JOIN product p ON p.id=o.product_id;')->fetchAll();
     }
     public function saveOrder(array $order, $product, $userLogo)
     {

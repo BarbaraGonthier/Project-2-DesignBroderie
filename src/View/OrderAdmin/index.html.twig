@@ -31,8 +31,8 @@
                     <tbody>
                     {% for order in orders %}
                         <tr>
-                            <td>{{ order.fullname}}</td>
-                            <td>{{ order.name }}</td>
+                            <td>{{ order.firstname}} {{ order.lastname }}</td>
+                            <td>{{ order.product_name }}</td>
                             <td>{{ order.quantity }}</td>
                             <td>{{ order.status }}</td>
                             <td>
