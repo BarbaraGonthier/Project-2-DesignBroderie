@@ -20,8 +20,6 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $product = $productManager->selectOneByIdJoinCategory($id);
 
-        var_dump($product);
-
         return $this->twig->render('Productadmin/show.html.twig', ['product' => $product]);
     }
     public function index()
