@@ -34,7 +34,6 @@ class OrderManager extends AbstractManager
 
         return $statement->fetch();
     }
-  
     public function saveOrder(array $order, $product)
     {
         $query = "INSERT INTO " . self::TABLE .
