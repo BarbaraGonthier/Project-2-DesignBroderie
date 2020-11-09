@@ -24,11 +24,10 @@ class OrderManager extends AbstractManager
 
     public function selectByIdJoinProduct(int $id): array
     {
-        $statement = $this->pdo->prepare("SELECT CONCAT(o.firstname,' ', o.lastname) AS fullname, 
-        o.email,o.phone, o.company_name,
-        CONCAT(o.address, ' ', o.postcode, ' ', o.city) AS full_address, 
+        $statement = $this->pdo->prepare("SELECT o.firstname, o.lastname, 
+        o.email, o.phone, o.company_name, o.address, o.postcode, o.city, 
         o.size, o.quantity, o.message, o.product_id, o.user_logo, o.status, 
-        CONCAT(p.name, ', ref: ', p.reference) AS p_info FROM " . self::TABLE . " o 
+        p.name product_name, p.reference product_reference FROM " . self::TABLE . " o 
         JOIN product p ON p.id=o.product_id WHERE o.id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();

@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Client</th>
-                            <td>{{ order.fullname}}</td>
+                            <td>{{ order.firstname }} {{ order.lastname }}</td>
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Société</th>
@@ -33,7 +33,7 @@
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Adresse postale</th>
-                            <td>{{ order.full_address }}</td>
+                            <td>{{ order.address }} {{ order.postcode }} {{ order.city }}</td>
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Email</th>
@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Produit</th>
-                            <td>{{ order.p_info}}</td>
+                            <td>{{ order.product_name}}, ref : {{ order.product_reference }}</td>
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Taille</th>
