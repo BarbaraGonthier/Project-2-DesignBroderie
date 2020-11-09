@@ -32,23 +32,22 @@ class InfoController extends AbstractController
         $errors = [];
         if (empty($info['firstname'])) {
             $errors[] = 'Le champ prénom est obligatoire';
-            if (strlen($info['firstname']) > $inputLength) {
-                $errors[] = 'Le champ prénom doit contenir moins de ' . $inputLength . ' caractères';
-            }
         }
-
+        if (strlen($info['firstname']) > $inputLength) {
+            $errors[] = 'Le champ prénom doit contenir moins de ' . $inputLength . ' caractères';
+        }
         if (empty($info['lastname'])) {
             $errors[] = 'Le champ nom est obligatoire';
-            if (strlen($info['lastname']) > $inputLength) {
-                $errors[] = 'Le champ nom doit faire contenir de ' . $inputLength . ' caractères';
-            }
+        }
+        if (strlen($info['lastname']) > $inputLength) {
+            $errors[] = 'Le champ nom doit faire contenir de ' . $inputLength . ' caractères';
         }
 
         if (empty($info['email'])) {
             $errors[] = 'Le champ email est obligatoire';
-            if (strlen($info['email']) > $inputLength) {
-                $errors[] = 'Le champ email doit contenir moins de ' . $inputLength . ' caractères';
-            }
+        }
+        if (strlen($info['email']) > $inputLength) {
+            $errors[] = 'Le champ email doit contenir moins de ' . $inputLength . ' caractères';
         }
         return $errors ?? [];
     }
