@@ -16,6 +16,12 @@ namespace App\Model;
 class OrderManager extends AbstractManager
 {
     public const TABLE = "`order`";
+    public const STATUSES = [
+        'NEW' => "Nouvelle commande",
+        'PROCESSING' => "En cours de traitement",
+        'PROCESSED' => "Traitée",
+        'SENT' => "Expédiée",
+    ];
 
     public function __construct()
     {
@@ -34,7 +40,8 @@ class OrderManager extends AbstractManager
             `address`, `city`, `postcode`, `size`, `quantity`, `message`, `product_id`, `user_logo`, `status`) 
             VALUES 
             (:firstname, :lastname, :email, :phone, :company_name, 
-            :address, :city, :postcode, :size, :quantity, :message, :product_id, :user_logo, 'Nouvelle commande')";
+            :address, :city, :postcode, :size, :quantity, :message, 
+            :product_id, :user_logo, '" . self::STATUSES['NEW'] . "')";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
