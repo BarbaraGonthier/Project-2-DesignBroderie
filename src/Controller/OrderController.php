@@ -23,7 +23,15 @@ class OrderController extends AbstractController
     {
         $orderManager = new OrderManager();
         $orders = $orderManager->selectAllJoinProduct();
+      
         return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders]);
+    }
+    public function show(int $id)
+    {
+        $orderManager = new OrderManager();
+        $order = $orderManager->selectByIdJoinProduct($id);
+
+        return $this->twig->render('OrderAdmin/show.html.twig', ['order' => $order]);
     }
     public function sendOrder(int $id)
     {
