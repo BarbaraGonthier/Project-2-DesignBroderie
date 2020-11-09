@@ -22,7 +22,18 @@ class OrderManager extends AbstractManager
         parent::__construct(self:: TABLE);
     }
 
+    public function selectByIdJoinProduct(int $id): array
+    {
+        $statement = $this->pdo->prepare("SELECT o.firstname, o.lastname, 
+        o.email, o.phone, o.company_name, o.address, o.postcode, o.city, 
+        o.size, o.quantity, o.message, o.product_id, o.user_logo, o.status, 
+        p.name product_name, p.reference product_reference FROM " . self::TABLE . " o 
+        JOIN product p ON p.id=o.product_id WHERE o.id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
 
+        return $statement->fetch();
+    }
     public function saveOrder(array $order, $product, $userLogo)
     {
         $query = "INSERT INTO " . self::TABLE .
