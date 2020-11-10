@@ -46,10 +46,14 @@ class OrderController extends AbstractController
             $errors = $this->orderValidate($order);
 
             if (empty($errors)) {
-                $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
-                $newFileName = uniqid() . '.' . $fileExtension;
-                $uploadDir = 'uploads/';
-                move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                if (!empty($_FILES['userLogo']['name'])) {
+                    $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/';
+                    move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                } else {
+                    $newFileName = '';
+                }
                 $order['userLogo'] = $newFileName;
 
                 $orderManager = new OrderManager();
@@ -74,9 +78,6 @@ class OrderController extends AbstractController
         $shortInputLength = 20;
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
         $maxSize = 100000;
-
-        $mimeType = mime_content_type($_FILES['userLogo']['tmp_name']);
-        $size = filesize($_FILES['userLogo']['tmp_name']);
 
         $errors = [];
 
@@ -122,10 +123,19 @@ class OrderController extends AbstractController
         if (!empty($order['city']) && strlen($order['city']) > $inputLength) {
             $errors[] = 'Le champ ville doit contenir moins de ' . $inputLength . ' caractères';
         }
-        if (!in_array($mimeType, $extensions)) {
+        if (empty($order['size'])) {
+            $errors[] = 'Le champ taille est obligatoire';
+        }
+        if (empty($order['quantity'])) {
+            $errors[] = 'Le champ quantité est obligatoire';
+        }
+        if (
+            !empty($_FILES['userLogo']['tmp_name']) &&
+            !in_array(mime_content_type($_FILES['userLogo']['tmp_name']), $extensions)
+        ) {
             $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
         }
-        if ($size > $maxSize) {
+        if (!empty($_FILES['userLogo']['tmp_name']) && filesize($_FILES['userLogo']['tmp_name']) > $maxSize) {
             $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 100000 . " Mo";
         }
 
