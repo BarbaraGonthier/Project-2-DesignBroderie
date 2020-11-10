@@ -13,14 +13,4 @@ class CategoryController extends AbstractController
         $categories = $categoryManager->selectAll();
         return $this->twig->render('/Product/category.html.twig', ['categories' => $categories]);
     }
-
-    public function list(int $categoryId)
-    {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAllByCategoryId($categoryId);
-        return $this->twig->render(
-            'Product/productByCategory.html.twig',
-            ['products' => $products]
-        );
-    }
 }
