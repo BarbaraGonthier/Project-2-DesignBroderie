@@ -27,6 +27,30 @@ class OrderManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
+    public function updateOrder(array $order, $product): bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `status`= :status, `firstname`= :firstname, 
+        `lastname`= :lastname, `email`= :email, `phone`= :phone, `company_name`= :companyName, `address`= :address,
+         `city`= :city, `postcode`= :postcode, `size`= :size, `quantity`= :quantity, `message`= :message, 
+         `product_id`= :product_id, `user_logo`= :user_logo, WHERE id=:id");
+        $statement->bindValue('id', $order['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':email', $order['email'], \PDO::PARAM_STR);
+        $statement->bindValue(':phone', $order['phone'], \PDO::PARAM_STR);
+        $statement->bindValue(':company_name', $order['companyName'], \PDO::PARAM_STR);
+        $statement->bindValue(':address', $order['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':city', $order['city'], \PDO::PARAM_STR);
+        $statement->bindValue(':postcode', $order['postcode'], \PDO::PARAM_STR);
+        $statement->bindValue(':size', $order['size'], \PDO::PARAM_STR);
+        $statement->bindValue(':quantity', $order['quantity'], \PDO::PARAM_INT);
+        $statement->bindValue(':message', $order['message'], \PDO::PARAM_STR);
+        $statement->bindValue(':product_id', $product['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':user_logo', $order['userLogo'], \PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
     public function selectAllJoinProduct(): array
     {
         return $this->pdo->query("SELECT o.id, o.firstname, o.lastname, o.email, o.phone, 

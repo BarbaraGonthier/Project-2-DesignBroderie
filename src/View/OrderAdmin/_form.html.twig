@@ -13,36 +13,40 @@
             <h2 class="order-title2">Coordonnées</h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
+                    <label for="status"> Etat de la commande : </label>
+                    <input type="text" name="status" id="status" value="{{ order.status }}" class="form-control">
+                </div>
+                <div class="form-group">
                     <label for="lastname"> Nom : </label>
-                    <input type="text" name="lastname" id="lastname" placeholder="Nom" value="{{ order.lastname }}" class="form-control">
+                    <input type="text" name="lastname" id="lastname" value="{{ order.lastname }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="firstname"> Prénom : </label>
-                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="{{ order.firstname }}" class="form-control">
+                    <input type="text" name="firstname" id="firstname" value="{{ order.firstname }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="email"> Adresse email : </label>
-                    <input type="email" name="email" id="email" placeholder="Adresse email" value="{{ order.email }}" class="form-control">
+                    <input type="email" name="email" id="email" value="{{ order.email }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="phone"> Téléphone (optionnel) :</label>
-                    <input type="tel" name="phone" id="phone" placeholder="Téléphone" value="{{ order.phone }}" class="form-control">
+                    <input type="tel" name="phone" id="phone" value="{{ order.phone }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="companyName"> Raison sociale (optionnel) : </label>
-                    <input type="text" name="companyName" id="companyName" placeholder="Entreprise/Association" value="{{ order.companyName }}" class="form-control">
+                    <input type="text" name="companyName" id="companyName" value="{{ order.companyName }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="address"> Adresse (numéro et voie) : </label>
-                    <input type="text" name="address" id="address" placeholder="Numéro et voie" value="{{ order.address }}" class="form-control">
+                    <input type="text" name="address" id="address" value="{{ order.address }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="postcode"> Code postal : </label>
-                    <input type="text" name="postcode" id="postcode" placeholder="Code postal" value="{{ order.postcode }}" class="form-control">
+                    <input type="text" name="postcode" id="postcode" value="{{ order.postcode }}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="city"> Ville : </label>
-                    <input type="text" name="city" id="city" placeholder="Ville" value="{{ order.city }}" class="form-control">
+                    <input type="text" name="city" id="city" value="{{ order.city }}" class="form-control">
                 </div>
 
                 <h2 class="order-title2"> Produit</h2>
