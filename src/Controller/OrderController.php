@@ -50,10 +50,10 @@ class OrderController extends AbstractController
                 $newFileName = uniqid() . '.' . $fileExtension;
                 $uploadDir = 'uploads/';
                 move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
-                $userLogo = ['id' => $newFileName];
+                $order['userLogo'] = $newFileName;
 
                 $orderManager = new OrderManager();
-                $orderManager->saveOrder($order, $product, $userLogo);
+                $orderManager->saveOrder($order, $product);
                 header('Location:/home/index/');
             }
         }
