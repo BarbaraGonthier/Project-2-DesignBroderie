@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/patternsadmin.css"> {% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="titre">Liste des modèles disponibles </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Images</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pattern in patterns %}
+                        <tr>
+                            <td>{{ pattern.name }}</td>
+                            <td>
+                                <img class="imageOrder" src="/assets/images/patterns/{{ pattern.name }}" alt="Vêtements"
+                                     title="Nos vêtements">
+                            </td>
+                            <td>
+                                <a href="/product/edit/{{ pattern.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
+                                <a href="/product/delete/{{ pattern.id }}" class="btn btn-secondary btn-lg"
+                                   role="button">Supprimer</a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a href="/product/add" class="btn btn-dark" role="button">Ajouter un produit</a>
+    </div>
+{% endblock %}
+        {% block footer %}{% endblock %}
