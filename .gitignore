@@ -6,3 +6,4 @@ db.php
 .idea
 uploads/*
 !uploads/.gitignore
+.design_broderie.sql
