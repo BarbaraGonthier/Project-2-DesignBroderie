@@ -19,6 +19,10 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public function thanks()
+    {
+        return $this->twig->render('Order/thanks.html.twig');
+    }
     public function index()
     {
         $orderManager = new OrderManager();
@@ -54,7 +58,7 @@ class OrderController extends AbstractController
 
                 $orderManager = new OrderManager();
                 $orderManager->saveOrder($order, $product);
-                header('Location:/home/index/');
+                header('Location:/order/thanks/');
             }
         }
 
