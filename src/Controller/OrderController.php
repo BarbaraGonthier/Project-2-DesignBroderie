@@ -19,30 +19,40 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public const STATUSES = [
+        'NEW' => "Nouvelle commande",
+        'PROCESSING' => "En cours de traitement",
+        'PROCESSED' => "Traitée",
+        'SENT' => "Expédiée",
+    ];
     public function editOrder(int $id)
     {
         $errors = [];
         $orderManager = new OrderManager();
-        $order = $orderManager->selectByIdJoinProduct($id);
+        $order = $orderManager->selectOneById($id);
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $order = array_map('trim', $_POST);
 
-            $errors = $this->orderValidate($order);
+            $errors = $this->editValidate($order);
 
             if (empty($errors)) {
-                $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
-                $newFileName = uniqid() . '.' . $fileExtension;
-                $uploadDir = 'uploads/';
-                move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
-                $order['userLogo'] = $newFileName;
-
                 $orderManager->updateOrder($order);
                 header('Location:/home/index/');
             }
         }
 
         return $this->twig->render('OrderAdmin/edit.html.twig', ['order' => $order, 'errors' => $errors]);
+    }
+    private function editValidate(array $order): array
+    {
+        $errors = [];
+
+        if (!in_array($order['status'], self::STATUSES)) {
+            $errors[] = 'Les valeurs possibles sont : Nouvelle commande, En cours de traitement, Traitée, Expédiée. ';
+        }
+
+        return $errors ?? [];
     }
     public function index()
     {

@@ -12,8 +12,14 @@
             </div>
         </div>
     </div>
+    <div class="container">
     {% include 'OrderAdmin/_form.html.twig' %}
-    <a href="/order/show/{{ order.id }}">Retour</a>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+            <a href="/order/index" class="btn btn-secondary btn-lg" role="button">Retour</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block footer %}
