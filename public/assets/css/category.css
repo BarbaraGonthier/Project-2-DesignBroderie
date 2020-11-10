@@ -25,13 +25,16 @@ a > p {
 .card {
     display: flex;
     align-items: center;
-    margin: 30px 30px;
     border: 2px solid var(--dark);
     border-radius: 10px;
+    width: 300px;
+    height: 450px;
+    margin-bottom : 50px;
 }
 
-.row > div {
-    padding: 0px;
+.col-sm-12 {
+    display: flex;
+    justify-content: center;
 }
 
 .buttonCategory {
@@ -48,4 +51,9 @@ a > p {
     opacity: var(--opacity);
     text-decoration: none;
     color: var(--light);
+}
+
+.card:hover {
+    width:350px;
+    height: 500px;
 }
