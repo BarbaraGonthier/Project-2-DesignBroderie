@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/order-admin.css"> {% endblock %}
+{% block title %}{{ parent() }} | Détail de la commande{% endblock %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="titre">Modifier la commande n°{{ order.id }} de {{ order.firstname }} {{ order.lastname }}</h1>
+            </div>
+        </div>
+    </div>
+    {% include 'OrderAdmin/_form.html.twig' %}
+    <a href="/order/show/{{ order.id }}">Retour</a>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
