@@ -26,13 +26,12 @@
                         <tr>
                             <td>{{ pattern.name }}</td>
                             <td>
-                                <img class="imageOrder" src="/assets/images/patterns/{{ pattern.name }}" alt="Vêtements"
-                                     title="Nos vêtements">
+                                <img class="imagePattern" src="/assets/images/patterns/{{ pattern.name }}" alt="Modèles"
+                                     title="Nos modèles">
                             </td>
                             <td>
-                                <a href="/product/edit/{{ pattern.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
-                                <a href="/product/delete/{{ pattern.id }}" class="btn btn-secondary btn-lg"
-                                   role="button">Supprimer</a>
+                                <a href="/product/edit/{{ pattern.id }}" class="btn btn-secondary btn-lg">Modifier</a>
+                                <a href="/product/delete/{{ pattern.id }}" class="btn btn-secondary btn-lg">Supprimer</a>
                             </td>
 
                         </tr>
@@ -41,7 +40,7 @@
                 </table>
             </div>
         </div>
-        <a href="/product/add" class="btn btn-dark" role="button">Ajouter un produit</a>
+        <a href="/pattern/add" class="btn btn-dark">Ajouter un modèles</a>
     </div>
 {% endblock %}
-        {% block footer %}{% endblock %}
+{% block footer %}{% endblock %}

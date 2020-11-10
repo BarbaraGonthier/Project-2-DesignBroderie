@@ -14,7 +14,7 @@ th {
     margin-bottom: var(--spacing-6);
 }
 
-img {
+.imagePattern {
     width : 40px;
 }
 @media screen and (max-width: 740px) {
