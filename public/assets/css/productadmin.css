@@ -14,6 +14,9 @@ th {
     margin-bottom: var(--spacing-6);
 }
 
+img {
+    width : 300px;
+}
 @media screen and (max-width: 740px) {
 
     :root {
