@@ -42,7 +42,6 @@ class InfoController extends AbstractController
         if (strlen($info['lastname']) > $inputLength) {
             $errors[] = 'Le champ nom doit contenir moins de ' . $inputLength . ' caractères';
         }
-
         if (empty($info['email'])) {
             $errors[] = 'Le champ email est obligatoire';
         }
