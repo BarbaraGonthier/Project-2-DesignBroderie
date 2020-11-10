@@ -1,0 +1,86 @@
+<div class="container">
+    {% if not errors is empty %}
+        <div class="row ">
+            {% for error in errors %}
+                <div class="col-md-8 offset-md-2 alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="order-title2">Coordonnées</h2>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="lastname"> Nom : </label>
+                    <input type="text" name="lastname" id="lastname" placeholder="Nom" value="{{ order.lastname }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="firstname"> Prénom : </label>
+                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="{{ order.firstname }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email"> Adresse email : </label>
+                    <input type="email" name="email" id="email" placeholder="Adresse email" value="{{ order.email }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="phone"> Téléphone (optionnel) :</label>
+                    <input type="tel" name="phone" id="phone" placeholder="Téléphone" value="{{ order.phone }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="companyName"> Raison sociale (optionnel) : </label>
+                    <input type="text" name="companyName" id="companyName" placeholder="Entreprise/Association" value="{{ order.companyName }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="address"> Adresse (numéro et voie) : </label>
+                    <input type="text" name="address" id="address" placeholder="Numéro et voie" value="{{ order.address }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="postcode"> Code postal : </label>
+                    <input type="text" name="postcode" id="postcode" placeholder="Code postal" value="{{ order.postcode }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="city"> Ville : </label>
+                    <input type="text" name="city" id="city" placeholder="Ville" value="{{ order.city }}" class="form-control">
+                </div>
+
+                <h2 class="order-title2"> Produit</h2>
+                <div class="form-group">
+                    <label for="product-name"> Nom du modèle : </label>
+                    <input type="text" name="product-name" id="product-name" value="{{ order.product_name ?? ' ' }}" class="form-control" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="product-reference"> Référence du modèle : </label>
+                    <input type="text" name="product-reference" id="product-reference" value="{{ order.product_reference ?? ' ' }}" class="form-control" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="size"> Taille : </label>
+                    <input type="text" name="size" id="size" value="{{ order.size }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="quantity"> Quantité : </label>
+                    <input type="text" name="quantity" id="quantity" value="{{ order.quantity }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" value="{{ order.message }}"  class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <figure>
+                        <img src="/uploads/{{ order.user_logo }}" class="mx-auto d-block" alt="{{ order.user_logo }}">
+                        <figcaption>Modèle actuel</figcaption>
+                    </figure>
+                </div>
+                <div class="form-group">
+                    <label for="userLogo">Changer le modèle à imprimer :</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+                    <input type="file" id="userLogo" name="userLogo" class="form-control-file">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
