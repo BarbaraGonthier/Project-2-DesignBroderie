@@ -19,6 +19,31 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public function editOrder(int $id)
+    {
+        $errors = [];
+        $orderManager = new OrderManager();
+        $order = $orderManager->selectByIdJoinProduct($id);
+
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+
+            $errors = $this->orderValidate($order);
+
+            if (empty($errors)) {
+                $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
+                $newFileName = uniqid() . '.' . $fileExtension;
+                $uploadDir = 'uploads/';
+                move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                $order['userLogo'] = $newFileName;
+
+                $orderManager->updateOrder($order);
+                header('Location:/home/index/');
+            }
+        }
+
+        return $this->twig->render('OrderAdmin/edit.html.twig', ['order' => $order, 'errors' => $errors]);
+    }
     public function index()
     {
         $orderManager = new OrderManager();

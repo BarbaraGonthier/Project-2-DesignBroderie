@@ -27,13 +27,13 @@ class OrderManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
-    public function updateOrder(array $order, $product): bool
+    public function updateOrder(array $order): bool
     {
         // prepared request
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `status`= :status, `firstname`= :firstname, 
         `lastname`= :lastname, `email`= :email, `phone`= :phone, `company_name`= :companyName, `address`= :address,
          `city`= :city, `postcode`= :postcode, `size`= :size, `quantity`= :quantity, `message`= :message, 
-         `product_id`= :product_id, `user_logo`= :user_logo, WHERE id=:id");
+         `user_logo`= :user_logo, WHERE id=:id");
         $statement->bindValue('id', $order['id'], \PDO::PARAM_INT);
         $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
@@ -46,7 +46,6 @@ class OrderManager extends AbstractManager
         $statement->bindValue(':size', $order['size'], \PDO::PARAM_STR);
         $statement->bindValue(':quantity', $order['quantity'], \PDO::PARAM_INT);
         $statement->bindValue(':message', $order['message'], \PDO::PARAM_STR);
-        $statement->bindValue(':product_id', $product['id'], \PDO::PARAM_INT);
         $statement->bindValue(':user_logo', $order['userLogo'], \PDO::PARAM_STR);
 
         return $statement->execute();
