@@ -12,24 +12,12 @@ h1 {
     width: 55vw;
 }
 
-a > p {
-    background-color: var(--background-color);
-    padding: var(--spacing) var(--spacing-2);
-    border : 2px solid var(--dark);
-    border-radius: var(--border-radius);
-    color : var(--light);
-    font-size: 20px;
-    font-family: var(--font-family);
-}
-
 .card {
     display: flex;
     align-items: center;
     border: 2px solid var(--dark);
-    border-radius: 10px;
-    width: 300px;
-    height: 450px;
-    margin-bottom : 50px;
+    border-radius: var(--border-radius);
+    margin-bottom : var(--spacing-6);
 }
 
 .col-sm-12 {
