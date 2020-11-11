@@ -25,8 +25,23 @@
 }
 
 .orderStep h2 {
-    padding: var(--spacing);
-    color: var(--dark);
+    padding: var(--spacing-4);
+    color: var(--light);
+}
+
+.orderStep p {
+    color: var(--light);
+}
+
+.orderStep a {
+    color: var(--light);
+    font-weight: bold;
+}
+
+.orderStep a:hover {
+    text-decoration: none;
+    opacity: var(--opacity);
+    color: var(--light);
 }
 
 h2 {
@@ -72,8 +87,12 @@ h2 {
 }
 
 .description h2 {
-    color: var(--dark);
+    color: var(--light);
     padding: var(--spacing);
+}
+
+.description p {
+    color: var(--light);
 }
 
 .carousel {
@@ -110,5 +129,9 @@ h2 {
 
 .localisation h2 {
     padding: var(--spacing);
+}
+
+.localisation p {
+    color: var(--dark);
 }
 

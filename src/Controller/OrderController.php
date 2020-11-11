@@ -19,6 +19,19 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public function index()
+    {
+        $orderManager = new OrderManager();
+        $orders = $orderManager->selectAllJoinProduct();
+        return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders]);
+    }
+    public function show(int $id)
+    {
+        $orderManager = new OrderManager();
+        $order = $orderManager->selectByIdJoinProduct($id);
+
+        return $this->twig->render('OrderAdmin/show.html.twig', ['order' => $order]);
+    }
     public function sendOrder(int $id)
     {
         $order = [];
@@ -37,10 +50,10 @@ class OrderController extends AbstractController
                 $newFileName = uniqid() . '.' . $fileExtension;
                 $uploadDir = 'uploads/';
                 move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
-                $userLogo = ['id' => $newFileName];
+                $order['userLogo'] = $newFileName;
 
                 $orderManager = new OrderManager();
-                $orderManager->saveOrder($order, $product, $userLogo);
+                $orderManager->saveOrder($order, $product);
                 header('Location:/home/index/');
             }
         }
