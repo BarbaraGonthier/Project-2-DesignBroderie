@@ -40,7 +40,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('name', $product['name'], \PDO::PARAM_STR);
         $statement->bindValue('gender', $product['gender'], \PDO::PARAM_STR);
         $statement->bindValue('reference', $product['reference'], \PDO::PARAM_INT);
-        $statement->bindValue('image', $product['image'], \PDO::PARAM_LOB);
+        $statement->bindValue('image', $product['image'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('price', $product['price']);
 
