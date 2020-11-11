@@ -49,7 +49,7 @@ class OrderController extends AbstractController
         $errors = [];
 
         if (!in_array($order['status'], self::STATUSES)) {
-            $errors[] = 'Les valeurs possibles sont : Nouvelle commande, En cours de traitement, Traitée, Expédiée. ';
+            $errors[] = 'Les valeurs possibles sont : ' . implode(", ", self::STATUSES);
         }
 
         return $errors ?? [];
