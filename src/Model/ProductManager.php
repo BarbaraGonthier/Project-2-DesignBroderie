@@ -10,6 +10,7 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
+
     public function selectAllByCategoryId(int $categoryId)
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE category_id = :categoryId");
@@ -18,4 +19,8 @@ class ProductManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    /**
+     * @param int $id
+     */
 }
