@@ -29,4 +29,19 @@ class ProductController extends AbstractController
         $products = $productManager->selectAll();
         return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
+
+ /**
+ * Handle item deletion
+ *
+ * @param int $id
+ */
+    public function deleteProduct(int $id)
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+           //* $id = $_POST['id'];
+            $productManager = new ProductManager();
+            $productManager->deleteProduct($id);
+            header('Location:/product/index/');
+        }
+    }
 }
