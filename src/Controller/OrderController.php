@@ -19,6 +19,37 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public function sendQuote()
+    {
+        $order = [];
+        $errors = [];
+
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+
+            $errors = $this->orderValidate($order);
+
+            if (empty($errors)) {
+                if (!empty($_FILES['userLogo']['name'])) {
+                    $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/';
+                    move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                } else {
+                    $newFileName = '';
+                }
+                $order['userLogo'] = $newFileName;
+
+                $orderManager = new OrderManager();
+                $orderManager->saveQuote($order);
+                header('Location:/home/index/');
+            }
+        }
+
+        return $this->twig->render('Order/no-product_order_form.html.twig', [
+            'order' => $order,
+            'errors' => $errors]);
+    }
     public function index()
     {
         $orderManager = new OrderManager();

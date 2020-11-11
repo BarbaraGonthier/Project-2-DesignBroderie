@@ -27,6 +27,31 @@ class OrderManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
+    public function saveQuote(array $order)
+    {
+        $query = "INSERT INTO " . self::TABLE .
+            " (`firstname`, `lastname`, `email`, `phone`, `company_name`, 
+            `address`, `city`, `postcode`, `message`, `user_logo`, `status`) 
+            VALUES 
+            (:firstname, :lastname, :email, :phone, :company_name, 
+            :address, :city, :postcode, :message, 
+            :user_logo, '" . self::STATUSES['NEW'] . "')";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':email', $order['email'], \PDO::PARAM_STR);
+        $statement->bindValue(':phone', $order['phone'], \PDO::PARAM_STR);
+        $statement->bindValue(':company_name', $order['companyName'], \PDO::PARAM_STR);
+        $statement->bindValue(':address', $order['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':city', $order['city'], \PDO::PARAM_STR);
+        $statement->bindValue(':postcode', $order['postcode'], \PDO::PARAM_STR);
+        $statement->bindValue(':message', $order['message'], \PDO::PARAM_STR);
+        $statement->bindValue(':user_logo', $order['userLogo'], \PDO::PARAM_STR);
+
+
+
+        $statement->execute();
+    }
     public function selectAllJoinProduct(): array
     {
         return $this->pdo->query("SELECT o.firstname, o.lastname, o.email, o.phone, 
