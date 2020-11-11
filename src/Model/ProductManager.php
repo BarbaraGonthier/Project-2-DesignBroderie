@@ -31,15 +31,6 @@ class ProductManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function selectWithCategory()
-    {
-        return $this->pdo->query(
-            'SELECT p.*, c.name as category ' .
-            'FROM ' . self::TABLE . ' p ' .
-            'LEFT JOIN category c ON p.category_id=c.id'
-        )->fetchAll();
-    }
-
 
     public function insert(array $product): int
     {
