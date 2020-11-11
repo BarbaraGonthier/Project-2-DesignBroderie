@@ -58,6 +58,7 @@ class ProductController extends AbstractController
             'errors' => $errors ?? [],
             'product' => $product ?? [],
             'categories' => $categories,
+            uniqid()
         ]);
     }
 
@@ -97,6 +98,9 @@ class ProductController extends AbstractController
         }
         if (!empty($product['price']) && $product['price'] < 0) {
             $errors[] = 'Le prix ne peut être négatif';
+        }
+        if (!empty($product['image']) && !filter_var($product['image'], FILTER_VALIDATE_URL)) {
+            $errors[] = 'L\'image doit être une URL valide';
         }
         return $errors ?? [];
     }

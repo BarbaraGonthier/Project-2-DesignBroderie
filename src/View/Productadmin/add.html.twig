@@ -57,10 +57,12 @@
         <label for="description">Description du produit:</label>
         <textarea id="description" name="description" class="form-control-file" rows="5" cols="33">
             {{ product.description }}
-
         </textarea>
     </div>
-
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input placeholder="http://monimage.com" class="form-control" type="url" min="0" id="image" name="image" value="{{ product.image }}">
+    </div>
     <div class="form-group">
         <label for="price">Prix </label>
         <input class="form-control" type="number" step="0.01" min="0" id="price" name="price"  value="{{ product.price }}">
