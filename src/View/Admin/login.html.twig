@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/login.css">
+{% endblock %}
+
+{% block title %}Se connecter | Administrateur{% endblock %}
+
+{% block content %}
+    <section class="container">
+        <div class="card text-center">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                <div class="login-text">
+                    <h1 class="card-title">Administrateur</h1>
+                    <p class="card-text">Afin de rentrer dans votre espace d'administrateur, veuillez vous connecter</p>
+                </div>
+                <form action="" method="POST">
+                    <div class="login-input">
+                        <input type="text" id="admin" name="admin">
+                    </div>
+                    <div class="login-btn">
+                        <a href="#" class="btn btn-dark">Entrer</a>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </section>
+{% endblock %}

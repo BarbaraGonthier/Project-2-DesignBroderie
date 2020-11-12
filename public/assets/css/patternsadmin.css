@@ -14,8 +14,12 @@ th {
     margin-bottom: var(--spacing-6);
 }
 
-img {
-    width : 300px;
+.add {
+    margin-bottom: var(--spacing-4);
+}
+
+.imagePattern {
+    width : 40px;
 }
 @media screen and (max-width: 740px) {
 

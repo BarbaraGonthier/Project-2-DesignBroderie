@@ -19,6 +19,88 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public const STATUSES = [
+        'NEW' => "Nouvelle commande",
+        'PROCESSING' => "En cours de traitement",
+        'PROCESSED' => "Traitée",
+        'SENT' => "Expédiée",
+    ];
+    public function sendQuote()
+    {
+        $order = [];
+        $errors = [];
+
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+
+            $errors = $this->orderValidate($order);
+
+            if (empty($errors)) {
+                if (!empty($_FILES['userLogo']['name'])) {
+                    $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/';
+                    move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                } else {
+                    $newFileName = '';
+                }
+                $order['userLogo'] = $newFileName;
+
+                $orderManager = new OrderManager();
+                $orderManager->saveQuote($order);
+                header('Location:/home/index/');
+            }
+        }
+
+        return $this->twig->render('Order/no-product_order_form.html.twig', [
+            'order' => $order,
+            'errors' => $errors]);
+    }
+    public function thanks()
+    {
+        return $this->twig->render('Order/thanks.html.twig');
+    }
+    public function editOrder(int $id)
+    {
+        $errors = [];
+        $orderManager = new OrderManager();
+        $order = $orderManager->selectOneById($id);
+
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+            $errors = $this->editValidate($order);
+
+            if (empty($errors)) {
+                $orderManager->updateOrder($order);
+                header('Location:/home/index/');
+            }
+        }
+
+        return $this->twig->render('OrderAdmin/edit.html.twig', ['order' => $order, 'errors' => $errors]);
+    }
+    private function editValidate(array $order): array
+    {
+        $errors = [];
+
+        if (!in_array($order['status'], self::STATUSES)) {
+            $errors[] = 'Les valeurs possibles sont : ' . implode(", ", self::STATUSES);
+        }
+
+        return $errors ?? [];
+    }
+    public function index()
+    {
+        $orderManager = new OrderManager();
+        $orders = $orderManager->selectAllJoinProduct();
+        return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders]);
+    }
+    public function show(int $id)
+    {
+        $orderManager = new OrderManager();
+        $order = $orderManager->selectByIdJoinProduct($id);
+
+        return $this->twig->render('OrderAdmin/show.html.twig', ['order' => $order]);
+    }
     public function sendOrder(int $id)
     {
         $order = [];
@@ -33,15 +115,19 @@ class OrderController extends AbstractController
             $errors = $this->orderValidate($order);
 
             if (empty($errors)) {
-                $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
-                $newFileName = uniqid() . '.' . $fileExtension;
-                $uploadDir = 'uploads/';
-                move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
-                $userLogo = ['id' => $newFileName];
+                if (!empty($_FILES['userLogo']['name'])) {
+                    $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/';
+                    move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                } else {
+                    $newFileName = '';
+                }
+                $order['userLogo'] = $newFileName;
 
                 $orderManager = new OrderManager();
-                $orderManager->saveOrder($order, $product, $userLogo);
-                header('Location:/home/index/');
+                $orderManager->saveOrder($order, $product);
+                header('Location:/order/thanks/');
             }
         }
 
@@ -49,7 +135,6 @@ class OrderController extends AbstractController
             'order' => $order,
             'errors' => $errors]);
     }
-
     /**
      * @param array $order
      * @return array
@@ -61,9 +146,6 @@ class OrderController extends AbstractController
         $shortInputLength = 20;
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
         $maxSize = 100000;
-
-        $mimeType = mime_content_type($_FILES['userLogo']['tmp_name']);
-        $size = filesize($_FILES['userLogo']['tmp_name']);
 
         $errors = [];
 
@@ -109,10 +191,19 @@ class OrderController extends AbstractController
         if (!empty($order['city']) && strlen($order['city']) > $inputLength) {
             $errors[] = 'Le champ ville doit contenir moins de ' . $inputLength . ' caractères';
         }
-        if (!in_array($mimeType, $extensions)) {
+        if (empty($order['size'])) {
+            $errors[] = 'Le champ taille est obligatoire';
+        }
+        if (empty($order['quantity'])) {
+            $errors[] = 'Le champ quantité est obligatoire';
+        }
+        if (
+            !empty($_FILES['userLogo']['tmp_name']) &&
+            !in_array(mime_content_type($_FILES['userLogo']['tmp_name']), $extensions)
+        ) {
             $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
         }
-        if ($size > $maxSize) {
+        if (!empty($_FILES['userLogo']['tmp_name']) && filesize($_FILES['userLogo']['tmp_name']) > $maxSize) {
             $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 100000 . " Mo";
         }
 
