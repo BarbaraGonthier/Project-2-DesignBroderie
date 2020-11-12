@@ -58,7 +58,7 @@ class ProductController extends AbstractController
             'errors' => $errors ?? [],
             'product' => $product ?? [],
             'categories' => $categories,
-            uniqid()
+
         ]);
     }
 
