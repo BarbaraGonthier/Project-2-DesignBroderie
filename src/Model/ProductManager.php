@@ -10,8 +10,6 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
-
-
     public function selectOneByIdJoinCategory(int $id)
     {
         $statement = $this->pdo->prepare("SELECT p.*, c.name category_name FROM " . self::TABLE . ' p 
@@ -21,19 +19,20 @@ class ProductManager extends AbstractManager
 
         return $statement->fetch();
     }
+    public function selectAllByCategoryId(int $categoryId)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE .
+            " AS p JOIN category AS c ON p.category_id = c.id WHERE p.category_id = :categoryId");
+        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
+        $statement->execute();
 
-
-
-
-
+        return $statement->fetchAll();
+    }
     /**
      * @param int $id
      */
-
     public function delete(int $id): void
     {
-
-
         $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->execute();

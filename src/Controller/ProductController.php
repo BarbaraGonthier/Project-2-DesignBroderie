@@ -46,4 +46,13 @@ class ProductController extends AbstractController
             echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
         }
     }
+    public function list(int $categoryId)
+    {
+        $productManager = new ProductManager();
+        $products = $productManager->selectAllByCategoryId($categoryId);
+        return $this->twig->render(
+            'Product/productByCategory.html.twig',
+            ['products' => $products]
+        );
+    }
 }
