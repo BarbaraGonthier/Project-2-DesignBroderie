@@ -30,8 +30,23 @@ class ProductController extends AbstractController
         $products = $productManager->selectAll();
         return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
-
-
+ /**
+ * Handle item deletion
+ *
+/* * @param int $id
+ */
+    public function delete()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $id = $_POST['id'];
+            $productManager = new ProductManager();
+            $product = $productManager->selectOneById($id);
+            $productManager->delete($id);
+            return $this->twig->render('Productadmin/confirmdelete.html.twig', ['name' => $product["name"]]);
+        } else {
+            echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
+        }
+    }
     /**
      * Display product creation page
      *
