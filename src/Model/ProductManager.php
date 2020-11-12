@@ -11,14 +11,19 @@ class ProductManager extends AbstractManager
         parent::__construct(self:: TABLE);
     }
 
-    public function selectAllByCategoryId(int $categoryId)
+
+    public function selectOneByIdJoinCategory(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE category_id = :categoryId");
-        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
+        $statement = $this->pdo->prepare("SELECT p.*, c.name category_name FROM " . self::TABLE . ' p 
+        JOIN category c ON c.id=p.category_id WHERE p.id=:id;');
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return $statement->fetch();
     }
+
+
+
 
 
     /**
