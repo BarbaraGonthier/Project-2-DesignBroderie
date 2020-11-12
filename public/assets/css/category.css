@@ -12,26 +12,17 @@ h1 {
     width: 55vw;
 }
 
-a > p {
-    background-color: var(--background-color);
-    padding: var(--spacing) var(--spacing-2);
-    border : 2px solid var(--dark);
-    border-radius: var(--border-radius);
-    color : var(--light);
-    font-size: 20px;
-    font-family: var(--font-family);
-}
-
 .card {
     display: flex;
     align-items: center;
-    margin: 30px 30px;
     border: 2px solid var(--dark);
-    border-radius: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom : var(--spacing-6);
 }
 
-.row > div {
-    padding: 0px;
+.col-sm-12 {
+    display: flex;
+    justify-content: center;
 }
 
 .buttonCategory {
@@ -48,4 +39,9 @@ a > p {
     opacity: var(--opacity);
     text-decoration: none;
     color: var(--light);
+}
+
+.card:hover {
+    width:350px;
+    height: 500px;
 }

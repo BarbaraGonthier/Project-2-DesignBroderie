@@ -52,15 +52,24 @@ class OrderManager extends AbstractManager
 
         $statement->execute();
     }
+    public function updateOrder(array $order): bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `status`= :status WHERE id=:id");
+        $statement->bindValue(':id', $order['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':status', $order['status'], \PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
     public function selectAllJoinProduct(): array
     {
-        return $this->pdo->query("SELECT o.firstname, o.lastname, o.email, o.phone, 
+        return $this->pdo->query("SELECT o.id, o.firstname, o.lastname, o.email, o.phone, 
             o.company_name, o.address, o.city, postcode, o.size, o.quantity, o.message, o.product_id, o.user_logo, 
             o.status, p.name product_name FROM " . self::TABLE . ' o JOIN product p ON p.id=o.product_id;')->fetchAll();
     }
     public function selectByIdJoinProduct(int $id): array
     {
-        $statement = $this->pdo->prepare("SELECT o.firstname, o.lastname, 
+        $statement = $this->pdo->prepare("SELECT o.id, o.firstname, o.lastname, 
         o.email, o.phone, o.company_name, o.address, o.postcode, o.city, 
         o.size, o.quantity, o.message, o.product_id, o.user_logo, o.status, 
         p.name product_name, p.reference product_reference FROM " . self::TABLE . " o 
