@@ -25,7 +25,6 @@ class OrderController extends AbstractController
         'PROCESSED' => "Traitée",
         'SENT' => "Expédiée",
     ];
-  
     public function thanks()
     {
         return $this->twig->render('Order/thanks.html.twig');
