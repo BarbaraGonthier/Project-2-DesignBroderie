@@ -12,12 +12,14 @@ class PatternController extends AbstractController
         $patterns = $patternManager->selectAll();
         return $this->twig->render('Patternsadmin/index.html.twig', ['patterns' => $patterns]);
     }
+
     public function show()
     {
         $patternManager = new PatternManager();
         $patterns = $patternManager->selectAll();
         return $this->twig->render('Patterns/patterns.html.twig', ['patterns' => $patterns]);
     }
+
     public function addPattern()
     {
         $pattern = [];
@@ -33,8 +35,9 @@ class PatternController extends AbstractController
                     $newFileName = uniqid() . '.' . $fileExtension;
                     $uploadDir = 'uploads/patterns/';
                     move_uploaded_file($_FILES['photo']['tmp_name'], $uploadDir . $newFileName);
+                    $pattern['photo'] = $newFileName;
                 }
-                $pattern['photo'] = $newFileName;
+
 
                 $patternManager = new PatternManager();
                 $patternManager->insert($pattern);
@@ -61,14 +64,19 @@ class PatternController extends AbstractController
 
         if (empty($pattern['name'])) {
             $errors[] = 'Le champ prénom est obligatoire';
-        }
-        if (!empty($_FILES['photo']['tmp_name']) && !in_array(mime_content_type($_FILES['photo']['tmp_name']), $extensions)) {
+         }
+        if (
+            !empty($_FILES['photo']['tmp_name']) && !in_array(
+                mime_content_type($_FILES['photo']['tmp_name']),
+                $extensions
+            )
+        ) {
             $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
         }
         if ($size > $maxSize) {
             $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 5000000 . " Mo";
         }
-        if (empty($_FILES['photo']['name'])){
+        if (empty($_FILES['photo']['name'])) {
             $errors[] = "Vous devez insérer une image.";
         }
 
