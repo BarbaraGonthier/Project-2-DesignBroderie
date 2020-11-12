@@ -23,7 +23,8 @@ class ProductManager extends AbstractManager
 
     public function selectAllByCategoryId(int $categoryId)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE category_id = :categoryId");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE .
+            " AS p JOIN category AS c ON p.category_id = c.id WHERE p.category_id = :categoryId");
         $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
         $statement->execute();
 
