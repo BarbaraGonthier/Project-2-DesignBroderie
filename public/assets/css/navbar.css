@@ -21,9 +21,3 @@ body {
     margin-top: var(--spacing);
     padding-bottom: var(--spacing);
 }
-
-#login-btn {
-    position : absolute;
-    top : var(--spacing);
-    right: 300px;
-}
