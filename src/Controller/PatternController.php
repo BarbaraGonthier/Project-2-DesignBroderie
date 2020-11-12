@@ -41,7 +41,7 @@ class PatternController extends AbstractController
 
                 $patternManager = new PatternManager();
                 $patternManager->insert($pattern);
-                header('Location:/Home/index/');
+                header('Location:/pattern/index/');
             }
         }
 
