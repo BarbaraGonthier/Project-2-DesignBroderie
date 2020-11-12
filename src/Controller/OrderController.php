@@ -19,6 +19,41 @@ use App\Model\ProductManager;
  */
 class OrderController extends AbstractController
 {
+    public const STATUSES = [
+        'NEW' => "Nouvelle commande",
+        'PROCESSING' => "En cours de traitement",
+        'PROCESSED' => "Traitée",
+        'SENT' => "Expédiée",
+    ];
+    public function editOrder(int $id)
+    {
+        $errors = [];
+        $orderManager = new OrderManager();
+        $order = $orderManager->selectOneById($id);
+
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+
+            $errors = $this->editValidate($order);
+
+            if (empty($errors)) {
+                $orderManager->updateOrder($order);
+                header('Location:/home/index/');
+            }
+        }
+
+        return $this->twig->render('OrderAdmin/edit.html.twig', ['order' => $order, 'errors' => $errors]);
+    }
+    private function editValidate(array $order): array
+    {
+        $errors = [];
+
+        if (!in_array($order['status'], self::STATUSES)) {
+            $errors[] = 'Les valeurs possibles sont : ' . implode(", ", self::STATUSES);
+        }
+
+        return $errors ?? [];
+    }
     public function index()
     {
         $orderManager = new OrderManager();
