@@ -1,27 +1,28 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/productadmin.css"> {% endblock %}
-
-{% block title %}{{ parent() }} | Détail du Produit{% endblock %}
+    <link rel="stylesheet" href="/assets/css/form.css"> {% endblock %}
+{% block title %}{{ parent() }} | Confirmation de suppression{% endblock %}
 
 
 
 {% block content %}
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="order-title"> Suppression de produit </h1>
+            </div>
+        </div>
+    </div>
 
 
-                <h1>Suppression de produit </h1>
 
 
-
-<p>Votre produit {{ name }} a bien été supprimé</p>
+    <p>Votre produit {{ name }} a bien été supprimé</p>
 
     <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour a la liste des produits</a>
 
 
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
         {% block footer %}

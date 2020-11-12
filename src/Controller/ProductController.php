@@ -22,15 +22,12 @@ class ProductController extends AbstractController
 
         return $this->twig->render('Productadmin/show.html.twig', ['product' => $product]);
     }
-
     public function index()
     {
         $productManager = new ProductManager();
         $products = $productManager->selectAll();
         return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
-
-
  /**
  * Handle item deletion
  *
@@ -46,7 +43,7 @@ class ProductController extends AbstractController
             $productManager->delete($id);
             return $this->twig->render('Productadmin/confirmdelete.html.twig', ['name' => $product["name"]]);
         } else {
-            echo "Vous n'avez pas a aller sur cette page a la main";
+            echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
         }
     }
 }
