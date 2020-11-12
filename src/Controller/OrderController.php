@@ -66,7 +66,6 @@ class OrderController extends AbstractController
             'order' => $order,
             'errors' => $errors]);
     }
-
     /**
      * @param array $order
      * @return array
