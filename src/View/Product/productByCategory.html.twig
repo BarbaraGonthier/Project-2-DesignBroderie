@@ -17,18 +17,29 @@
     <div class="container">
         <div class="row">
             {% for product in products %}
-                <div class="col-sm-12 col-md-6 col-lg-4 .mx-auto">
+                <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img src="/assets/images/product/{{ product.image }}" class="card-img-top" alt="image de {{ product.name }}">
+                        <img src="/assets/images/{{ product.image }}" class="card-img-top" alt="image de {{ product.name }}">
                         <div class="card-body">
                             <div title="Categorie {{ product.name }}">
                                 <p><strong>{{ product.name }}</strong></p>
                                 <p>Réf : {{ product.reference }}</p>
                             </div>
+                            <a class="btn btn-dark" href="/Order/sendOrder/{{ product.id }}">
+                                Commander
+                            </a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
+            <div class="link-provider">
+                <p>
+                    Pour plus de choix de vêtements, faites un tour sur le site de notre fournisseur <strong>TEXTILE EUROPE</strong> et revenez avec la référence du produit
+                </p>
+                <a class="btn btn-dark" href="https://www.textileeurope.com/new-2020">
+                    Juste ici !
+                </a>
+            </div>
         </div>
     </div>
 {% endblock %}

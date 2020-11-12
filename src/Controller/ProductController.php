@@ -31,6 +31,7 @@ class ProductController extends AbstractController
         return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
 
+
     /**
      * Display product creation page
      *
@@ -103,5 +104,15 @@ class ProductController extends AbstractController
             $errors[] = 'L\'image doit être une URL valide';
         }
         return $errors ?? [];
+    }
+    public function list(int $categoryId)
+    {
+        $productManager = new ProductManager();
+        $products = $productManager->selectAllByCategoryId($categoryId);
+        return $this->twig->render(
+            'Product/productByCategory.html.twig',
+            ['products' => $products]
+        );
+
     }
 }
