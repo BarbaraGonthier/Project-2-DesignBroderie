@@ -42,7 +42,10 @@
 
                                 <a href="/product/edit/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
 
-                                <a href="/product/delete/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Supprimer</a>
+                                <form action='/product/delete/' method="POST" class="btn btn-secondary btn-lg">
+                                    <button class="btn btn-secondary btn-lg">Supprimer</button>
+                                    <input type="hidden" name="id" value="{{ product.id }}">
+                                </form>
 
                             </td>
 

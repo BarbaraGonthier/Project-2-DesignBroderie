@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %} <link rel="stylesheet" href="/assets/css/form.css"> {% endblock %}
+{% block title %}{{ parent() }} | Détail du Produit{% endblock %}
+
+
+
+{% block content %}
+
+
+
+                <h1>Suppression de produit </h1>
+
+
+
+<p>Votre produit {{ name }} a bien été supprimé</p>
+
+    <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour a la liste des produits</a>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
