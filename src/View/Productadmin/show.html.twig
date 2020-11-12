@@ -29,13 +29,13 @@
 </div>
 
             <a href='/product/edit/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
-
-            <form action='/product/delete/' method="POST">
-                <button class="btn btn-secondary btn-lg">Supprimer</button>
+            <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour</a>
+            <form action='/product/delete/' method="POST" class="btn btn-lg">
+                <button class="btn btn-danger btn-lg">Supprimer</button>
                 <input type="hidden" name="id" value="{{ product.id }}">
             </form>
 
-            <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour</a>
+
 
         </div>
     </div>
