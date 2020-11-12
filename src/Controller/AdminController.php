@@ -6,5 +6,6 @@ class AdminController extends AbstractController
 {
     public function index()
     {
+        return $this->twig->render('Homeadmin/homepage.html.twig');
     }
 }
