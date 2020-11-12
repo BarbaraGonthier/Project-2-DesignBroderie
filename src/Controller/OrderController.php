@@ -25,7 +25,6 @@ class OrderController extends AbstractController
         'PROCESSED' => "Traitée",
         'SENT' => "Expédiée",
     ];
-  
     public function sendQuote()
     {
         $order = [];
@@ -65,7 +64,6 @@ class OrderController extends AbstractController
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $order = array_map('trim', $_POST);
-          
             $errors = $this->editValidate($order);
 
             if (empty($errors)) {
@@ -73,7 +71,7 @@ class OrderController extends AbstractController
                 header('Location:/home/index/');
             }
         }
-          
+
         return $this->twig->render('OrderAdmin/edit.html.twig', ['order' => $order, 'errors' => $errors]);
     }
     private function editValidate(array $order): array
@@ -133,7 +131,6 @@ class OrderController extends AbstractController
             'order' => $order,
             'errors' => $errors]);
     }
-
     /**
      * @param array $order
      * @return array
