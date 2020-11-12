@@ -113,6 +113,5 @@ class ProductController extends AbstractController
             'Product/productByCategory.html.twig',
             ['products' => $products]
         );
-
     }
 }
