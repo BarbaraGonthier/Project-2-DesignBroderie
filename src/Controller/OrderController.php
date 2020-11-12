@@ -56,6 +56,10 @@ class OrderController extends AbstractController
             'order' => $order,
             'errors' => $errors]);
     }
+    public function thanks()
+    {
+        return $this->twig->render('Order/thanks.html.twig');
+    }
     public function editOrder(int $id)
     {
         $errors = [];
@@ -123,7 +127,7 @@ class OrderController extends AbstractController
 
                 $orderManager = new OrderManager();
                 $orderManager->saveOrder($order, $product);
-                header('Location:/home/index/');
+                header('Location:/order/thanks/');
             }
         }
 
