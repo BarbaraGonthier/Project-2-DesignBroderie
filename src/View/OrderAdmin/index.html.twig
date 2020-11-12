@@ -37,8 +37,7 @@
                             <td>{{ order.status }}</td>
                             <td>
                                 <a href="/order/show/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
-                                <a href="/order/edit/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
-                                <a href="/order/delete/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Supprimer</a>
+                                <a href='/order/editorder/{{ order.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
                             </td>
                         </tr>
                     {% endfor %}

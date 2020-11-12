@@ -1,16 +1,22 @@
 li a {
     color: var(--light);
+    font-weight: bold;
 }
 
 li a:hover {
     text-decoration: none;
     color: var(--light);
     opacity: var(--opacity);
-
 }
+
 .footerText {
     width: 250px;
 }
+
+p {
+    color: var(--light);
+}
+
 .mention {
     color: var(--light);
 }
@@ -19,8 +25,8 @@ li a:hover {
     text-decoration: none;
     color: var(--light);
     opacity: var(--opacity);
-
 }
+
 footer {
     background-color: var(--background-color);
     padding-top: var(--spacing-4);
@@ -29,6 +35,7 @@ footer {
 
 h3 {
     font-size: var(--font-size-h3);
+    color: var(--light);
 }
 
 hr {
