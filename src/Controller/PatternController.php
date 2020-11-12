@@ -63,7 +63,7 @@ class PatternController extends AbstractController
         $errors = [];
 
         if (empty($pattern['name'])) {
-            $errors[] = 'Le champ prénom est obligatoire';
+            $errors[] = 'Le champ Nom du modèle est obligatoire';
         }
         if (
             !empty($_FILES['photo']['tmp_name']) && !in_array(
