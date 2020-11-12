@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/addPattern.css">{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="title">Ajout d'un nouveau modèle</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for error in errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="barreForm1">
+                        <label for="name">Fichier:</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div>
+                        <label for="photo">Fichier:</label>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="5000000"/>
+                        <input  type="file" id="photo" name="photo">
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-lg">Télécharger</button>
+                    <p><strong>Note:</strong> Seuls les formats .jpg, .jpeg, .jpeg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
+                </form>
+                <a href="/pattern/index" class="btn btn-dark" role="button">Retour</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}{% endblock %}

@@ -28,10 +28,12 @@ class PatternController extends AbstractController
             $errors = $this->patternsValidate($pattern);
 
             if (empty($errors)) {
-                $fileExtension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-                $newFileName = uniqid() . '.' . $fileExtension;
-                $uploadDir = 'uploads/patterns/';
-                move_uploaded_file($_FILES['photo']['tmp_name'], $uploadDir . $newFileName);
+                if (!empty($_FILES['photo']['name'])) {
+                    $fileExtension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/patterns/';
+                    move_uploaded_file($_FILES['photo']['tmp_name'], $uploadDir . $newFileName);
+                }
                 $pattern['photo'] = $newFileName;
 
                 $patternManager = new PatternManager();
@@ -53,7 +55,6 @@ class PatternController extends AbstractController
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
         $maxSize = 5000000;
 
-        $mimeType = mime_content_type($_FILES['photo']['tmp_name']);
         $size = filesize($_FILES['photo']['tmp_name']);
 
         $errors = [];
@@ -61,11 +62,14 @@ class PatternController extends AbstractController
         if (empty($pattern['name'])) {
             $errors[] = 'Le champ prénom est obligatoire';
         }
-        if (!in_array($mimeType, $extensions)) {
+        if (!empty($_FILES['photo']['tmp_name']) && !in_array(mime_content_type($_FILES['photo']['tmp_name']), $extensions)) {
             $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
         }
         if ($size > $maxSize) {
             $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 5000000 . " Mo";
+        }
+        if (empty($_FILES['photo']['name'])){
+            $errors[] = "Vous devez insérer une image.";
         }
 
         return $errors ?? [];

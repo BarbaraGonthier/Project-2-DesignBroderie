@@ -1,0 +1,22 @@
+.title {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--secondary-background-color);
+    text-align: center;
+}
+
+.container-fluid, .container {
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+}
+
+.barreForm {
+    padding-top: var(--spacing);
+    padding-bottom: var(--spacing);
+}
+
+.btn {
+    margin-top: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+
+}
