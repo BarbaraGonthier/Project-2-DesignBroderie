@@ -1,7 +1,18 @@
-.card-body  {
+h1 {
+    background-color: var(--secondary-background-color);
+    width: 55vw;
+    text-align: center;
+}
+
+.title {
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-section);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+}
+
+.card-body > div > p {
+    margin: 0;
     text-align: center;
 }
 
@@ -9,16 +20,25 @@
     margin-bottom : var(--spacing-4);
 }
 
-.title {
-    padding: var(--spacing-6);
+.col-sm-12 {
     display: flex;
     justify-content: center;
+}
+
+.link-provider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin : 10px 20px 30px 20px;
+    border-top: 1px solid var(--dark);
+    padding-top: 20px;
+}
+
+.link-provider > p {
     text-align: center;
 }
 
-h1 {
-    background-color : var(--secondary-background-color);
-    font-family : var(--title-font-family);
-    padding: var(--spacing-2);
-    width: 55vw;
+.row {
+    display: flex;
+    justify-content: center;
 }
