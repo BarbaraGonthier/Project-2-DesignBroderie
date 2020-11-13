@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-header">{{ product.name }}</div>
                     <div class="card-body">
-                        <img class="card-image mb-2" src="/assets/images/product/{{ product.image }}" alt="{{ product.name }}"/>
+                        <img class="card-image mb-2" src="{{ product.image }}" alt="{{ product.name }}"/>
                             <p class="card-text">Catégorie : {{product.category_name}}</p>
                             <p class="card-text">Genre : {{product.gender}}</p>
                             <p class="card-text">Description : {{ product.description}}</p>
@@ -24,6 +24,12 @@
             </div>
             <a href='/product/edit/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
             <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour</a>
+
+            <form action='/product/delete/' method="POST" class="btn btn-lg">
+                <button class="btn btn-danger btn-lg">Supprimer</button>
+                <input type="hidden" name="id" value="{{ product.id }}">
+            </form>
+
         </div>
     </div>
 </div>

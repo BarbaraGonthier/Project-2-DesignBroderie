@@ -27,15 +27,49 @@ class OrderManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
+    public function saveQuote(array $order)
+    {
+        $query = "INSERT INTO " . self::TABLE .
+            " (`firstname`, `lastname`, `email`, `phone`, `company_name`, 
+            `address`, `city`, `postcode`, `message`, `user_logo`, `status`) 
+            VALUES 
+            (:firstname, :lastname, :email, :phone, :company_name, 
+            :address, :city, :postcode, :message, 
+            :user_logo, '" . self::STATUSES['NEW'] . "')";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue(':email', $order['email'], \PDO::PARAM_STR);
+        $statement->bindValue(':phone', $order['phone'], \PDO::PARAM_STR);
+        $statement->bindValue(':company_name', $order['companyName'], \PDO::PARAM_STR);
+        $statement->bindValue(':address', $order['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':city', $order['city'], \PDO::PARAM_STR);
+        $statement->bindValue(':postcode', $order['postcode'], \PDO::PARAM_STR);
+        $statement->bindValue(':message', $order['message'], \PDO::PARAM_STR);
+        $statement->bindValue(':user_logo', $order['userLogo'], \PDO::PARAM_STR);
+
+
+
+        $statement->execute();
+    }
+    public function updateOrder(array $order): bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `status`= :status WHERE id=:id");
+        $statement->bindValue(':id', $order['id'], \PDO::PARAM_INT);
+        $statement->bindValue(':status', $order['status'], \PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
     public function selectAllJoinProduct(): array
     {
-        return $this->pdo->query("SELECT o.firstname, o.lastname, o.email, o.phone, 
+        return $this->pdo->query("SELECT o.id, o.firstname, o.lastname, o.email, o.phone, 
             o.company_name, o.address, o.city, postcode, o.size, o.quantity, o.message, o.product_id, o.user_logo, 
             o.status, p.name product_name FROM " . self::TABLE . ' o JOIN product p ON p.id=o.product_id;')->fetchAll();
     }
     public function selectByIdJoinProduct(int $id): array
     {
-        $statement = $this->pdo->prepare("SELECT o.firstname, o.lastname, 
+        $statement = $this->pdo->prepare("SELECT o.id, o.firstname, o.lastname, 
         o.email, o.phone, o.company_name, o.address, o.postcode, o.city, 
         o.size, o.quantity, o.message, o.product_id, o.user_logo, o.status, 
         p.name product_name, p.reference product_reference FROM " . self::TABLE . " o 

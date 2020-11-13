@@ -8,7 +8,7 @@
 {% block header %}
     <header>
         <div class="title">
-            <h1>Nos vêtements</h1>
+            <h1>Nos choix</h1>
         </div>
     </header>
 {% endblock %}
@@ -17,18 +17,30 @@
     <div class="container">
         <div class="row">
             {% for product in products %}
-                <div class="col-sm-12 col-md-6 col-lg-4 .mx-auto">
-                    <div class="card">
-                        <img src="/assets/images/product/{{ product.image }}" class="card-img-top" alt="image de {{ product.name }}">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card text-dark">
+                        <img src="/assets/images/{{ product.image }}" class="card-img-top" alt="image de {{ product.name }}">
                         <div class="card-body">
                             <div title="Categorie {{ product.name }}">
-                                <p><strong>{{ product.name }}</strong></p>
-                                <p>Réf : {{ product.reference }}</p>
+                                <p class="text-dark"><strong>{{ product.name }} </strong> Réf : {{ product.reference }}</p>
+                                <p class="text-dark">Prix : {{ product.price }} €</p>
+                                <p class="text-dark">Description : {{ product.description }} </p>
                             </div>
                         </div>
+                        <a class="btn btn-dark" href="/Order/sendOrder/{{ product.id }}">
+                            Commander
+                        </a>
                     </div>
                 </div>
             {% endfor %}
+        </div>
+        <div class="link-provider">
+            <p class="text-dark">
+                Pour plus de choix de vêtements, visitez le site de notre fournisseur <strong>TEXTILE EUROPE</strong>
+            </p>
+            <a class="btn btn-dark" href="https://www.textileeurope.com/new-2020">
+                Juste ici !
+            </a>
         </div>
     </div>
 {% endblock %}
