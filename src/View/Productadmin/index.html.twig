@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    <a href="/product/add" class="btn btn-dark" role="button">Ajouter un produit</a>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -39,8 +40,8 @@
                                 <a href="/product/show/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
 
 
-
                                 <a href="/product/edit/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
+
 
                                 <form action='/product/delete/' method="POST" class="btn btn-lg">
                                     <button class="btn btn-danger btn-lg">Supprimer</button>
@@ -56,7 +57,12 @@
                 </table>
             </div>
         </div>
-        <a href="/product/add" class="btn btn-dark" role="button">Ajouter un produit</a>
+
     </div>
 {% endblock %}
+
+       {% block footer %}
+
+       {% endblock %}
+
 
