@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1 class="titre">
+                <h1 class="title">
                     Détail de la commande {{ order.id }}
                 </h1>
             </div>
@@ -57,7 +57,12 @@
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Logo</th>
-                            <td>{{ order.user_logo}}</td>
+
+                            <td>
+                                <img src="/uploads/order-logos/{{ order.user_logo}}"
+                                     class="img-fluid pattern-img w-25"
+                                     alt="{{ order.user_logo}}">
+                            </td>
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Message</th>
