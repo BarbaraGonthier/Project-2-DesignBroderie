@@ -25,6 +25,41 @@ class OrderController extends AbstractController
         'PROCESSED' => "Traitée",
         'SENT' => "Expédiée",
     ];
+    public function sendQuote()
+    {
+        $order = [];
+        $errors = [];
+
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+
+            $errors = $this->orderValidate($order);
+
+            if (empty($errors)) {
+                if (!empty($_FILES['userLogo']['name'])) {
+                    $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/';
+                    move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
+                } else {
+                    $newFileName = '';
+                }
+                $order['userLogo'] = $newFileName;
+
+                $orderManager = new OrderManager();
+                $orderManager->saveQuote($order);
+                header('Location:/home/index/');
+            }
+        }
+
+        return $this->twig->render('Order/no-product_order_form.html.twig', [
+            'order' => $order,
+            'errors' => $errors]);
+    }
+    public function thanks()
+    {
+        return $this->twig->render('Order/thanks.html.twig');
+    }
     public function editOrder(int $id)
     {
         $errors = [];
@@ -33,7 +68,6 @@ class OrderController extends AbstractController
 
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $order = array_map('trim', $_POST);
-
             $errors = $this->editValidate($order);
 
             if (empty($errors)) {
@@ -93,7 +127,7 @@ class OrderController extends AbstractController
 
                 $orderManager = new OrderManager();
                 $orderManager->saveOrder($order, $product);
-                header('Location:/home/index/');
+                header('Location:/order/thanks/');
             }
         }
 
@@ -101,7 +135,6 @@ class OrderController extends AbstractController
             'order' => $order,
             'errors' => $errors]);
     }
-
     /**
      * @param array $order
      * @return array

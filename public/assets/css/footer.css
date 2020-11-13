@@ -30,6 +30,7 @@ p {
 footer {
     background-color: var(--background-color);
     padding-top: var(--spacing-4);
+    position: relative;
 }
 
 h3 {
@@ -39,6 +40,12 @@ h3 {
 
 hr {
     width: 60px;
+}
+
+#login-btn {
+    position: absolute;
+    bottom : 10px;
+    right : 10px;
 }
 
 @media screen and (max-width: 740px) {
