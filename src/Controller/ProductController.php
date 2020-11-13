@@ -64,6 +64,13 @@ class ProductController extends AbstractController
             $product = array_map('trim', $_POST);
             $errors = $this->productValidation($product);
             if (empty($errors)) {
+                if (!empty($_FILES['image']['name'])) {
+                    $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/product/';
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $newFileName);
+                    $product['image'] = $newFileName;
+                }
                 $productManager = new ProductManager();
                 $id = $productManager->insert($product);
                 header('Location:/product/show/' . $id);
@@ -77,7 +84,6 @@ class ProductController extends AbstractController
 
         ]);
     }
-
     /**
      * @param array $product
      * @return array
@@ -115,9 +121,7 @@ class ProductController extends AbstractController
         if (!empty($product['price']) && $product['price'] < 0) {
             $errors[] = 'Le prix ne peut être négatif';
         }
-        if (!empty($product['image']) && !filter_var($product['image'], FILTER_VALIDATE_URL)) {
-            $errors[] = 'L\'image doit être une URL valide';
-        }
+
         return $errors ?? [];
     }
     public function list(int $categoryId)
