@@ -82,4 +82,17 @@ class PatternController extends AbstractController
 
         return $errors ?? [];
     }
+    public function delete()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $id = $_POST['id'];
+            $patternManager = new PatternManager();
+            $pattern = $patternManager->selectOneById($id);
+
+            $patternManager->delete($id);
+            return $this->twig->render('Patternsadmin/delete.html.twig', ['pattern' => $pattern]);
+        } else {
+            echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
+        }
+    }
 }
