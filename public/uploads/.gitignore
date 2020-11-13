@@ -1,2 +1,5 @@
 *
 !.gitignore
+!order-logos/
+!patterns/
+!products/

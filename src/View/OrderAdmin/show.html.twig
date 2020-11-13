@@ -57,7 +57,12 @@
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Logo</th>
-                            <td>{{ order.user_logo}}</td>
+
+                            <td>
+                                <img src="/uploads/order-logos/{{ order.user_logo}}"
+                                     class="img-fluid pattern-img w-25"
+                                     alt="{{ order.user_logo}}">
+                            </td>
                         </tr>
                         <tr>
                             <th class="text-white bg-dark w-25" scope="row">Message</th>
