@@ -1,2 +1,6 @@
 *
 !.gitignore
+!order-logos/
+!patterns/
+!products/
+!category/
