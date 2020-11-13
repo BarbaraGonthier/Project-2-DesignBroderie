@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <a href="/pattern/add" class="add btn btn-dark">Ajouter un modèle</a>
+                <a href="/pattern/addPattern" class="add btn btn-dark">Ajouter un modèle</a>
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                     <tr>
@@ -27,20 +27,21 @@
                         <tr>
                             <td>{{ pattern.name }}</td>
                             <td>
-                                <img class="imagePattern" src="/uploads/patterns/{{ pattern.photo }}" alt="Modèles"
-                                     title="Nos modèles">
+                                <img class="imagePattern" src="/uploads/patterns/{{ pattern.photo }}" alt="{{ pattern.name }}"
+                                     title="{{ pattern.name }}">
                             </td>
                             <td>
-                                <a href="/product/delete/{{ pattern.id }}" class="btn btn-secondary btn-lg">Supprimer</a>
+                                <form action='/pattern/delete/' method="POST" class="btn btn-lg">
+                                    <button class="btn btn-danger btn-lg">Supprimer</button>
+                                    <input type="hidden" name="id" value="{{ pattern.id }}">
+                                </form>
                             </td>
-
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
-        <a href="/pattern/addPattern" class="btn btn-dark">Ajouter un modèle</a>
     </div>
 {% endblock %}
 {% block footer %}{% endblock %}
