@@ -34,14 +34,3 @@ h1 {
     text-decoration: none;
     color: var(--light);
 }
-
-.buttonCategory a:hover {
-    opacity: var(--opacity);
-    text-decoration: none;
-    color: var(--light);
-}
-
-.card:hover {
-    width:350px;
-    height: 500px;
-}
