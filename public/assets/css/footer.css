@@ -13,10 +13,6 @@ li a:hover {
     width: 250px;
 }
 
-p {
-    color: var(--light);
-}
-
 .mention {
     color: var(--light);
 }
@@ -31,6 +27,7 @@ footer {
     background-color: var(--background-color);
     padding-top: var(--spacing-4);
     position: relative;
+    color: var(--light);
 }
 
 h3 {
