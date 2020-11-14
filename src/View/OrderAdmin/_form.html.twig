@@ -11,8 +11,8 @@
     <div class="col-md-8 offset-md-2">
         <form action="" method="post" class="form-inline alert alert-secondary">
             <input type="hidden" value="{{ order.id }}" name="id">
-            <div class="form-group ml-4">
-                <label for="status" class="ml-4">État de la commande : </label>
+            <div class="form-group">
+                <label for="status" class="ml-4">Modifier l'état de la commande : </label>
                 <select name="status" id="status" class="ml-4">
                     {% for status in statuses %}
                         <option {{ order.status == status ? 'selected' }}
@@ -22,7 +22,7 @@
                 </select>
             </div>
             <div class="form-group ml-4">
-                <button type="submit" class="btn btn-secondary btn-lg">Valider</button>
+                <button type="submit" class="btn btn-secondary">Valider</button>
             </div>
         </form>
     </div>
