@@ -60,34 +60,6 @@ class OrderController extends AbstractController
     {
         return $this->twig->render('Order/thanks.html.twig');
     }
-    public function editOrder(int $id)
-    {
-        $errors = [];
-        $orderManager = new OrderManager();
-        $order = $orderManager->selectOneById($id);
-
-        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-            $order = array_map('trim', $_POST);
-            $errors = $this->editValidate($order);
-
-            if (empty($errors)) {
-                $orderManager->updateOrder($order);
-                header('Location:/home/index/');
-            }
-        }
-
-        return $this->twig->render('OrderAdmin/edit.html.twig', ['order' => $order, 'errors' => $errors]);
-    }
-    private function editValidate(array $order): array
-    {
-        $errors = [];
-
-        if (!in_array($order['status'], self::STATUSES)) {
-            $errors[] = 'Les valeurs possibles sont : ' . implode(", ", self::STATUSES);
-        }
-
-        return $errors ?? [];
-    }
     public function index()
     {
         $orderManager = new OrderManager();
@@ -98,8 +70,16 @@ class OrderController extends AbstractController
     {
         $orderManager = new OrderManager();
         $order = $orderManager->selectByIdJoinProduct($id);
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+            $orderManager->updateOrder($order);
+            header('Location:/order/show/' . $id);
+        }
 
-        return $this->twig->render('OrderAdmin/show.html.twig', ['order' => $order]);
+        return $this->twig->render(
+            'OrderAdmin/show.html.twig',
+            ['order' => $order, 'statuses' => self::STATUSES,]
+        );
     }
     public function sendOrder(int $id)
     {
