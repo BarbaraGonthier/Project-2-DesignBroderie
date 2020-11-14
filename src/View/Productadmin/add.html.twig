@@ -44,9 +44,10 @@
             <label for="gender"> Genre : </label>
             <select name="gender" id="gender" class="form-control">
                 <option value="">--Faites votre choix--</option>
-                <option value="Femme">Femme</option>
-                <option value="Homme">Homme</option>
-                <option value="Mixte">Mixte</option>
+                <option {{ product.gender == 'Femme' ? 'selected '}} value="Femme">Femme</option>
+                <option {{ product.gender == 'Homme' ? 'selected '}} value="Homme">Homme</option>
+                <option {{ product.gender == 'Mixte' ? 'selected '}} value="Mixte">Mixte</option>
+            </select>
             </select>
         </div>
 
