@@ -65,10 +65,10 @@
                         <label for="size"> Taille : </label>
                         <select name="size" id="size" class="form-control">
                             <option value="">--Choisissez la taille--</option>
-                            <option {{ order.size == 'S' ? 'selected'}} value="S">S</option>
-                            <option {{ order.size == 'M' ? 'selected'}} value="M">M</option>
-                            <option {{ order.size == 'L' ? 'selected'}} value="L">L</option>
-                            <option {{ order.size == 'XL' ? 'selected'}} value="XL">XL</option>
+                            {% for size in sizes %}
+                                <option {{ order.size == size ? 'selected' }}
+                                        value="{{ size }}">{{ size }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
