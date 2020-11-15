@@ -25,7 +25,6 @@ class OrderController extends AbstractController
         'PROCESSED' => "Traitée",
         'SENT' => "Expédiée",
     ];
-    public const PRODUCT_SIZES = ['S', 'M', 'L', 'XL',];
     public function sendQuote()
     {
         $order = [];
@@ -202,7 +201,6 @@ class OrderController extends AbstractController
 
         return $this->twig->render('Order/order_form.html.twig', ['product' => $product,
             'order' => $order,
-            'sizes' => self::PRODUCT_SIZES,
             'errors' => $errors]);
     }
     /**
