@@ -45,6 +45,7 @@ h1 {
 
 .filter-gender {
     display: flex;
+    margin: var(--spacing-6) 0;
 }
 
 .filter-gender > div:nth-child(0n+1) {
