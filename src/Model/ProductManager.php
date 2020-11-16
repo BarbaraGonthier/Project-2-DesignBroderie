@@ -60,4 +60,26 @@ class ProductManager extends AbstractManager
             return (int)$this->pdo->lastInsertId();
         }
     }
+
+    public function update(array $product): int
+    {
+
+        $req = " UPDATE " . self::TABLE . " SET category_id=:category_id, " .
+            "name=:name, gender=:gender, reference=:reference, image=:image,
+             description=:description, price=:price WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('category_id', $product['category'], \PDO::PARAM_INT);
+        $statement->bindValue('name', $product['name'], \PDO::PARAM_STR);
+        $statement->bindValue('gender', $product['gender'], \PDO::PARAM_STR);
+        $statement->bindValue('reference', $product['reference'], \PDO::PARAM_INT);
+        $statement->bindValue('image', $product['image'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $product['price']);
+        $statement->bindValue('id', $product['id'], \PDO::PARAM_INT);
+
+
+        if ($statement->execute()) {
+            return $product['id'];
+        }
+    }
 }

@@ -30,11 +30,12 @@ class ProductController extends AbstractController
         $products = $productManager->selectAll();
         return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
- /**
- * Handle item deletion
- *
-/* * @param int $id
- */
+
+    /**
+     * Handle item deletion
+     *
+     * /* * @param int $id
+     */
     public function delete()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -47,6 +48,7 @@ class ProductController extends AbstractController
             echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
         }
     }
+
     /**
      * Display product creation page
      *
@@ -81,7 +83,38 @@ class ProductController extends AbstractController
             'errors' => $errors ?? [],
             'product' => $product ?? [],
             'categories' => $categories,
+        ]);
+    }
 
+    /**
+     * Display product edition page specified by $id
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function edit(int $id)
+    {
+        $productManager = new ProductManager();
+        $product = $productManager->selectOneByIdJoinCategory($id);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productFields = array_map('trim', $_POST);
+            $errors = $this->productValidation($productFields);
+            if (empty($errors)) {
+                $productManager = new ProductManager();
+                $id = $product['id'];
+                $productFields['id'] = $id;
+                $productManager->update($productFields);
+                header('Location:/product/show/' . $id);
+            }
+        }
+        return $this->twig->render('Productadmin/edit.html.twig', ['product' => $product,
+            'errors' => $errors ?? [],
+            'categories' => $categories,
         ]);
     }
     /**
@@ -142,6 +175,7 @@ class ProductController extends AbstractController
 
         return $errors ?? [];
     }
+
     public function list(int $categoryId)
     {
         $productManager = new ProductManager();
