@@ -39,7 +39,7 @@ class OrderController extends AbstractController
                 if (!empty($_FILES['userLogo']['name'])) {
                     $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
                     $newFileName = uniqid() . '.' . $fileExtension;
-                    $uploadDir = 'uploads/';
+                    $uploadDir = 'uploads/order-logos/';
                     move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
                 } else {
                     $newFileName = '';
@@ -118,7 +118,7 @@ class OrderController extends AbstractController
                 if (!empty($_FILES['userLogo']['name'])) {
                     $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
                     $newFileName = uniqid() . '.' . $fileExtension;
-                    $uploadDir = 'uploads/';
+                    $uploadDir = 'uploads/order-logos/';
                     move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
                 } else {
                     $newFileName = '';
