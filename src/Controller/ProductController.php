@@ -103,15 +103,10 @@ class ProductController extends AbstractController
                 $productFields['id'] = $id;
                 $productManager->update($productFields);
                 header('Location:/product/show/' . $id);
-                return "";
             }
-            return $this->twig->render('Productadmin/edit.html.twig', [
-                'errors' => $errors ?? [],
-                'product' => $product ?? [],
-                'categories' => $categories,
-            ]);
         }
         return $this->twig->render('Productadmin/edit.html.twig', ['product' => $product,
+            'errors' => $errors ?? [],
             'categories' => $categories,
         ]);
     }
