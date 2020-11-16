@@ -6,7 +6,7 @@ h1 {
 
 .title {
     margin-top: var(--spacing-6);
-    margin-bottom: var(--spacing-section);
+    margin-bottom: var(--spacing);
     display: flex;
     justify-content: center;
 }
@@ -41,4 +41,16 @@ h1 {
 .row {
     display: flex;
     justify-content: center;
+}
+
+.filter-gender {
+    display: flex;
+}
+
+.filter-gender > div:nth-child(0n+1) {
+    margin-right: var(--spacing-2);
+}
+
+.filter-gender > div:nth-child(1n+2) {
+    margin-right: var(--spacing);
 }

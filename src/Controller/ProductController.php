@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 use App\Model\CategoryManager;
+use mysql_xdevapi\Expression;
+use PhpParser\Node\Expr\New_;
 
 class ProductController extends AbstractController
 {
@@ -30,11 +32,12 @@ class ProductController extends AbstractController
         $products = $productManager->selectAll();
         return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
     }
- /**
- * Handle item deletion
- *
-/* * @param int $id
- */
+
+    /**
+     * Handle item deletion
+     *
+     * /* * @param int $id
+     */
     public function delete()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -47,6 +50,7 @@ class ProductController extends AbstractController
             echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
         }
     }
+
     /**
      * Display product creation page
      *
@@ -120,13 +124,17 @@ class ProductController extends AbstractController
         }
         return $errors ?? [];
     }
-    public function list(int $categoryId)
+
+    public function list(int $categoryId, string $gender = null)
     {
         $productManager = new ProductManager();
-        $products = $productManager->selectAllByCategoryId($categoryId);
+        $products = $productManager->filter($categoryId, $gender);
         return $this->twig->render(
             'Product/productByCategory.html.twig',
-            ['products' => $products]
+            [
+                'products' => $products,
+                'categoryId' => $categoryId
+            ]
         );
     }
 }

@@ -12,8 +12,8 @@ class ProductManager extends AbstractManager
     }
     public function selectOneByIdJoinCategory(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT p.*, c.name category_name FROM " . self::TABLE . ' p 
-        JOIN category c ON c.id=p.category_id WHERE p.id=:id;');
+        $statement = $this->pdo->prepare("SELECT p.*, c.name category_name FROM " . self::TABLE .
+            ' JOIN category c ON c.id=p.category_id WHERE p.id=:id;');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
@@ -28,6 +28,27 @@ class ProductManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function filter($categoryId, $gender)
+    {
+        $where = ' category_id = :categoryId';
+
+        if (isset($gender)) {
+            $where .= ' AND gender = :gender';
+        }
+
+        $query = "SELECT * FROM " . self::TABLE . " WHERE " . $where;
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
+
+        if (isset($gender)) {
+            $statement->bindValue(':gender', $gender, \PDO::PARAM_STR);
+        }
+
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
     /**
      * @param int $id
      */
