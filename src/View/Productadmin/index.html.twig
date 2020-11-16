@@ -2,12 +2,14 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/productadmin.css"> {% endblock %}
 
+{% block title %}{{ parent() }} Index produit | Administrateur{% endblock %}
+
 {% block content %}
 
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1 class="titre">
+                <h1 class="title">
                     Liste des produits disponibles
                 </h1>
             </div>

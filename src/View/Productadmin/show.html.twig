@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %} <link rel="stylesheet" href="/assets/css/productadmin.css"> {% endblock %}
-{% block title %}{{ parent() }} | Détail du Produit{% endblock %}
+{% block title %}{{ parent() }} Detail produit | Administrateur{% endblock %}
 
 
 
@@ -14,7 +14,9 @@
                 <div class="card">
                     <div class="card-header">{{ product.name }}</div>
                     <div class="card-body">
-                        <img class="card-image mb-2" src="{{ product.image }}" alt="{{ product.name }}"/>
+
+                        <img class="card-image mb-2" src="/uploads/product/{{ product.image }}" alt="{{ product.name }}"/>
+
                             <p class="card-text">Catégorie : {{product.category_name}}</p>
                             <p class="card-text">Genre : {{product.gender}}</p>
                             <p class="card-text">Description : {{ product.description}}</p>

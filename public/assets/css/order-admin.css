@@ -1,5 +1,6 @@
-.titre {
+.title {
     margin : var(--spacing-6);
+    margin-bottom: 0px;
     padding : var(--spacing-2);
     background-color : var(--secondary-background-color);
     text-align: center;
