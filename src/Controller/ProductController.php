@@ -93,7 +93,7 @@ class ProductController extends AbstractController
     private function productValidation(array $product): array
     {
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
-        $maxSize = 5000000;
+        $maxSize = 2000000;
 
         $size = filesize($_FILES['image']['tmp_name']);
         $errors = [];
@@ -128,7 +128,7 @@ class ProductController extends AbstractController
             $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
         }
         if ($size > $maxSize) {
-            $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 5000000 . " Mo";
+            $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 2000000 . " Mo";
         }
         if (empty($_FILES['image']['name'])) {
             $errors[] = "Vous devez insérer une image.";
