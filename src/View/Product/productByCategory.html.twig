@@ -15,12 +15,14 @@
         </div>
             <div class="filter-gender">
                 <div class="btn btn-light">Genre :</div>
+                {% for gendertype in gender %}
                 <div>
-                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/Homme" role="button">Homme</a>
+                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gendertype }}" role="button">{{ gendertype }}</a>
                 </div>
-                <div>
-                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/Femme" role="button">Femme</a>
-                </div>
+                {% endfor %}
+{#                <div>#}
+{#                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/Homme" role="button">Homme</a>#}
+{#                </div>#}
             </div>
 
 

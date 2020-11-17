@@ -18,6 +18,12 @@ class ProductController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
+    public const GENDER = [
+        "Homme" => "Homme",
+        "Femme" => "Femme",
+        "Mixte" => "Mixte"
+    ];
+
     public function show(int $id)
     {
         $productManager = new ProductManager();
@@ -127,11 +133,13 @@ class ProductController extends AbstractController
 
     public function list(int $categoryId, string $gender = null)
     {
+        $genders = self::GENDER;
         $productManager = new ProductManager();
         $products = $productManager->filter($categoryId, $gender);
         return $this->twig->render(
             'Product/productByCategory.html.twig',
             [
+                'gender' => $genders,
                 'products' => $products,
                 'categoryId' => $categoryId
             ]
