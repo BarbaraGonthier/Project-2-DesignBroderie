@@ -5,9 +5,7 @@
 
 
 {% block content %}
-
-
-<div class="container">
+    <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2 col-12">
             <div class="card-group mb-2 text-center">
@@ -15,7 +13,7 @@
                     <div class="card-header">{{ product.name }}</div>
                     <div class="card-body">
 
-                        <img class="card-image mb-2" src="/uploads/product/{{ product.image }}" alt="{{ product.name }}"/>
+                        <img class="card-image mb-2" src="/uploads/products/{{ product.image }}" alt="{{ product.name }}"/>
 
                             <p class="card-text">Catégorie : {{product.category_name}}</p>
                             <p class="card-text">Genre : {{product.gender}}</p>
@@ -24,11 +22,11 @@
                     <div class="card-footer">{{ product.price }} €</div>
                 </div>
             </div>
-            <a href='/product/edit/{{ product.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
-            <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour</a>
+            <a href='/product/edit/{{ product.id }}' class="btn btn-dark" role="button">Modifier</a>
+            <a href='/product/index/' class="btn btn-dark" role="button">Retour</a>
 
             <form action='/product/delete/' method="POST" class="btn btn-lg">
-                <button class="btn btn-danger btn-lg">Supprimer</button>
+                <button class="btn btn-danger">Supprimer</button>
                 <input type="hidden" name="id" value="{{ product.id }}">
             </form>
 

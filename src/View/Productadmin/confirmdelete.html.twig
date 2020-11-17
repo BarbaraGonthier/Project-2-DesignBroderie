@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/form.css"> {% endblock %}
+    <link rel="stylesheet" href="/assets/css/productadmin.css"> {% endblock %}
 {% block title %}{{ parent() }}  Confirmation de suppression | Administrateur {% endblock %}
 
 
@@ -14,14 +14,10 @@
             </div>
         </div>
     </div>
-
-
-
-
-    <p>Votre produit {{ name }} a bien été supprimé</p>
-
-    <a href='/product/index/' class="btn btn-secondary btn-lg" role="button">Retour a la liste des produits</a>
-
+    <p class="d-flex justify-content-center">Votre produit {{ name }} a bien été supprimé</p>
+    <div class="d-flex justify-content-center">
+        <a href='/product/index/' class="btn btn-dark" role="button">Retour a la liste des produits</a>
+    </div>
 
 {% endblock %}
 
