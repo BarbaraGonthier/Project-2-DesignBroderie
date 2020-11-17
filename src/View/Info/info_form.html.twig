@@ -10,13 +10,15 @@
                 <h1> Demande de renseignements </h1>
             </div>
         </div>
-        <div class="row">
-            {% for error in errors %}
-                <div class="col-md-8 offset-md-2">
-                    {{ error }}
-                </div>
-            {% endfor %}
-        </div>
+        {% if not errors is empty %}
+            <div class="row ">
+                {% for error in errors %}
+                    <div class="col-md-8 offset-md-2 alert alert-danger">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <div class="row infoform">
             <div class="col-8 offset-2">
                 <h2>Vos informations</h2>
