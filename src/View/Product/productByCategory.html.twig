@@ -14,17 +14,16 @@
             </div>
         </div>
             <div class="filter-gender">
-                <div class="btn btn-light">Genre :</div>
+                <div class="gender">Genre :</div>
                 {% for gendertype in gender %}
                 <div>
                     <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gendertype }}" role="button">{{ gendertype }}</a>
                 </div>
                 {% endfor %}
-{#                <div>#}
-{#                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/Homme" role="button">Homme</a>#}
-{#                </div>#}
             </div>
-
+            <div class="reload">
+                <a href="/product/list/{{ categoryId }}">réinitialiser</a>
+            </div>
 
         <div class="row">
             {% for product in products %}

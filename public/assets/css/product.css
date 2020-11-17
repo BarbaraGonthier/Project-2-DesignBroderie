@@ -43,9 +43,9 @@ h1 {
     justify-content: center;
 }
 
-.filter-gender {
+.filter-gender:not(:last-child){
     display: flex;
-    margin: var(--spacing-6) 0;
+    margin-top: var(--spacing-6);
 }
 
 .filter-gender > div:nth-child(0n+1) {
@@ -54,4 +54,18 @@ h1 {
 
 .filter-gender > div:nth-child(1n+2) {
     margin-right: var(--spacing);
+}
+
+.gender {
+    border: 1px solid var(--dark);
+    border-radius: calc(var(--border-radius) - 3px);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing);
+    background-color: var(--secondary-background-color);
+}
+
+.reload {
+    margin: var(--spacing) 0 var(--spacing-6) 0;
 }
