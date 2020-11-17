@@ -1,4 +1,4 @@
- {% if not errors is empty %}
+{% if not errors is empty %}
     <div class="row ">
         {% for error in errors %}
             <div class="col-md-8 offset-md-2 alert alert-danger">
@@ -9,15 +9,22 @@
 {% endif %}
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" class="form-inline alert alert-secondary">
             <input type="hidden" value="{{ order.id }}" name="id">
             <div class="form-group">
-                <label for="status"> Etat de la commande : </label>
-                <input type="text" name="status" id="status" value="{{ order.status }}" class="form-control">
+                <label for="status" class="ml-4">Modifier l'état de la commande : </label>
+                <select name="status" id="status" class="ml-4">
+                    {% for status in statuses %}
+                        <option {{ order.status == status ? 'selected' }}
+                                value="{{ status }}">{{ status }}
+                        </option>
+                    {% endfor %}
+                </select>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-secondary btn-lg">Modifier</button>
+            <div class="form-group ml-4">
+                <button type="submit" class="btn btn-secondary">Valider</button>
             </div>
         </form>
     </div>
 </div>
+
