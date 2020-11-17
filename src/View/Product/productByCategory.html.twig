@@ -4,21 +4,23 @@
 {% endblock %}
 
 {% block title %}Catalogue de vêtements{% endblock %}
-
-{% block header %}
-    <header>
-        <div class="title">
-            <h1>Nos choix</h1>
-        </div>
-    </header>
-{% endblock %}
-
 {% block content %}
+
     <div class="container">
         <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <div class="title">
+                    <h1>Nos choix</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
             {% for product in products %}
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card text-dark">
+                <div class="col-md-2 mb-4">
+                    <div class="card text-dark text-center h-100">
                         <img src="/uploads/products/{{ product.image }}" class="card-img-top" alt="image de {{ product.name }}">
                         <div class="card-body">
                             <div title="Categorie {{ product.name }}">
@@ -34,7 +36,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="link-provider">
+        <div class="link-provider mt-5">
             <p class="text-dark">
                 Pour plus de choix de vêtements, visitez le site de notre fournisseur <strong>TEXTILE EUROPE</strong>
             </p>
