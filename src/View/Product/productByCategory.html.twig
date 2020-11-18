@@ -15,9 +15,9 @@
         </div>
             <div class="filter-gender">
                 <div class="gender">Genre :</div>
-                {% for gendertype in gender %}
+                {% for gender in genders %}
                 <div>
-                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gendertype }}" role="button">{{ gendertype }}</a>
+                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
                 </div>
                 {% endfor %}
             </div>

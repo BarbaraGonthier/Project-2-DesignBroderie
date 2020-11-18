@@ -192,7 +192,7 @@ class ProductController extends AbstractController
         return $this->twig->render(
             'Product/productByCategory.html.twig',
             [
-                'gender' => $genders,
+                'genders' => $genders,
                 'products' => $products,
                 'categoryId' => $categoryId
             ]
