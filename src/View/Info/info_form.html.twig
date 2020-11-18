@@ -7,19 +7,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1> Demande de renseignements </h1>
+                <h1 class="title"> Demande de renseignements </h1>
             </div>
         </div>
-        <div class="row">
-            {% for error in errors %}
-                <div class="col-md-8 offset-md-2">
-                    {{ error }}
-                </div>
-            {% endfor %}
-        </div>
+        {% if not errors is empty %}
+            <div class="row ">
+                {% for error in errors %}
+                    <div class="col-md-8 offset-md-2 alert alert-danger">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <div class="row infoform">
             <div class="col-8 offset-2">
-                <h2>Vos informations</h2>
+                <h2 class="title-2">Vos informations</h2>
                 <form action="" method="post">
                     <div class="form-group">
                         <label for="firstname"> Prénom : </label>
@@ -45,5 +47,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% block footer %}{% endblock %}

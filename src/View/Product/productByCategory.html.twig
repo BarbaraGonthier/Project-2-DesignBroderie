@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block title %}Catalogue de vêtements{% endblock %}
+{% block content %}
 
 
 {% block content %}
@@ -31,6 +32,7 @@
                     <div class="card text-dark">
                         <img src="/uploads/products/{{ product.image }}" class="card-img-top"
                              alt="image de {{ product.name }}">
+
                         <div class="card-body">
                             <div title="Categorie {{ product.name }}">
                                 <p class="text-dark"><strong>{{ product.name }} </strong> Réf : {{ product.reference }}
@@ -48,11 +50,11 @@
                 <h2>Aucun produit à afficher</h2>
             {% endfor %}
         </div>
-        <div class="link-provider">
+        <div class="link-provider mt-5">
             <p class="text-dark">
                 Pour plus de choix de vêtements, visitez le site de notre fournisseur <strong>TEXTILE EUROPE</strong>
             </p>
-            <a class="btn btn-dark" href="https://www.textileeurope.com/new-2020">
+            <a class="btn btn-dark" href="https://www.textileeurope.com/new-2020" target="_blank">
                 Juste ici !
             </a>
         </div>

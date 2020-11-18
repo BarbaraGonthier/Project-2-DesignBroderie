@@ -1,14 +1,21 @@
 h1 {
-    background-color: var(--secondary-background-color);
-    width: 55vw;
+    color : var(--title-color);
+    font-family : var(--title-font-family);
     text-align: center;
 }
 
 .title {
+    margin : var(--spacing-6);
+    padding : var(--spacing-2);
+    background-color : var(--secondary-background-color);
+}
+
+.container-fluid {
     margin-top: var(--spacing-6);
     margin-bottom: var(--spacing);
     display: flex;
     justify-content: center;
+
 }
 
 .card-body > div > p {
@@ -18,11 +25,6 @@ h1 {
 
 .card {
     margin-bottom : var(--spacing-4);
-}
-
-.col-sm-12 {
-    display: flex;
-    justify-content: center;
 }
 
 .link-provider {

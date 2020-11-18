@@ -77,7 +77,7 @@ class ProductController extends AbstractController
                 if (!empty($_FILES['image']['name'])) {
                     $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                     $newFileName = uniqid() . '.' . $fileExtension;
-                    $uploadDir = 'uploads/product/';
+                    $uploadDir = 'uploads/products/';
                     move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $newFileName);
                     $product['image'] = $newFileName;
                 }
