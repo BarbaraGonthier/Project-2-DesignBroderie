@@ -116,6 +116,7 @@ class ProductController extends AbstractController
                 $id = $product['id'];
                 $productFields['id'] = $id;
                 $productManager->update($productFields);
+
                 header('Location:/product/show/' . $id);
             }
         }
