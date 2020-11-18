@@ -3,26 +3,37 @@
 namespace App\Controller;
 
 use App\Model\InfoManager;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Email;
 
 class InfoController extends AbstractController
 {
     public function infoSend()
     {
-        $info = [];
+        $contact = [];
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-            $info = array_map('trim', $_POST);
-            $errors = $this->infoValidate($info);
+            $contact = array_map('trim', $_POST);
+            $errors = $this->infoValidate($contact);
 
             if (empty($errors)) {
-                $infoManager = new InfoManager();
-                $infoManager->infoSave($info);
+                $transport = Transport::fromDsn(MAILER_DSN);
+                $mailer = new Mailer($transport);
+                $email = (new Email())
+                    ->from($contact['email'])
+                    ->to(MAIL_TO)
+                    ->subject('Message de Design Broderie')
+                    ->html('<h1> Message de ' . $contact['firstname'] .
+                        ' ' . $contact['lastname'] . '</h1><p>' . $contact['message'] . '</p>');
+
+                $mailer->send($email);
                 header('Location:/home/index/');
             }
         }
 
         return $this->twig->render('Info/info_form.html.twig', [
-            'info' => $info,
+            'info' => $contact,
             'errors' => $errors]);
     }
 
