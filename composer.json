@@ -12,7 +12,8 @@
         "php" : ">=7.4",
         "ext-pdo" : "*",
         "twig/twig": "^2.4",
-        "ext-fileinfo": "*"
+        "ext-fileinfo": "*",
+        "symfony/mailer": "^5.1"
     },
     "require-dev": {
         "phpmd/phpmd": "^2.7",
