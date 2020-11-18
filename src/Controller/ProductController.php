@@ -64,7 +64,7 @@ class ProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST);
-            $errors = $this->productValidation($product);
+            $errors = $this->productValidation($product, true);
             if (empty($errors)) {
                 if (!empty($_FILES['image']['name'])) {
                     $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
@@ -103,17 +103,17 @@ class ProductController extends AbstractController
         $categories = $categoryManager->selectAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productFields = array_map('trim', $_POST);
-            $errors = $this->productValidation($productFields);
+            $errors = $this->productValidation($productFields, false);
             if (empty($errors)) {
                 if (!empty($_FILES['image']['name'])) {
                     $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                     $newFileName = uniqid() . '.' . $fileExtension;
                     $uploadDir = 'uploads/products/';
                     move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $newFileName);
-                    $product['image'] = $newFileName;
+                    $productFields['image'] = $newFileName;
+                } else {
+                    $productFields['image'] = $product['image'];
                 }
-                $productManager = new ProductManager();
-                $id = $product['id'];
                 $productFields['id'] = $id;
                 $productManager->update($productFields);
 
@@ -131,7 +131,7 @@ class ProductController extends AbstractController
      * @SuppressWarnings(PHPMD)
      */
 
-    private function productValidation(array $product): array
+    private function productValidation(array $product, bool $imageRequired): array
     {
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
         $maxSize = 2000000;
@@ -171,7 +171,7 @@ class ProductController extends AbstractController
         if ($size > $maxSize) {
             $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 2000000 . " Mo";
         }
-        if (empty($_FILES['image']['name'])) {
+        if (empty($_FILES['image']['name']) && $imageRequired) {
             $errors[] = "Vous devez insérer une image.";
         }
         if (empty($product['price'])) {
