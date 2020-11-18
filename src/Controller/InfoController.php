@@ -27,13 +27,17 @@ class InfoController extends AbstractController
                     ->html($this->twig->render('Info/email.html.twig', ['contact' => $contact]));
 
                 $mailer->send($email);
-                header('Location:/home/index/');
+                header('Location:/info/thanks/');
             }
         }
 
         return $this->twig->render('Info/info_form.html.twig', [
             'info' => $contact,
             'errors' => $errors]);
+    }
+    public function thanks()
+    {
+        return $this->twig->render('Info/thanks.html.twig');
     }
 
     public function infoValidate(array $info): array
