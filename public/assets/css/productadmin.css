@@ -25,6 +25,18 @@ th {
 img {
     width : 300px;
 }
+
+.little {
+    width: 60px; height: 60px;
+    object-fit: contain;
+}
+
+.little:hover {
+    width: 120px; height: 120px;
+    object-fit: contain;
+}
+
+
 @media screen and (max-width: 740px) {
 
     :root {
