@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryManager;
 use App\Model\InfoManager;
 
 class InfoController extends AbstractController
 {
     public function infoSend()
     {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
         $info = [];
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
@@ -23,7 +26,9 @@ class InfoController extends AbstractController
 
         return $this->twig->render('Info/info_form.html.twig', [
             'info' => $info,
-            'errors' => $errors]);
+            'errors' => $errors,
+            'categories' => $categories
+        ]);
     }
 
     public function infoValidate(array $info): array
