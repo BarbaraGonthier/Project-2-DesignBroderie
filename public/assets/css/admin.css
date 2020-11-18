@@ -28,8 +28,7 @@ h1 {
     align-items: center;
 }
 .imageAdmin {
-    width:150px;
-    height: 150px;
+    width: 50%;
     margin: var(--spacing-4);
     padding-bottom: var(--spacing-4);
     border-bottom: 1px solid lightgrey;
