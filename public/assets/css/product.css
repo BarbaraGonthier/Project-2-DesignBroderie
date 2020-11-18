@@ -12,7 +12,10 @@ h1 {
 
 .container-fluid {
     margin-top: var(--spacing-6);
-    margin-bottom: var(--spacing-6);
+    margin-bottom: var(--spacing);
+    display: flex;
+    justify-content: center;
+
 }
 
 .card-body > div > p {
@@ -35,4 +38,36 @@ h1 {
 
 .link-provider > p {
     text-align: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.filter-gender:not(:last-child){
+    display: flex;
+    margin-top: var(--spacing-6);
+}
+
+.filter-gender > div:nth-child(0n+1) {
+    margin-right: var(--spacing-2);
+}
+
+.filter-gender > div:nth-child(1n+2) {
+    margin-right: var(--spacing);
+}
+
+.gender {
+    border: 1px solid var(--dark);
+    border-radius: calc(var(--border-radius) - 3px);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing);
+    background-color: var(--secondary-background-color);
+}
+
+.reload {
+    margin: var(--spacing) 0 var(--spacing-6) 0;
 }

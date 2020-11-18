@@ -6,25 +6,37 @@
 {% block title %}Catalogue de vêtements{% endblock %}
 {% block content %}
 
+
+{% block content %}
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 offset-md-1 col-12">
-                <div class="title">
-                    <h1>Nos choix</h1>
-                </div>
+        <div>
+            <div class="title">
+                <h1>Nos choix</h1>
             </div>
         </div>
-    </div>
+            <div class="filter-gender">
+                <div class="gender">Genre :</div>
+                {% for gender in genders %}
+                <div>
+                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="reload">
+                <a href="/product/list/{{ categoryId }}">réinitialiser</a>
+            </div>
 
-    <div class="container-fluid">
         <div class="row">
             {% for product in products %}
-                <div class="col-md-2 mb-4">
-                    <div class="card text-dark text-center h-100">
-                        <img src="/uploads/products/{{ product.image }}" class="card-img-top" alt="image de {{ product.name }}">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card text-dark">
+                        <img src="/uploads/products/{{ product.image }}" class="card-img-top"
+                             alt="image de {{ product.name }}">
+
                         <div class="card-body">
                             <div title="Categorie {{ product.name }}">
-                                <p class="text-dark"><strong>{{ product.name }} </strong> Réf : {{ product.reference }}</p>
+                                <p class="text-dark"><strong>{{ product.name }} </strong> Réf : {{ product.reference }}
+                                </p>
                                 <p class="text-dark">Prix : {{ product.price }} €</p>
                                 <p class="text-dark">Description : {{ product.description }} </p>
                             </div>
@@ -34,6 +46,8 @@
                         </a>
                     </div>
                 </div>
+            {% else %}
+                <h2>Aucun produit à afficher</h2>
             {% endfor %}
         </div>
         <div class="link-provider mt-5">
