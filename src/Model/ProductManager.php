@@ -31,11 +31,11 @@ class ProductManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function filter($categoryId, $gender)
+    public function filter($categoryId, $gender = null)
     {
         $where = ' category_id = :categoryId';
 
-        if (isset($gender)) {
+        if ($gender !== null) {
             $where .= ' AND gender = :gender';
         }
 
@@ -43,7 +43,7 @@ class ProductManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
 
-        if (isset($gender)) {
+        if ($gender !== null) {
             $statement->bindValue(':gender', $gender, \PDO::PARAM_STR);
         }
 
