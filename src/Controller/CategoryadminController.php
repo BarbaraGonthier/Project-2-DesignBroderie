@@ -42,7 +42,7 @@ class CategoryadminController extends AbstractController
     private function categoriesValidate(array $categories): array
     {
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
-        $maxSize = 5000000;
+        $maxSize = 200000;
 
         $size = filesize($_FILES['image']['tmp_name']);
 
@@ -60,7 +60,7 @@ class CategoryadminController extends AbstractController
             $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
         }
         if ($size > $maxSize) {
-            $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 5000000 . " Mo";
+            $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 200000 . " Mo";
         }
         if (empty($_FILES['image']['name'])) {
             $errors[] = "Vous devez insérer une image.";

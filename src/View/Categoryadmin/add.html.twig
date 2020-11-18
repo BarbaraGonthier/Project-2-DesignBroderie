@@ -25,18 +25,18 @@
             <div class="col-md-8 offset-md-2">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="barreForm1">
-                        <label for="name">Nom du modèle:</label>
+                        <label for="name">Nom de la catégorie:</label>
                         <input type="text" name="name" id="name">
                     </div>
                     <div>
                         <label for="image">Fichier:</label>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="5000000"/>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="200000"/>
                         <input  type="file" id="image" name="image">
                     </div>
                     <button type="submit" class="btn btn btn-dark">Télécharger</button>
-                    <p><strong>Note:</strong> Seuls les formats .jpg, .gif, .png sont autorisés jusqu'à une taille maximale de 5 Mo.</p>
+                    <p><strong>Note:</strong> Seuls les formats .jpg, .gif, .png sont autorisés jusqu'à une taille maximale de 2 Mo.</p>
                 </form>
-                <a href="/pattern/index" class="btn btn-dark" role="button">Retour</a>
+                <a href="/categoryadmin/index" class="btn btn-dark" role="button">Retour</a>
             </div>
         </div>
     </div>
