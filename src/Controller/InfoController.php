@@ -24,8 +24,7 @@ class InfoController extends AbstractController
                     ->from($contact['email'])
                     ->to(MAIL_TO)
                     ->subject('Message de Design Broderie')
-                    ->html('<h1> Message de ' . $contact['firstname'] .
-                        ' ' . $contact['lastname'] . '</h1><p>' . $contact['message'] . '</p>');
+                    ->html($this->twig->render('Info/email.html.twig', ['contact' => $contact]));
 
                 $mailer->send($email);
                 header('Location:/home/index/');
