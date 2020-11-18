@@ -105,6 +105,13 @@ class ProductController extends AbstractController
             $productFields = array_map('trim', $_POST);
             $errors = $this->productValidation($productFields);
             if (empty($errors)) {
+                if (!empty($_FILES['image']['name'])) {
+                    $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/products/';
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $newFileName);
+                    $product['image'] = $newFileName;
+                }
                 $productManager = new ProductManager();
                 $id = $product['id'];
                 $productFields['id'] = $id;
