@@ -3,34 +3,37 @@
     <link rel="stylesheet" href="/assets/css/addproduct.css">
 {% endblock %}
 
-{% block title %}{{ parent() }}Ajouter un produit | Administrateur{% endblock %}
+{% block title %}{{ parent() }}Modifier un produit | Administrateur{% endblock %}
 
 {% block content %}
+
+
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1 class="title">Ajout d'un nouveau produit</h1>
+                <h1 class="title">Modification d'un produit</h1>
             </div>
         </div>
-        {% if not errors is empty %}
-            <div class="row ">
-                {% for error in errors %}
-                    <div class="col-md-8 offset-md-2 alert alert-danger">
-                        {{ error }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
+    {% if not errors is empty %}
+        <div class="row ">
+            {% for error in errors %}
+                <div class="col-md-8 offset-md-2 alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST">
                 <div class="form-group">
-
                     <label for="product-category">Catégorie de produit : </label>
                     <select name="category" id="category">
                         {% for category in categories %}
-                            <option {{ product.category == category.id ? 'selected' }}
+
+                            <option {{ product.category_id == category.id ? 'selected' }}
                                     value="{{ category.id }}">{{ category.name }}</option>
+
                         {% endfor %}
                     </select>
                 </div>
@@ -41,18 +44,16 @@
                 </div>
 
 
-
-        <div class="form-group">
-            <label for="gender"> Genre : </label>
-            <select name="gender" id="gender" class="form-control">
-                <option value="">--Faites votre choix--</option>
-                <option {{ product.gender == 'Femme' ? 'selected '}} value="Femme">Femme</option>
-                <option {{ product.gender == 'Homme' ? 'selected '}} value="Homme">Homme</option>
-                <option {{ product.gender == 'Mixte' ? 'selected '}} value="Mixte">Mixte</option>
-            </select>
-            </select>
-        </div>
-
+                <div class="form-group">
+                    <label for="gender"> Genre : </label>
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="">--Faites votre choix--</option>
+                        <option {{ product.gender == 'Femme' ? 'selected ' }} value="Femme">Femme</option>
+                        <option {{ product.gender == 'Homme' ? 'selected ' }} value="Homme">Homme</option>
+                        <option {{ product.gender == 'Mixte' ? 'selected ' }} value="Mixte">Mixte</option>
+                    </select>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label for="reference"> Référence : </label>
@@ -66,11 +67,11 @@
             {{ product.description }}
         </textarea>
                 </div>
-
-                <div>
-                    <label for="photo">Fichier : </label>
-                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
-                    <input type="file" id="image" name="image">
+                <div class="form-group">
+                    <label for="image">Image : </label>
+                    <input placeholder="http://monimage.com" class="form-control" type="url" min="0" id="image"
+                           name="image"
+                           value="{{ product.image }}">
                 </div>
                 <div class="form-group">
                     <label for="price">Prix : </label>
@@ -79,7 +80,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-dark">Ajouter</button>
+                    <button type="submit" class="btn btn-dark">Modifier</button>
                     <a href='/product/index' class="delete btn btn-dark" role="button">Retour</a>
                 </div>
             </form>

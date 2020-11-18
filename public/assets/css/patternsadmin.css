@@ -1,4 +1,4 @@
-.titre {
+.title {
     margin : var(--spacing-6);
     padding : var(--spacing-2);
     background-color : var(--secondary-background-color);
@@ -16,6 +16,10 @@ th {
 
 .add {
     margin-bottom: var(--spacing-4);
+}
+
+.delete {
+    margin-top: var(--spacing-6);
 }
 
 .imagePattern {

@@ -18,8 +18,8 @@
         <div class="container-fluid">
             <div class="row">
                 {% for category in categories %}
-                    <div class="d-flex col-md-2 justify-content-center">
-                        <img class="imageOrder" src="/assets/images/{{ category.image }}" alt="Vêtements" title="Nos vêtements">
+                    <div class="d-flex col-lg-2 justify-content-center">
+                        <img class="imageCategory" src="/assets/images/category/{{ category.image }}" alt="{{ category.name }}" title="{{ category.name }}">
                     </div>
                 {% endfor %}
             </div>
@@ -35,26 +35,26 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <img class="imageOrder" src="/assets/images/porte.jpg" alt="Vêtements" title="Nos vêtements">
-                    <img class="imageStep" src="/assets/images/one.png" alt="1" title="1">
-                    <p>Choisissez vos vêtements sur <a href="/category/index">notre site</a> ou envoyez-nous les votres</p>
+                    <img class="imageOrder" src="/assets/images/home/porte.jpg" alt="Vêtements" title="Nos vêtements">
+                    <img class="imageStep" src="/assets/images/home/one.png" alt="1" title="1">
+                    <p>Choisissez vos vêtements sur <a href="/home/category/index">notre site</a> ou envoyez-nous les votres</p>
                 </div>
                 <div class="col-lg-3">
-                    <img class="imageOrder" src="/assets/images/formulaire.jpg" alt="Formulaire" title="Sourire">
-                    <img class="imageStep" src="/assets/images/two.png" alt="2" title="2">
+                    <img class="imageOrder" src="/assets/images/home/formulaire.jpg" alt="Formulaire" title="Sourire">
+                    <img class="imageStep" src="/assets/images/home/two.png" alt="2" title="2">
                     <p>Remplissez <a href="/order/sendquote">notre formulaire</a> et faites-nous parvenir votre ou vos visuels
                     </p>
                 </div>
                 <div class="col-lg-3">
-                    <img class="imageOrder" src="/assets/images/machine.jpg" alt="Barudan" title="Barudan">
-                    <img class="imageStep" src="/assets/images/three.png" alt="3" title="3">
+                    <img class="imageOrder" src="/assets/images/home/machine.jpg" alt="Barudan" title="Barudan">
+                    <img class="imageStep" src="/assets/images/home/three.png" alt="3" title="3">
                     <p>Votre visuel est transformé en programme de broderie. Il est stocké pendant plusieurs années dans
                         une
                         base de données, ce qui vous permet de refaire vos broderies quand vous le souhaitez !</p>
                 </div>
                 <div class="col-lg-3">
-                    <img class="imageOrder" src="/assets/images/transport.jpg" alt="Transport" title="Transport">
-                    <img class="imageStep" src="/assets/images/four.png" alt="4" title="4">
+                    <img class="imageOrder" src="/assets/images/home/transport.jpg" alt="Transport" title="Transport">
+                    <img class="imageStep" src="/assets/images/home/four.png" alt="4" title="4">
                     <p>Nos livraisons (24/48h) sont effectuées par transporteur routier</p>
                 </div>
             </div>
@@ -72,28 +72,28 @@
 
                 <div class="carousel-inner" role="listbox">
                     <div class="imageCarousel carousel-item active"><a href="#"><img class="d-block w-100"
-                                                                                     src="/assets/images/broderie1.jpg"
+                                                                                     src="/assets/images/home/broderie1.jpg"
                                                                                      alt="Première slide"
                                                                                      title="Nos réalisations"></a>
                         <p>
                             Quelques réalisations de broderie</p>
                     </div>
                     <div class="imageCarousel carousel-item"><a href="#"><img class="d-block w-100"
-                                                                              src="/assets/images/broderie2.jpg"
+                                                                              src="/assets/images/home/broderie2.jpg"
                                                                               alt="Deuxième slide"
                                                                               title="Nos réalisations"></a>
                         <p>
                             Quelques réalisations de broderie</p>
                     </div>
                     <div class="imageCarousel carousel-item"><a href="#"><img class="d-block w-100"
-                                                                              src="/assets/images/broderie3.jpg"
+                                                                              src="/assets/images/home/broderie3.jpg"
                                                                               alt="Troisième slide"
                                                                               title="Nos réalisations"></a>
                         <p>
                             Quelques réalisations de broderie</p>
                     </div>
                     <div class="imageCarousel carousel-item"><a href="#"><img class="d-block w-100"
-                                                                              src="/assets/images/broderie4.jpg"
+                                                                              src="/assets/images/home/broderie4.jpg"
                                                                               alt="Quatrième slide"
                                                                               title="Nos réalisations"></a>
                         <p>
@@ -117,6 +117,8 @@
     </section>
 
     <section class="description">
+        <div class="container">
+            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
         <h2>Notre métier : la broderie</h2>
         <p>Entreprise artisanale située dans la banlieue d'Orléans, Design Broderie est spécialisée dans la broderie
             sur tous types de textiles. Elle est reconnue par l'ensemble de sa clientèle pour sa modernité, son
@@ -128,7 +130,7 @@
             sous-traitance), nous pouvons, grâce à ces équipements et à notre savoir-faire de plusieurs années, vous
             assurer une qualité exemplaire à un prix tout à fait raisonnable, sans aucun frais technique. Le minimum de
             vêtements à broder est de 5 pièces.</p>
-        -
+
         <h2>Entreprises</h2>
         <p>Pour donner à votre entreprise, tous les éléments d'une communication exceptionnelle et de qualité,
             n'hésitez pas à afficher votre publicité sur vos vêtements professionnels. De par son élégance et sa
@@ -137,6 +139,8 @@
             La broderie est un moyen efficace d'afficher vos couleurs et logos et de donner à votre association toute la
             vitalité souhaitée et optimiser votre budget en vendant vos propres supports lors de rencontres, tournois,
             manifestations..</p>
+            </div>
+        </div>
     </section>
 
     <section class="localisation">

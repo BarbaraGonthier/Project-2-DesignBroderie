@@ -1,5 +1,6 @@
-.titre {
+.title {
     margin : var(--spacing-6);
+    margin-bottom: 0px;
     padding : var(--spacing-2);
     background-color : var(--secondary-background-color);
     text-align: center;
@@ -8,6 +9,10 @@
 .title-2 {
     margin-top : var(--spacing-6);
     text-align: center;
+}
+
+.delete {
+    margin-top: var(--spacing-6);
 }
 
 .container-fluid, .container {

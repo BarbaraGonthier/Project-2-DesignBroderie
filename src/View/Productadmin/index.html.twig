@@ -1,24 +1,25 @@
 {% extends 'layout.html.twig' %}
-
-
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/productadmin.css"> {% endblock %}
+
+{% block title %}{{ parent() }} Index produit | Administrateur{% endblock %}
 
 {% block content %}
 
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1 class="titre">
+                <h1 class="title">
                     Liste des produits disponibles
                 </h1>
             </div>
         </div>
     </div>
-    <a href="/product/add" class="btn btn-dark" role="button">Ajouter un produit</a>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+                <a href="/product/add" class="add btn btn-dark" role="button">Ajouter un produit</a>
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                     <tr>
@@ -31,38 +32,27 @@
                     <tbody>
                     {% for product in products %}
                         <tr>
-
-
                             <td>{{ product.name }}</td>
                             <td>{{ product.reference }}</td>
                             <td>{{ product.price }}</td>
                             <td>
                                 <a href="/product/show/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
-
-
                                 <a href="/product/edit/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
-
-
                                 <form action='/product/delete/' method="POST" class="btn btn-lg">
                                     <button class="btn btn-danger btn-lg">Supprimer</button>
                                     <input type="hidden" name="id" value="{{ product.id }}">
                                 </form>
-
-
                             </td>
-
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+                <a href='/admin/index' class="delete btn btn-dark" role="button">Retour page administration</a>
             </div>
         </div>
 
     </div>
 {% endblock %}
-
-       {% block footer %}
-
-       {% endblock %}
+{% block footer %}{% endblock %}
 
 

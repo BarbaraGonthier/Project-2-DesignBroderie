@@ -7,6 +7,10 @@ h1 {
     background-color : var(--secondary-background-color);
 }
 
+.title {
+    padding-top: var(--spacing-6);
+}
+
 .title > p {
     margin: 0 var(--spacing-4) var(--spacing-4) var(--spacing-4);
     padding : var(--spacing-2);
@@ -23,10 +27,10 @@ h1 {
     flex-direction: column;
     align-items: center;
 }
-.card-text-center > img {
-    width:300px;
-    height: 300px;
-    padding: var(--spacing-4) 0px;
+.imageAdmin {
+    width: 50%;
+    margin: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
     border-bottom: 1px solid lightgrey;
 }
 .card-body {
@@ -35,9 +39,3 @@ h1 {
     align-items: center;
 }
 
-@media screen and (max-width: 1200px) {
-    .card-text-center > img {
-        width:200px;
-        height: 200px;
-    }
-}

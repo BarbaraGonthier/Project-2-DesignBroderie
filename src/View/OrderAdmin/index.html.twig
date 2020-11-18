@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1 col-12">
-                <h1 class="titre">
+                <h1 class="title">
                     Liste des commandes
                 </h1>
             </div>
@@ -37,13 +37,16 @@
                             <td>{{ order.status }}</td>
                             <td>
                                 <a href="/order/show/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
-                                <a href='/order/editorder/{{ order.id }}' class="btn btn-secondary btn-lg" role="button">Modifier</a>
                             </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+                <a href='/admin/index' class="delete btn btn-dark" role="button">Retour page administration</a>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}

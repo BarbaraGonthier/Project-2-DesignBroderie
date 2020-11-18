@@ -15,7 +15,7 @@ use App\Model\ProductManager;
 
 /**
  * Class OrderController
- *
+ * @SuppressWarnings(PHPMD)
  */
 class OrderController extends AbstractController
 {
@@ -33,13 +33,13 @@ class OrderController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $order = array_map('trim', $_POST);
 
-            $errors = $this->orderValidate($order);
+            $errors = $this->quoteValidate($order);
 
             if (empty($errors)) {
                 if (!empty($_FILES['userLogo']['name'])) {
                     $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
                     $newFileName = uniqid() . '.' . $fileExtension;
-                    $uploadDir = 'uploads/';
+                    $uploadDir = 'uploads/order-logos/';
                     move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
                 } else {
                     $newFileName = '';
@@ -48,7 +48,7 @@ class OrderController extends AbstractController
 
                 $orderManager = new OrderManager();
                 $orderManager->saveQuote($order);
-                header('Location:/home/index/');
+                header('Location:/order/thanks/');
             }
         }
 
@@ -56,37 +56,77 @@ class OrderController extends AbstractController
             'order' => $order,
             'errors' => $errors]);
     }
-    public function thanks()
+    /**
+     * @param array $order
+     * @return array
+     * @SuppressWarnings(PHPMD)
+     */
+    private function quoteValidate(array $order): array
     {
-        return $this->twig->render('Order/thanks.html.twig');
-    }
-    public function editOrder(int $id)
-    {
+        $inputLength = 100;
+        $shortInputLength = 20;
+        $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
+        $maxSize = 100000;
+
         $errors = [];
-        $orderManager = new OrderManager();
-        $order = $orderManager->selectOneById($id);
 
-        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-            $order = array_map('trim', $_POST);
-            $errors = $this->editValidate($order);
-
-            if (empty($errors)) {
-                $orderManager->updateOrder($order);
-                header('Location:/home/index/');
-            }
+        if (empty($order['firstname'])) {
+            $errors[] = 'Le champ prénom est obligatoire';
         }
-
-        return $this->twig->render('OrderAdmin/edit.html.twig', ['order' => $order, 'errors' => $errors]);
-    }
-    private function editValidate(array $order): array
-    {
-        $errors = [];
-
-        if (!in_array($order['status'], self::STATUSES)) {
-            $errors[] = 'Les valeurs possibles sont : ' . implode(", ", self::STATUSES);
+        if (!empty($order['firstname']) && strlen($order['firstname']) > $inputLength) {
+            $errors[] = 'Le champ prénom doit contenir moins de ' . $inputLength . ' caractères';
+        }
+        if (empty($order['lastname'])) {
+            $errors[] = 'Le champ nom est obligatoire';
+        }
+        if (!empty($order['lastname']) && strlen($order['lastname']) > $inputLength) {
+            $errors[] = 'Le champ nom doit faire contenir de ' . $inputLength . ' caractères';
+        }
+        if (empty($order['email'])) {
+            $errors[] = 'Le champ email est obligatoire';
+        }
+        if (!empty($order['email']) && strlen($order['email']) > $inputLength) {
+            $errors[] = 'Le champ email doit contenir moins de ' . $inputLength . ' caractères';
+        }
+        if (!empty($order['phone']) && strlen($order['phone']) > $shortInputLength) {
+            $errors[] = 'Le champ téléphone doit contenir moins de ' . $shortInputLength . ' caractères';
+        }
+        if (!empty($order['companyName']) && strlen($order['companyName']) > $inputLength) {
+            $errors[] = 'Le champ raison sociale doit contenir moins de ' . $inputLength . ' caractères';
+        }
+        if (empty($order['address'])) {
+            $errors[] = 'Le champ adresse est obligatoire';
+        }
+        if (!empty($order['address']) && strlen($order['address']) > $inputLength) {
+            $errors[] = 'Le champ addresse doit contenir moins de ' . $inputLength . ' caractères';
+        }
+        if (empty($order['postcode'])) {
+            $errors[] = 'Le champ code postal est obligatoire';
+        }
+        if (!empty($order['postcode']) && strlen($order['postcode']) > $shortInputLength) {
+            $errors[] = 'Le champ code postal doit contenir moins de ' . $shortInputLength . ' caractères';
+        }
+        if (empty($order['city'])) {
+            $errors[] = 'Le champ ville est obligatoire';
+        }
+        if (!empty($order['city']) && strlen($order['city']) > $inputLength) {
+            $errors[] = 'Le champ ville doit contenir moins de ' . $inputLength . ' caractères';
+        }
+        if (
+            !empty($_FILES['userLogo']['tmp_name']) &&
+            !in_array(mime_content_type($_FILES['userLogo']['tmp_name']), $extensions)
+        ) {
+            $errors[] = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg';
+        }
+        if (!empty($_FILES['userLogo']['tmp_name']) && filesize($_FILES['userLogo']['tmp_name']) > $maxSize) {
+            $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 100000 . " Mo";
         }
 
         return $errors ?? [];
+    }
+    public function thanks()
+    {
+        return $this->twig->render('Order/thanks.html.twig');
     }
     public function index()
     {
@@ -98,8 +138,16 @@ class OrderController extends AbstractController
     {
         $orderManager = new OrderManager();
         $order = $orderManager->selectByIdJoinProduct($id);
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $order = array_map('trim', $_POST);
+            $orderManager->updateOrder($order);
+            header('Location:/order/show/' . $id);
+        }
 
-        return $this->twig->render('OrderAdmin/show.html.twig', ['order' => $order]);
+        return $this->twig->render(
+            'OrderAdmin/show.html.twig',
+            ['order' => $order, 'statuses' => self::STATUSES,]
+        );
     }
     public function sendOrder(int $id)
     {
@@ -118,7 +166,7 @@ class OrderController extends AbstractController
                 if (!empty($_FILES['userLogo']['name'])) {
                     $fileExtension = pathinfo($_FILES['userLogo']['name'], PATHINFO_EXTENSION);
                     $newFileName = uniqid() . '.' . $fileExtension;
-                    $uploadDir = 'uploads/';
+                    $uploadDir = 'uploads/order-logos/';
                     move_uploaded_file($_FILES['userLogo']['tmp_name'], $uploadDir . $newFileName);
                 } else {
                     $newFileName = '';

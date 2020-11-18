@@ -1,8 +1,8 @@
 .banner {
     display: flex;
     justify-content: flex-end;
-    background: url("/assets/images/sewing.jpg") no-repeat fixed center;
-    background-size: 100%;
+    background: url("/assets/images/home/sewing.jpg") no-repeat fixed center;
+    background-size: cover;
     height: 600px;
     padding-top: var(--padding-barre);
 }
@@ -134,4 +134,6 @@ h2 {
 .localisation p {
     color: var(--dark);
 }
+
+
 
