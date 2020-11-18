@@ -27,10 +27,11 @@ h1 {
     flex-direction: column;
     align-items: center;
 }
-.card-text-center > img {
-    width:300px;
-    height: 300px;
-    padding: var(--spacing-4) 0px;
+.imageAdmin {
+    width:150px;
+    height: 150px;
+    margin: var(--spacing-4);
+    padding-bottom: var(--spacing-4);
     border-bottom: 1px solid lightgrey;
 }
 .card-body {
@@ -39,9 +40,3 @@ h1 {
     align-items: center;
 }
 
-@media screen and (max-width: 1200px) {
-    .card-text-center > img {
-        width:200px;
-        height: 200px;
-    }
-}
