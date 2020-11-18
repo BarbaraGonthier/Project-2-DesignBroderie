@@ -11,9 +11,10 @@
         </div>
         <div class="row">
             {% for pattern in patterns %}
-                <div class="col-md-3">
+                <figure class="col-md-3">
                     <img src="/uploads/patterns/{{ pattern.photo }}" class="img-fluid pattern-img" alt="{{ pattern.name }}">
-                </div>
+                    <figcaption class="text-center">{{ pattern.name }}</figcaption>
+                </figure>
             {% endfor %}
         </div>
     </div>
