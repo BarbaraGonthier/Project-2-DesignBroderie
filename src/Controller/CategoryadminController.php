@@ -67,5 +67,11 @@ class CategoryadminController extends AbstractController
         }
 
         return $errors ?? [];
+
+    public function index()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        return $this->twig->render('/Categoryadmin/index.html.twig', ['categories' => $categories]);
     }
 }
