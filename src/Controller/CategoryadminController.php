@@ -6,6 +6,7 @@ use App\Model\CategoryManager;
 
 class CategoryadminController extends AbstractController
 {
+
     public function delete()
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -18,5 +19,11 @@ class CategoryadminController extends AbstractController
         } else {
             echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
         }
+
+    public function index()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        return $this->twig->render('/Categoryadmin/index.html.twig', ['categories' => $categories]);
     }
 }
