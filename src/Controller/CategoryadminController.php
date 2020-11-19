@@ -16,7 +16,7 @@ class CategoryadminController extends AbstractController
             $categoryManager->delete($id);
             return $this->twig->render('Categoryadmin/delete.html.twig', ['$categories' => $categories]);
         } else {
-            echo "merci de vous connecter à votre espace admin et de choisir un produit à supprimer";
+            echo "merci de vous connecter à votre espace admin et de choisir une catégories à supprimer";
         }
     }
 }
