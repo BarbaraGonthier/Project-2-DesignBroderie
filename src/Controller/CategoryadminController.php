@@ -19,6 +19,7 @@ class CategoryadminController extends AbstractController
         } else {
             echo "merci de vous connecter à votre espace admin et de choisir une catégories à supprimer";
         }
+    }
 
     public function index()
     {
