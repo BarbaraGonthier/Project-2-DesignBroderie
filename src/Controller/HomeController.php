@@ -27,8 +27,8 @@ class HomeController extends AbstractController
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
         $categoryManager = new CategoryManager();
-        $categori = $categoryManager->selectAllLimit();
+        $categoryLimit = $categoryManager->selectAllLimit();
         return $this->twig->render('Home/index.html.twig', ['categories' => $categories,
-            'categori' => $categori]);
+            'categoryLimit' => $categoryLimit]);
     }
 }
