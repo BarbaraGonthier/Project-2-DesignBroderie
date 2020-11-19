@@ -67,6 +67,7 @@ class CategoryadminController extends AbstractController
         }
 
         return $errors ?? [];
+    }
 
     public function index()
     {
