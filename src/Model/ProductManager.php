@@ -52,6 +52,28 @@ class ProductManager extends AbstractManager
     }
 
 
+    public function filterBySearch(int $categoryId, string $search = null)
+    {
+        $where = ' category_id = :categoryId';
+        if (isset($_POST['filter_search']) && !empty($_POST['filter_search'])) {
+            $search = htmlentities($_POST(['filter_search']));
+        }
+        if ($search !== null) {
+            $where .= ' AND name LIKE %' . $search . '%';
+        }
+
+        $query = "SELECT * FROM " . self::TABLE . " WHERE" . $where;
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
+        if ($search !== null) {
+            $statement->bindValue(':search', $search, \PDO::PARAM_STR);
+        }
+
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+
     /**
      * @param int $id
      */

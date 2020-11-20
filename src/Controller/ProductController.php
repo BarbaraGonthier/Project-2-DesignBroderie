@@ -206,4 +206,18 @@ class ProductController extends AbstractController
             ]
         );
     }
+
+    public function listBySearch(int $categoryId, string $search = null)
+    {
+        $productManager = new ProductManager();
+        $products = $productManager->filterBySearch($categoryId, $search);
+        return $this->twig->render(
+            'Product/productByCategory.html.twig',
+            [
+                'search' => $search,
+                'products' => $products,
+                'categoryId' => $categoryId
+            ]
+        );
+    }
 }

@@ -18,6 +18,12 @@
                     <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
                 </div>
                 {% endfor %}
+                <div class="search">
+                    <form action="POST">
+                        <input class="btn btn-dark" type="search" name="filter_search" placeholder="Recherche ..."/>
+                        <input class="btn btn-light" type="submit" value="Valider"/>
+                    </form>
+                </div>
             </div>
             <div class="reload">
                 <a href="/product/list/{{ categoryId }}">réinitialiser</a>
