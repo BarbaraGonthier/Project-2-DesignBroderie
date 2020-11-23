@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/patternsadmin.css">{% endblock %}
+
+{% block title %}{{ parent() }} | Confirmation de suppression{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+                <h1 class="title"> Suppression de catégorie </h1>
+            </div>
+        </div>
+    </div>
+    <p class="d-flex justify-content-center">Votre catégorie a bien été supprimée</p>
+    <div class="d-flex justify-content-center">
+        <a href='/categoryadmin/index/' class="btn btn-dark" role="button">Retour à la liste des catégorie</a>
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
