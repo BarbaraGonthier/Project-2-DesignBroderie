@@ -28,8 +28,9 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $product = $productManager->selectOneByIdJoinCategory($id);
-
-        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product]);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product, 'categories' => $categories]);
     }
 
     public function index()

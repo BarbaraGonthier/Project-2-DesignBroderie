@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryManager;
 use App\Model\PatternManager;
 
 class PatternController extends AbstractController
@@ -17,7 +18,12 @@ class PatternController extends AbstractController
     {
         $patternManager = new PatternManager();
         $patterns = $patternManager->selectAll();
-        return $this->twig->render('Patterns/patterns.html.twig', ['patterns' => $patterns]);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        return $this->twig->render(
+            'Patterns/patterns.html.twig',
+            ['patterns' => $patterns, 'categories' => $categories]
+        );
     }
 
     public function addPattern()

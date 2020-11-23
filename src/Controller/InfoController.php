@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryManager;
 use App\Model\InfoManager;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport;
@@ -11,6 +12,10 @@ class InfoController extends AbstractController
 {
     public function infoSend()
     {
+
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        $info = [];
         $contact = [];
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
@@ -32,8 +37,11 @@ class InfoController extends AbstractController
         }
 
         return $this->twig->render('Info/info_form.html.twig', [
-            'info' => $contact,
-            'errors' => $errors]);
+
+            'info' => $info,
+            'errors' => $errors,
+            'categories' => $categories
+        ]);
     }
     public function thanks()
     {

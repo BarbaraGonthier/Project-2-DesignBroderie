@@ -10,6 +10,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryManager;
 use App\Model\OrderManager;
 use App\Model\ProductManager;
 
@@ -27,6 +28,8 @@ class OrderController extends AbstractController
     ];
     public function sendQuote()
     {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
         $order = [];
         $errors = [];
 
@@ -54,7 +57,8 @@ class OrderController extends AbstractController
 
         return $this->twig->render('Order/no-product_order_form.html.twig', [
             'order' => $order,
-            'errors' => $errors]);
+            'errors' => $errors,
+            'categories' => $categories]);
     }
     /**
      * @param array $order

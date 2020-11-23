@@ -17,9 +17,9 @@
         <h2>Nos vêtements à personnaliser</h2>
         <div class="container-fluid">
             <div class="row">
-                {% for category in categories %}
+                {% for category in categoryLimit %}
                     <div class="d-flex col-lg-2 justify-content-center">
-                        <img class="imageCategory" src="/assets/images/category/{{ category.image }}" alt="{{ category.name }}" title="{{ category.name }}">
+                        <img class="imageCategory" src="/uploads/category/{{ category.image }}" alt="{{ category.name }}" title="{{ category.name }}">
                     </div>
                 {% endfor %}
             </div>
