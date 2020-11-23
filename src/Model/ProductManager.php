@@ -31,42 +31,46 @@ class ProductManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function filter($categoryId, $gender = null)
-    {
-        $where = ' category_id = :categoryId';
+//    public function filter($categoryId, $gender = null)
+//    {
+//        $where = ' category_id = :categoryId';
+//
+//        if ($gender !== null) {
+//            $where .= ' AND gender = :gender';
+//        }
+//
+//        $query = "SELECT * FROM " . self::TABLE . " WHERE " . $where;
+//        $statement = $this->pdo->prepare($query);
+//        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
+//
+//        if ($gender !== null) {
+//            $statement->bindValue(':gender', $gender, \PDO::PARAM_STR);
+//        }
+//
+//        $statement->execute();
+//        return $statement->fetchAll();
+//    }
 
+
+    public function filterBySearch(int $categoryId, ?string $search = null, ?string $gender = null)
+    {
+        $where = ' category_id = :categoryId ';
+
+        if ($search) {
+            $where .= ' AND name LIKE :search';
+        }
         if ($gender !== null) {
             $where .= ' AND gender = :gender';
-        }
-
-        $query = "SELECT * FROM " . self::TABLE . " WHERE " . $where;
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
-
-        if ($gender !== null) {
-            $statement->bindValue(':gender', $gender, \PDO::PARAM_STR);
-        }
-
-        $statement->execute();
-        return $statement->fetchAll();
-    }
-
-
-    public function filterBySearch(int $categoryId, string $search = null)
-    {
-        $where = ' category_id = :categoryId';
-        if (isset($_POST['filter_search']) && !empty($_POST['filter_search'])) {
-            $search = htmlentities($_POST(['filter_search']));
-        }
-        if ($search !== null) {
-            $where .= ' AND name LIKE %' . $search . '%';
         }
 
         $query = "SELECT * FROM " . self::TABLE . " WHERE" . $where;
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
         if ($search !== null) {
-            $statement->bindValue(':search', $search, \PDO::PARAM_STR);
+            $statement->bindValue(':search', '%' . $search . '%', \PDO::PARAM_STR);
+        }
+        if ($gender !== null) {
+            $statement->bindValue(':gender', $gender, \PDO::PARAM_STR);
         }
 
         $statement->execute();
