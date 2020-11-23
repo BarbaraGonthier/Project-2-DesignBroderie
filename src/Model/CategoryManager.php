@@ -16,6 +16,7 @@ class CategoryManager extends AbstractManager
     public function selectAllLimit()
     {
         return $this->pdo->query('SELECT * FROM ' . self::TABLE . " LIMIT 6")->fetchAll();
+    }
 
     public function insert(array $category)
     {
