@@ -31,28 +31,7 @@ class ProductManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-//    public function filter($categoryId, $gender = null)
-//    {
-//        $where = ' category_id = :categoryId';
-//
-//        if ($gender !== null) {
-//            $where .= ' AND gender = :gender';
-//        }
-//
-//        $query = "SELECT * FROM " . self::TABLE . " WHERE " . $where;
-//        $statement = $this->pdo->prepare($query);
-//        $statement->bindValue(':categoryId', $categoryId, \PDO::PARAM_INT);
-//
-//        if ($gender !== null) {
-//            $statement->bindValue(':gender', $gender, \PDO::PARAM_STR);
-//        }
-//
-//        $statement->execute();
-//        return $statement->fetchAll();
-//    }
-
-
-    public function filterBySearch(int $categoryId, ?string $search = null, ?string $gender = null)
+    public function filter(int $categoryId, ?string $search = null, ?string $gender = null)
     {
         $where = ' category_id = :categoryId ';
 
