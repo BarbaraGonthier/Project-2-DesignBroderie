@@ -12,8 +12,17 @@ class CategoryManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
     public function selectAllLimit()
     {
         return $this->pdo->query('SELECT * FROM ' . self::TABLE . " LIMIT 6")->fetchAll();
+
+    public function insert(array $category)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`, image) VALUES (:name, :image)");
+        $statement->bindValue('name', $category['name'], \PDO::PARAM_STR);
+        $statement->bindValue('image', $category['image'], \PDO::PARAM_STR);
+
+        $statement->execute();
     }
 }
