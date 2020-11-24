@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 use App\Model\CategoryManager;
-use mysql_xdevapi\Expression;
-use PhpParser\Node\Expr\New_;
 
 class ProductController extends AbstractController
 {
@@ -18,7 +16,7 @@ class ProductController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public const GENDER = [
+    public const GENDERS = [
         "Homme" => "Homme",
         "Femme" => "Femme",
         "Mixte" => "Mixte"
@@ -193,15 +191,17 @@ class ProductController extends AbstractController
         return $errors ?? [];
     }
 
-    public function list(int $categoryId, string $gender = null)
+    public function list(int $categoryId, ?string $gender = null)
     {
-        $genders = self::GENDER;
+        $search = array_map('trim', $_POST);
         $productManager = new ProductManager();
-        $products = $productManager->filter($categoryId, $gender);
+        $products = $productManager->filter($categoryId, $search['filter_search'] ?? null, $gender);
         return $this->twig->render(
             'Product/productByCategory.html.twig',
             [
-                'genders' => $genders,
+                'searched' => $_POST ?? null,
+                'gendered' => $gender ?? null,
+                'genders' => self::GENDERS,
                 'products' => $products,
                 'categoryId' => $categoryId
             ]

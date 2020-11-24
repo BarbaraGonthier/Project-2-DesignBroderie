@@ -11,6 +11,15 @@
                 <h1>Nos choix</h1>
             </div>
         </div>
+        <div class="search">
+            <form method="POST">
+                <label>
+                    <input class="btn btn-dark" type="search" name="filter_search" placeholder="Recherche ..."/>
+                </label>
+                <button>Valider</button>
+            </form>
+        </div>
+        <div class="filters">
             <div class="filter-gender">
                 <div class="gender">Genre :</div>
                 {% for gender in genders %}
@@ -18,9 +27,16 @@
                     <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
                 </div>
                 {% endfor %}
+
             </div>
             <div class="reload">
                 <a href="/product/list/{{ categoryId }}">réinitialiser</a>
+            </div>
+        </div>
+            <div>
+                {% if searched is not null %}
+                    <p>Filtre(s) sélectionné(s) : {{ gendered }} / {{ searched['filter_search'] }}</p>
+                {% endif %}
             </div>
 
         <div class="row">
