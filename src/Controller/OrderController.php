@@ -139,7 +139,7 @@ class OrderController extends AbstractController
     {
         $orderManager = new OrderManager();
         $orders = $orderManager->selectAllJoinProduct();
-        return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders]);
+        return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders, 'STATUSES' => self::STATUSES]);
     }
     public function show(int $id)
     {
@@ -148,7 +148,7 @@ class OrderController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $order = array_map('trim', $_POST);
             $orderManager->updateOrder($order);
-            header('Location:/order/show/' . $id);
+            header('Location:/order/index/');
         }
 
         return $this->twig->render(
