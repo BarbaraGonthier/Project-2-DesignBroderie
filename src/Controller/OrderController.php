@@ -13,6 +13,7 @@ namespace App\Controller;
 use App\Model\CategoryManager;
 use App\Model\OrderManager;
 use App\Model\ProductManager;
+use DateTime;
 
 /**
  * Class OrderController
@@ -48,6 +49,8 @@ class OrderController extends AbstractController
                     $newFileName = '';
                 }
                 $order['userLogo'] = $newFileName;
+                $presentTime = new DateTime();
+                $order['date'] = $presentTime->format('YmdHis');
 
                 $orderManager = new OrderManager();
                 $orderManager->saveQuote($order);
@@ -176,6 +179,8 @@ class OrderController extends AbstractController
                     $newFileName = '';
                 }
                 $order['userLogo'] = $newFileName;
+                $presentTime = new DateTime();
+                $order['date'] = $presentTime->format('YmdHis');
 
                 $orderManager = new OrderManager();
                 $orderManager->saveOrder($order, $product);

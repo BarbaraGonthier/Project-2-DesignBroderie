@@ -31,11 +31,11 @@ class OrderManager extends AbstractManager
     {
         $query = "INSERT INTO " . self::TABLE .
             " (`firstname`, `lastname`, `email`, `phone`, `company_name`, 
-            `address`, `city`, `postcode`, `message`, `user_logo`, `status`) 
+            `address`, `city`, `postcode`, `message`, `user_logo`, `status`, `date`) 
             VALUES 
             (:firstname, :lastname, :email, :phone, :company_name, 
             :address, :city, :postcode, :message, 
-            :user_logo, '" . self::STATUSES['NEW'] . "')";
+            :user_logo, :date '" . self::STATUSES['NEW'] . "')";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
@@ -47,8 +47,7 @@ class OrderManager extends AbstractManager
         $statement->bindValue(':postcode', $order['postcode'], \PDO::PARAM_STR);
         $statement->bindValue(':message', $order['message'], \PDO::PARAM_STR);
         $statement->bindValue(':user_logo', $order['userLogo'], \PDO::PARAM_STR);
-
-
+        $statement->bindValue(':date', $order['date'], \PDO::PARAM_INT);
 
         $statement->execute();
     }
@@ -65,15 +64,17 @@ class OrderManager extends AbstractManager
     {
         return $this->pdo->query("SELECT o.id, o.firstname, o.lastname, o.email, o.phone, 
             o.company_name, o.address, o.city, postcode, o.size, o.quantity, o.message, o.product_id, o.user_logo, 
-            o.status, p.name product_name FROM " . self::TABLE . ' o JOIN product p ON p.id=o.product_id;')->fetchAll();
+            o.status, DATE_FORMAT(o.date, \"%d/%m/%Y\") as order_date, p.name product_name FROM " . self::TABLE . ' o 
+            LEFT JOIN product p ON p.id=o.product_id ORDER BY o.date DESC;')->fetchAll();
     }
     public function selectByIdJoinProduct(int $id): array
     {
         $statement = $this->pdo->prepare("SELECT o.id, o.firstname, o.lastname, 
         o.email, o.phone, o.company_name, o.address, o.postcode, o.city, 
         o.size, o.quantity, o.message, o.product_id, o.user_logo, o.status, 
+        DATE_FORMAT(o.date, \"%d/%m/%Y\") as order_date, 
         p.name product_name, p.reference product_reference FROM " . self::TABLE . " o 
-        JOIN product p ON p.id=o.product_id WHERE o.id=:id");
+        LEFT JOIN product p ON p.id=o.product_id WHERE o.id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
@@ -83,11 +84,11 @@ class OrderManager extends AbstractManager
     {
         $query = "INSERT INTO " . self::TABLE .
             " (`firstname`, `lastname`, `email`, `phone`, `company_name`, 
-            `address`, `city`, `postcode`, `size`, `quantity`, `message`, `product_id`, `user_logo`, `status`) 
+            `address`, `city`, `postcode`, `size`, `quantity`, `message`, `product_id`, `user_logo`, `status`, `date`) 
             VALUES 
             (:firstname, :lastname, :email, :phone, :company_name, 
             :address, :city, :postcode, :size, :quantity, :message, 
-            :product_id, :user_logo, '" . self::STATUSES['NEW'] . "')";
+            :product_id, :user_logo, '" . self::STATUSES['NEW'] . "', :date)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
@@ -102,8 +103,7 @@ class OrderManager extends AbstractManager
         $statement->bindValue(':message', $order['message'], \PDO::PARAM_STR);
         $statement->bindValue(':product_id', $product['id'], \PDO::PARAM_INT);
         $statement->bindValue(':user_logo', $order['userLogo'], \PDO::PARAM_STR);
-
-
+        $statement->bindValue(':date', $order['date'], \PDO::PARAM_INT);
 
         $statement->execute();
     }

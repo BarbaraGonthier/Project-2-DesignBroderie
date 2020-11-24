@@ -13,9 +13,13 @@
     </div>
     <div class="container">
         {% include 'OrderAdmin/_form.html.twig' %}
-    </div>
-
-    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="alert text-center">
+                    Date de la commande : {{ order.order_date }}
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-6">
                 <table class="table table-striped h-100">
@@ -55,7 +59,7 @@
                 <table class="table table-striped h-100">
                     <thead>
                     <tr class="text-white bg-dark w-25 text-center align-top">
-                        <th colspan="2">Données produit</th>
+                        <th class="align-middle" colspan="2">Données produit</th>
                     </tr>
                     </thead>
                     <tr>
