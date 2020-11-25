@@ -196,6 +196,8 @@ class ProductController extends AbstractController
         $search = array_map('trim', $_POST);
         $productManager = new ProductManager();
         $products = $productManager->filter($categoryId, $search['filter_search'] ?? null, $gender);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
         return $this->twig->render(
             'Product/productByCategory.html.twig',
             [
@@ -203,6 +205,7 @@ class ProductController extends AbstractController
                 'gendered' => $gender ?? null,
                 'genders' => self::GENDERS,
                 'products' => $products,
+                'categories' => $categories,
                 'categoryId' => $categoryId
             ]
         );
