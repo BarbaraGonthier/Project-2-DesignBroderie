@@ -45,16 +45,7 @@ h1 {
     justify-content: center;
 }
 
-.filter-gender:not(:last-child){
-    display: flex;
-    margin-top: var(--spacing-6);
-}
-
-.filter-gender > div:nth-child(0n+1) {
-    margin-right: var(--spacing-2);
-}
-
-.filter-gender > div:nth-child(1n+2) {
+.filter-gender > p:nth-child(0n+1) {
     margin-right: var(--spacing);
 }
 
@@ -64,10 +55,22 @@ h1 {
     text-align: center;
     display: flex;
     align-items: center;
-    padding: 0 var(--spacing);
+    padding: calc(var(--spacing) - 2px) var(--spacing);
     background-color: var(--secondary-background-color);
 }
 
 .reload {
     margin: var(--spacing) 0 var(--spacing-6) 0;
+}
+
+#btn-search {
+    border: 1px solid var(--dark);
+    border-radius: calc(var(--border-radius) - 3px);
+    padding: calc(var(--spacing) - 2px) var(--spacing);
+    background-color: var(--secondary-background-color);
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
 }
