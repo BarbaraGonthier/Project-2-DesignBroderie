@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryManager;
 use App\Model\EmbroideryManager;
 
 class EmbroideryController extends AbstractController
@@ -10,6 +11,11 @@ class EmbroideryController extends AbstractController
     {
         $embroideryManager = new EmbroideryManager();
         $embroideries = $embroideryManager->selectAll();
-        return $this->twig->render('Embroidery/embroidery-examples.html.twig', ['embroideries' => $embroideries]);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        return $this->twig->render(
+            'Embroidery/embroidery-examples.html.twig',
+            ['embroideries' => $embroideries, 'categories' => $categories]
+        );
     }
 }

@@ -10,8 +10,10 @@
 
 namespace App\Controller;
 
+use App\Model\CategoryManager;
 use App\Model\OrderManager;
 use App\Model\ProductManager;
+use DateTime;
 
 /**
  * Class OrderController
@@ -27,6 +29,8 @@ class OrderController extends AbstractController
     ];
     public function sendQuote()
     {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
         $order = [];
         $errors = [];
 
@@ -45,6 +49,8 @@ class OrderController extends AbstractController
                     $newFileName = '';
                 }
                 $order['userLogo'] = $newFileName;
+                $presentTime = new DateTime();
+                $order['date'] = $presentTime->format('YmdHis');
 
                 $orderManager = new OrderManager();
                 $orderManager->saveQuote($order);
@@ -54,7 +60,8 @@ class OrderController extends AbstractController
 
         return $this->twig->render('Order/no-product_order_form.html.twig', [
             'order' => $order,
-            'errors' => $errors]);
+            'errors' => $errors,
+            'categories' => $categories]);
     }
     /**
      * @param array $order
@@ -132,7 +139,7 @@ class OrderController extends AbstractController
     {
         $orderManager = new OrderManager();
         $orders = $orderManager->selectAllJoinProduct();
-        return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders]);
+        return $this->twig->render('OrderAdmin/index.html.twig', ['orders' => $orders, 'STATUSES' => self::STATUSES]);
     }
     public function show(int $id)
     {
@@ -141,7 +148,7 @@ class OrderController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $order = array_map('trim', $_POST);
             $orderManager->updateOrder($order);
-            header('Location:/order/show/' . $id);
+            header('Location:/order/index/');
         }
 
         return $this->twig->render(
@@ -172,6 +179,8 @@ class OrderController extends AbstractController
                     $newFileName = '';
                 }
                 $order['userLogo'] = $newFileName;
+                $presentTime = new DateTime();
+                $order['date'] = $presentTime->format('YmdHis');
 
                 $orderManager = new OrderManager();
                 $orderManager->saveOrder($order, $product);

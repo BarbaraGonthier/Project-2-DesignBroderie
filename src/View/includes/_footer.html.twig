@@ -24,12 +24,9 @@
                 <div class="col-md-2 mx-auto">
                     <h3 class="font-weight-bold text-uppercase mt-3 mb-4">Catalogue</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#!">Tee-shirts</a></li>
-                        <li><a href="#!">Polos</a></li>
-                        <li><a href="#!">Chemises</a></li>
-                        <li><a href="#!">Sweats</a></li>
-                        <li><a href="#!">Polaires</a></li>
-                        <li><a href="#!">Casquettes</a></li>
+                        {% for category in categories %}
+                            <li><a href="/product/list/{{ category.id }}">{{ category.name }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
 

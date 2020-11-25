@@ -26,7 +26,8 @@
                         <th scope="col">Nom</th>
                         <th scope="col">Référence</th>
                         <th scope="col">Prix</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col" class="w-25">Photo</th>
+                        <th scope="col" class="w-25">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,6 +36,7 @@
                             <td>{{ product.name }}</td>
                             <td>{{ product.reference }}</td>
                             <td>{{ product.price }}</td>
+                            <td><img class="img-thumbnail little" src="/uploads/products/{{ product.image }}" alt="{{ product.name }}"/></td>
                             <td>
                                 <a href="/product/show/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
                                 <a href="/product/edit/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>

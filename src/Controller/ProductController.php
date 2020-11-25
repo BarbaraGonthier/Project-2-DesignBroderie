@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 use App\Model\CategoryManager;
-use mysql_xdevapi\Expression;
-use PhpParser\Node\Expr\New_;
 
 class ProductController extends AbstractController
 {
@@ -18,7 +16,7 @@ class ProductController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public const GENDER = [
+    public const GENDERS = [
         "Homme" => "Homme",
         "Femme" => "Femme",
         "Mixte" => "Mixte"
@@ -28,8 +26,9 @@ class ProductController extends AbstractController
     {
         $productManager = new ProductManager();
         $product = $productManager->selectOneByIdJoinCategory($id);
-
-        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product]);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product, 'categories' => $categories]);
     }
 
     public function index()
@@ -72,7 +71,7 @@ class ProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = array_map('trim', $_POST);
-            $errors = $this->productValidation($product);
+            $errors = $this->productValidation($product, true);
             if (empty($errors)) {
                 if (!empty($_FILES['image']['name'])) {
                     $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
@@ -111,12 +110,20 @@ class ProductController extends AbstractController
         $categories = $categoryManager->selectAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productFields = array_map('trim', $_POST);
-            $errors = $this->productValidation($productFields);
+            $errors = $this->productValidation($productFields, false);
             if (empty($errors)) {
-                $productManager = new ProductManager();
-                $id = $product['id'];
+                if (!empty($_FILES['image']['name'])) {
+                    $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                    $newFileName = uniqid() . '.' . $fileExtension;
+                    $uploadDir = 'uploads/products/';
+                    move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $newFileName);
+                    $productFields['image'] = $newFileName;
+                } else {
+                    $productFields['image'] = $product['image'];
+                }
                 $productFields['id'] = $id;
                 $productManager->update($productFields);
+
                 header('Location:/product/show/' . $id);
             }
         }
@@ -131,7 +138,7 @@ class ProductController extends AbstractController
      * @SuppressWarnings(PHPMD)
      */
 
-    private function productValidation(array $product): array
+    private function productValidation(array $product, bool $imageRequired): array
     {
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
         $maxSize = 2000000;
@@ -171,7 +178,7 @@ class ProductController extends AbstractController
         if ($size > $maxSize) {
             $errors[] = 'Le fichier doit faire moins de ' . $maxSize / 2000000 . " Mo";
         }
-        if (empty($_FILES['image']['name'])) {
+        if (empty($_FILES['image']['name']) && $imageRequired) {
             $errors[] = "Vous devez insérer une image.";
         }
         if (empty($product['price'])) {
@@ -184,15 +191,17 @@ class ProductController extends AbstractController
         return $errors ?? [];
     }
 
-    public function list(int $categoryId, string $gender = null)
+    public function list(int $categoryId, ?string $gender = null)
     {
-        $genders = self::GENDER;
+        $search = array_map('trim', $_POST);
         $productManager = new ProductManager();
-        $products = $productManager->filter($categoryId, $gender);
+        $products = $productManager->filter($categoryId, $search['filter_search'] ?? null, $gender);
         return $this->twig->render(
             'Product/productByCategory.html.twig',
             [
-                'genders' => $genders,
+                'searched' => $_POST ?? null,
+                'gendered' => $gender ?? null,
+                'genders' => self::GENDERS,
                 'products' => $products,
                 'categoryId' => $categoryId
             ]

@@ -18,9 +18,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <table class="table table-striped table-hover">
+                <h2 class="my-4">En cours de traitement</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
                     <thead class="thead-dark">
                     <tr>
+                        <th scope="col">Date de la commande</th>
                         <th class="w-25" scope="col">Client</th>
                         <th scope="col">Produit</th>
                         <th scope="col">Quantité</th>
@@ -30,7 +36,9 @@
                     </thead>
                     <tbody>
                     {% for order in orders %}
+                        {% if order.status is not same as STATUSES.SENT%}
                         <tr>
+                            <td>{{ order.order_date}}</td>
                             <td>{{ order.firstname}} {{ order.lastname }}</td>
                             <td>{{ order.product_name }}</td>
                             <td>{{ order.quantity }}</td>
@@ -39,12 +47,51 @@
                                 <a href="/order/show/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
                             </td>
                         </tr>
-                    {% endfor %}
                     </tbody>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="my-4">Commandes Expédiées</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Date de la commande</th>
+                        <th class="w-25" scope="col">Client</th>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Etat de la commande</th>
+                        <th class="w-25" scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                    {% if order.status is same as STATUSES.SENT%}
+                    <tr>
+                        <td>{{ order.order_date}}</td>
+                        <td>{{ order.firstname}} {{ order.lastname }}</td>
+                        <td>{{ order.product_name }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>
+                            <a href="/order/show/{{ order.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    {% endif %}
+                    {% endfor %}
                 </table>
                 <a href='/admin/index' class="delete btn btn-dark" role="button">Retour page administration</a>
             </div>
         </div>
+
     </div>
 {% endblock %}
 

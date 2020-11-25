@@ -1,51 +1,61 @@
 {% extends 'layout.html.twig' %}
-{% block stylesheet %} <link rel="stylesheet" href="/assets/css/admin.css"> {% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/admin.css"> {% endblock %}
 {% block title %} Admin | Page d'accueil {% endblock %}
-
 {% block content %}
-
-<div class="container">
-    <div class="title">
-        <h1> BIENVENUE </h1>
-        <p>Ajouter ou supprimer vos <strong>vêtements</strong>, modifier votre
-            panel de <strong>logos</strong> préfaits et visualiser vos <strong>commandes</strong></p>
+    <div class="container">
+        <div class="title">
+            <h1> BIENVENUE </h1>
+            <p>Ajouter ou supprimer vos <strong>vêtements</strong>, modifier votre
+                panel de <strong>logos</strong> préfaits et visualiser vos <strong>commandes</strong></p>
+        </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-4 col-sm-12">
-            <div class="card-text-center">
-                <img src="/assets/images/admin/product.png" class="imageAdmin" >
-                <div class="card-body">
-                    <h2 class="card-title">VÊTEMENTS</h2>
-                    <p class="card-text">Les vêtements fournisseurs</p>
-                    <a href="/product/index" class="btn btn-dark">Pour diversifier votre catalogue</a>
+    <div class="container.fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-2 col-sm-12">
+                <div class="card-text-center">
+                    <img src="/assets/images/admin/order.png" class="imageAdmin">
+                    <div class="card-body">
+                        <h2 class="card-title">CATÉGORIES</h2>
+                        <p class="card-text">Les catégories</p>
+                        <a href="/categoryadmin/index" class="btn btn-dark">Pour diversifier vos catégories</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="card-text-center">
-                <img src="/assets/images/admin/logo.png" class="imageAdmin" >
-                <div class="card-body">
+            <div class="col-md-2 col-sm-12">
+                <div class="card-text-center">
+                    <img src="/assets/images/admin/product.png" class="imageAdmin">
+                    <div class="card-body">
+                        <h2 class="card-title">VÊTEMENTS</h2>
+                        <p class="card-text">Les vêtements fournisseurs</p>
+                        <a href="/product/index" class="btn btn-dark">Pour diversifier votre catalogue</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12">
+                <div class="card-text-center">
+                    <img src="/assets/images/admin/logo.png" class="imageAdmin">
+                    <div class="card-body">
 
-                    <h2 class="card-title">MODÈLES</h2>
+                        <h2 class="card-title">MODÈLES</h2>
                         <p class="card-text">Les modèles réalisés </p>
-                    <a href="/pattern/index " class="btn btn-dark">Pour ajouter des modèles</a>
+                        <a href="/pattern/index " class="btn btn-dark">Pour ajouter de nouveaux modèles</a>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="card-text-center">
-                <img src="/assets/images/admin/order.png" class="imageAdmin" >
-                <div class="card-body">
-                    <h2 class="card-title">COMMANDES</h2>
-                    <p class="card-text">Les commandes passées</p>
-                    <a href="/order/index" class="btn btn-dark">Pour voir vos commandes reçues</a>
+            <div class="col-md-2 col-sm-12">
+                <div class="card-text-center">
+                    <img src="/assets/images/admin/order.png" class="imageAdmin">
+                    <div class="card-body">
+                        <h2 class="card-title">COMMANDES</h2>
+                        <p class="card-text">Les commandes passées</p>
+                        <a href="/order/index" class="btn btn-dark">Pour voir vos commandes reçues</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 {% endblock %}
 {% block footer %}
 {% endblock %}
