@@ -20,7 +20,6 @@ h1, h2 {
 }
 
 @media screen and (max-width: 740px) {
-
     :root {
         --title-font-size : 32px;
         --title-2-font-size : 24px;
