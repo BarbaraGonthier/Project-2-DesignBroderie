@@ -31,10 +31,14 @@
                                      title="{{ category.name }}">
                             </td>
                             <td>
-                                <form action='/categoryadmin/delete/' method="POST" class="btn btn-lg">
-                                    <button class="btn btn-danger btn-lg">Supprimer</button>
-                                    <input type="hidden" name="id" value="{{ category.id }}">
-                                </form>
+                                {% if category.id in disabledCategories %}
+                                    <button class="btn btn-lg btn-danger ml-3" disabled>Supprimer</button>
+                                {% else %}
+                                    <form action='/product/delete/' method="POST" class="btn btn-lg">
+                                        <button class="btn btn-lg btn-danger">Supprimer</button>
+                                        <input type="hidden" name="id" value="{{ product.id }}">
+                                    </form>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

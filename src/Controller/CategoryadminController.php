@@ -85,8 +85,17 @@ class CategoryadminController extends AbstractController
 
     public function index()
     {
+        $disabledCategories = [];
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
-        return $this->twig->render('/Categoryadmin/index.html.twig', ['categories' => $categories]);
+        $usedCategories = $categoryManager->selectAllUsed();
+
+        foreach ($usedCategories as $key) {
+            foreach ($key as $value) {
+                $disabledCategories[] = $value;
+            }
+        }
+        return $this->twig->render('/Categoryadmin/index.html.twig', ['categories' => $categories,
+            'disabledCategories' => $disabledCategories,]);
     }
 }
