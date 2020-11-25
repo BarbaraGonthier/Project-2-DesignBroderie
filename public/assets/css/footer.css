@@ -46,6 +46,9 @@ hr {
 }
 
 @media screen and (max-width: 740px) {
+    .admin-link {
+        display: none;
+    }
 
     .footerText{
         text-align: center;
