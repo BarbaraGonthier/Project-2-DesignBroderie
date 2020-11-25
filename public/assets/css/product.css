@@ -71,9 +71,3 @@ h1 {
 .reload {
     margin: var(--spacing) 0 var(--spacing-6) 0;
 }
-
-@media screen and (max-width: 740px) {
-    .title {
-        background-color : unset;
-    }
-}

@@ -31,10 +31,3 @@ img {
     width: 120px; height: 120px;
     object-fit: contain;
 }
-
-
-@media screen and (max-width: 740px) {
-    .title {
-        background-color : unset;
-    }
-}

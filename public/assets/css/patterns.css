@@ -23,6 +23,5 @@
 @media screen and (max-width: 740px) {
     .pattern-title {
         font-size : var(--title-font-size);
-        background-color : unset;
     }
 }

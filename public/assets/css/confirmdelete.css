@@ -16,10 +16,6 @@
 }
 
 @media screen and (max-width: 740px) {
-    .title {
-        background-color : unset;
-    }
-
     :root {
         --title-font-size : 32px;
         --title-2-font-size : 24px;

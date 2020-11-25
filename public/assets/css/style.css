@@ -56,6 +56,9 @@ h2 {
 }
 
 @media screen and (max-width: 740px) {
+    .title, h1, .examples-title, .order-title, .pattern-title {
+        background-color : unset;
+    }
 
     :root {
         --title-font-size : 3rem;

@@ -25,8 +25,3 @@ th {
 .imagePattern {
     width : 40px;
 }
-@media screen and (max-width: 740px) {
-    .title {
-        background-color : unset;
-    }
-}

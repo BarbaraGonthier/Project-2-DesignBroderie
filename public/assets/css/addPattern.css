@@ -20,9 +20,3 @@
     margin-bottom: var(--spacing-4);
 
 }
-
-@media screen and (max-width: 740px) {
-    .title {
-        background-color : unset;
-    }
-}
