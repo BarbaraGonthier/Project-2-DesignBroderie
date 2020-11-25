@@ -28,14 +28,27 @@ class ProductController extends AbstractController
         $product = $productManager->selectOneByIdJoinCategory($id);
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
-        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product, 'categories' => $categories]);
+        $isOrdered = $productManager->isOrdered($id);
+
+        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product, 'categories' => $categories,
+            'isOrdered' => $isOrdered]);
     }
 
     public function index()
     {
+        $disabledProducts = [];
         $productManager = new ProductManager();
         $products = $productManager->selectAll();
-        return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
+        $orderedProducts = $productManager->selectAllordered();
+
+        foreach ($orderedProducts as $key) {
+            foreach ($key as $value) {
+                $disabledProducts[] = $value;
+            }
+        }
+
+        return $this->twig->render('Productadmin/index.html.twig', ['products' => $products,
+            'disabledProducts' => $disabledProducts]);
     }
 
     /**

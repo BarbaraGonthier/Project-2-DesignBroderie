@@ -25,12 +25,14 @@
             <a href='/product/edit/{{ product.id }}' class="btn btn-dark" role="button">Modifier</a>
 
             <a href='/product/index/' class="btn btn-dark" role="button">Retour</a>
-
-            <form action='/product/delete/' method="POST" class="btn btn-lg">
-                <button class="btn btn-danger">Supprimer</button>
-                <input type="hidden" name="id" value="{{ product.id }}">
-            </form>
-
+            {% if isOrdered %}
+                <button class="btn btn-danger" disabled>Supprimer</button>
+            {% else %}
+                <form action='/product/delete/' method="POST" class="btn btn-lg">
+                    <button class="btn btn-danger">Supprimer</button>
+                    <input type="hidden" name="id" value="{{ product.id }}">
+                </form>
+            {% endif %}
         </div>
     </div>
 </div>
