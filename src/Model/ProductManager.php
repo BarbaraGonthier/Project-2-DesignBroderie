@@ -10,6 +10,29 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
+    public function isOrdered(int $id)
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT p.id FROM " . self::TABLE . " p" .
+            " JOIN " . OrderManager::TABLE . " o ON p.id = o.product_id" .
+            " WHERE p.id = :id"
+        );
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->rowCount() > 0;
+    }
+
+    public function selectAllOrdered()
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT DISTINCT (p.id) AS ordered_product FROM " . self::TABLE . " p" .
+            " JOIN " . OrderManager::TABLE . " o ON p.id = o.product_id"
+        );
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 
     public function selectOneByIdJoinCategory(int $id)
     {
@@ -76,7 +99,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('category_id', $product['category'], \PDO::PARAM_INT);
         $statement->bindValue('name', $product['name'], \PDO::PARAM_STR);
         $statement->bindValue('gender', $product['gender'], \PDO::PARAM_STR);
-        $statement->bindValue('reference', $product['reference'], \PDO::PARAM_INT);
+        $statement->bindValue('reference', $product['reference'], \PDO::PARAM_STR);
         $statement->bindValue('image', $product['image'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('price', $product['price']);
@@ -97,7 +120,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('category_id', $product['category'], \PDO::PARAM_INT);
         $statement->bindValue('name', $product['name'], \PDO::PARAM_STR);
         $statement->bindValue('gender', $product['gender'], \PDO::PARAM_STR);
-        $statement->bindValue('reference', $product['reference'], \PDO::PARAM_INT);
+        $statement->bindValue('reference', $product['reference'], \PDO::PARAM_STR);
         $statement->bindValue('image', $product['image'], \PDO::PARAM_STR);
         $statement->bindValue('description', $product['description'], \PDO::PARAM_STR);
         $statement->bindValue('price', $product['price']);

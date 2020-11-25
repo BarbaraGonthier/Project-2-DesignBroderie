@@ -40,10 +40,14 @@
                             <td>
                                 <a href="/product/show/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Détails</a>
                                 <a href="/product/edit/{{ product.id }}" class="btn btn-secondary btn-lg" role="button">Modifier</a>
-                                <form action='/product/delete/' method="POST" class="btn btn-lg">
-                                    <button class="btn btn-danger btn-lg">Supprimer</button>
-                                    <input type="hidden" name="id" value="{{ product.id }}">
-                                </form>
+                                {% if product.id in disabledProducts %}
+                                    <button class="btn btn-lg btn-danger ml-3" disabled>Supprimer</button>
+                                {% else %}
+                                    <form action='/product/delete/' method="POST" class="btn btn-lg">
+                                        <button class="btn btn-lg btn-danger">Supprimer</button>
+                                        <input type="hidden" name="id" value="{{ product.id }}">
+                                    </form>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
