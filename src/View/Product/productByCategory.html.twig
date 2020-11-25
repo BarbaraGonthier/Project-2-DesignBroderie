@@ -23,8 +23,8 @@
                 </form>
             </div>
 
-            <div class="filter-gender btn-group">
-                <p class="gender" type="button">Genre</p>
+            <div class="genders">
+                <div><p class="label-gender">Genre</p></div>
                 {% for gender in genders %}
                 <div>
                     <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
