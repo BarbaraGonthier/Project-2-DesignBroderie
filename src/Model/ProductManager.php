@@ -10,6 +10,29 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self:: TABLE);
     }
+    public function isOrdered(int $id)
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT p.id FROM " . self::TABLE . " p" .
+            " JOIN " . OrderManager::TABLE . " o ON p.id = o.product_id" .
+            " WHERE p.id = :id"
+        );
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->rowCount() > 0;
+    }
+
+    public function selectAllOrdered()
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT DISTINCT (p.id) AS ordered_product FROM " . self::TABLE . " p" .
+            " JOIN " . OrderManager::TABLE . " o ON p.id = o.product_id"
+        );
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 
     public function selectOneByIdJoinCategory(int $id)
     {
