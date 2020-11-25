@@ -31,4 +31,10 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', ['categories' => $categories,
             'categoryLimit' => $categoryLimit]);
     }
+    public function mentionsLegal()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+        return $this->twig->render('Home/mentionlegal.html.twig', ['categories' => $categories]);
+    }
 }
