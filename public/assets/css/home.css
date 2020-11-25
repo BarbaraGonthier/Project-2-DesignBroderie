@@ -134,15 +134,8 @@ h2 {
     color: var(--dark);
 }
 .map {
-    width: 500px;
-    height: 300px;
-}
-
-@media screen and (max-width: 740px) {
-    .map {
-        width: 300px;
-        height: auto;
-    }
+    width: 30vw;
+    height: 30vh;
 }
 
 

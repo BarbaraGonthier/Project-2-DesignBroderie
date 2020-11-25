@@ -28,14 +28,27 @@ class ProductController extends AbstractController
         $product = $productManager->selectOneByIdJoinCategory($id);
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
-        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product, 'categories' => $categories]);
+        $isOrdered = $productManager->isOrdered($id);
+
+        return $this->twig->render('Productadmin/show.html.twig', ['product' => $product, 'categories' => $categories,
+            'isOrdered' => $isOrdered]);
     }
 
     public function index()
     {
+        $disabledProducts = [];
         $productManager = new ProductManager();
         $products = $productManager->selectAll();
-        return $this->twig->render('Productadmin/index.html.twig', ['products' => $products]);
+        $orderedProducts = $productManager->selectAllordered();
+
+        foreach ($orderedProducts as $key) {
+            foreach ($key as $value) {
+                $disabledProducts[] = $value;
+            }
+        }
+
+        return $this->twig->render('Productadmin/index.html.twig', ['products' => $products,
+            'disabledProducts' => $disabledProducts]);
     }
 
     /**
@@ -196,6 +209,8 @@ class ProductController extends AbstractController
         $search = array_map('trim', $_POST);
         $productManager = new ProductManager();
         $products = $productManager->filter($categoryId, $search['filter_search'] ?? null, $gender);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
         return $this->twig->render(
             'Product/productByCategory.html.twig',
             [
@@ -203,6 +218,7 @@ class ProductController extends AbstractController
                 'gendered' => $gender ?? null,
                 'genders' => self::GENDERS,
                 'products' => $products,
+                'categories' => $categories,
                 'categoryId' => $categoryId
             ]
         );

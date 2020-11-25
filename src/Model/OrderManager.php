@@ -35,7 +35,7 @@ class OrderManager extends AbstractManager
             VALUES 
             (:firstname, :lastname, :email, :phone, :company_name, 
             :address, :city, :postcode, :message, 
-            :user_logo, :date '" . self::STATUSES['NEW'] . "')";
+            :user_logo, '" . self::STATUSES['NEW'] . "', :date)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':firstname', $order['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $order['lastname'], \PDO::PARAM_STR);
