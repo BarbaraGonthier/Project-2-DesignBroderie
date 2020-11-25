@@ -39,3 +39,8 @@ h1 {
     align-items: center;
 }
 
+@media screen and (max-width: 740px) {
+    h1 {
+        background-color : unset;
+    }
+}

@@ -25,4 +25,7 @@ h1, h2 {
         --title-font-size : 32px;
         --title-2-font-size : 24px;
     }
+    .order-title {
+        background-color : unset;
+    }
 }
