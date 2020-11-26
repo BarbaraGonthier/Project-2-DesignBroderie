@@ -45,10 +45,6 @@ h1 {
     justify-content: center;
 }
 
-/*.filter-gender > p:nth-child(0n+1) {*/
-/*    margin-right: var(--spacing);*/
-/*}*/
-
 .label-gender {
     border: 1px solid var(--dark);
     border-radius: calc(var(--border-radius) - 3px);
