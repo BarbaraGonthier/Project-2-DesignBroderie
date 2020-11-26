@@ -56,7 +56,7 @@ class CategoryadminController extends AbstractController
     private function categoriesValidate(array $categories): array
     {
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
-        $maxSize = 200000;
+        $maxSize = 2000000;
 
         $size = filesize($_FILES['image']['tmp_name']);
 
@@ -85,8 +85,17 @@ class CategoryadminController extends AbstractController
 
     public function index()
     {
+        $disabledCategories = [];
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
-        return $this->twig->render('/Categoryadmin/index.html.twig', ['categories' => $categories]);
+        $usedCategories = $categoryManager->selectAllUsed();
+
+        foreach ($usedCategories as $key) {
+            foreach ($key as $value) {
+                $disabledCategories[] = $value;
+            }
+        }
+        return $this->twig->render('/Categoryadmin/index.html.twig', ['categories' => $categories,
+            'disabledCategories' => $disabledCategories,]);
     }
 }

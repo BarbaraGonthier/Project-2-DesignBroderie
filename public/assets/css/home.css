@@ -124,7 +124,6 @@ h2 {
 
 .localisation {
     padding-top: var(--spacing-4);
-    padding-bottom: var(--spacing-2);
 }
 
 .localisation h2 {
@@ -134,6 +133,11 @@ h2 {
 .localisation p {
     color: var(--dark);
 }
+.map {
+    width: 30vw;
+    height: 30vh;
+}
+
 
 
 
