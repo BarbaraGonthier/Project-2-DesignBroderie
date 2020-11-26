@@ -56,7 +56,7 @@ class CategoryadminController extends AbstractController
     private function categoriesValidate(array $categories): array
     {
         $extensions = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
-        $maxSize = 200000;
+        $maxSize = 2000000;
 
         $size = filesize($_FILES['image']['tmp_name']);
 
