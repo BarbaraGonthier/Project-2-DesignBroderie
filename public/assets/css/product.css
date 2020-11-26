@@ -60,22 +60,15 @@ h1 {
     margin: var(--spacing) 0 var(--spacing-6) 0;
 }
 
-#btn-search {
+.btn-search {
     border: 1px solid var(--dark);
     border-radius: calc(var(--border-radius) - 3px);
     padding: calc(var(--spacing) - 2px) var(--spacing);
     background-color: var(--secondary-background-color);
 }
-#btn-search:hover {
+.btn-search:hover {
     background-color: var(--background-color);
     color: var(--light);
-
-}
-
-.filters,
-.genders {
-    display: flex;
-    justify-content: space-between;
 }
 
 .genders div:first-child {
@@ -88,44 +81,4 @@ h1 {
 
 .label-gender {
     margin-bottom: 0;
-}
-
-@media screen and (max-width: 750px) {
-    .filters {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .genders,
-    .search {
-        display: flex;
-        justify-content: center;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    form,
-    .genders {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .genders {
-        align-items: center;
-        margin-top : var(--spacing-4);
-    }
-
-    .genders div:first-child {
-        margin-right: 0;
-    }
-
-    .genders > div {
-        margin-bottom: var(--spacing);
-    }
-
-    .genders > div > a,
-    .label-gender {
-        text-align: center;
-        width : 254px;
-    }
 }

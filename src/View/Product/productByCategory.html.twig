@@ -12,18 +12,18 @@
             </div>
         </div>
 
-        <div class="filters">
+        <div class="filters row d-flex justify-content-md-between">
 
             <div class="search">
                 <form method="POST">
                     <label>
                         <input class="btn btn-dark" type="search" name="filter_search" placeholder="Recherche ..."/>
                     </label>
-                    <button id="btn-search">Valider</button>
+                    <button class="btn-search">Valider</button>
                 </form>
             </div>
 
-            <div class="genders">
+            <div class="genders row d-flex">
                 <div><p class="label-gender">Genre</p></div>
                 {% for gender in genders %}
                 <div>
