@@ -16,9 +16,9 @@
             <div class="search">
                 <form method="POST">
                     <label>
-                        <input class="btn btn-dark" type="search" name="filter_search" placeholder="Recherche ..." required/>
+                        <input class="btn btn-light" type="search" name="filter_search" placeholder="Recherche ..." required/>
                     </label>
-                    <button class="btn-search">Valider</button>
+                    <button class="btn-dark btn-search">Valider</button>
                 </form>
             </div>
             
@@ -26,7 +26,7 @@
                 <div><p class="label-gender">Genre</p></div>
                 {% for gender in genders %}
                 <div>
-                    <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
+                    <a class="btn btn-dark mr-2" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
                 </div>
                 {% endfor %}
             </div>
