@@ -45,29 +45,36 @@ h1 {
     justify-content: center;
 }
 
-.filter-gender:not(:last-child){
-    display: flex;
-    margin-top: var(--spacing-6);
-}
-
-.filter-gender > div:nth-child(0n+1) {
-    margin-right: var(--spacing-2);
-}
-
-.filter-gender > div:nth-child(1n+2) {
-    margin-right: var(--spacing);
-}
-
-.gender {
+.label-gender {
     border: 1px solid var(--dark);
     border-radius: calc(var(--border-radius) - 3px);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    padding: 0 var(--spacing);
+    padding: calc(var(--spacing) - 2px) var(--spacing);
     background-color: var(--secondary-background-color);
 }
 
 .reload {
     margin: var(--spacing) 0 var(--spacing-6) 0;
+}
+
+.btn-search {
+    border: 1px solid var(--dark);
+    border-radius: calc(var(--border-radius) - 3px);
+    padding: calc(var(--spacing) - 2px) var(--spacing);
+    background-color: var(--secondary-background-color);
+}
+.btn-search:hover {
+    background-color: var(--background-color);
+    color: var(--light);
+}
+
+.genders div:first-child {
+    margin-right: var(--spacing);
+}
+
+.btn-gender {
+    border-radius: 0;
+}
+
+.label-gender {
+    margin-bottom: 0;
 }

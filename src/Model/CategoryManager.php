@@ -15,18 +15,26 @@ class CategoryManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+    public function selectAllUsed()
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT c.id FROM " . self::TABLE . " c" .
+            " JOIN " . ProductManager::TABLE . " p ON c.id = p.category_id"
+        );
+        $statement->execute();
 
-
+        return $statement->fetchAll();
+    }
     public function selectAllLimit()
     {
         return $this->pdo->query('SELECT * FROM ' . self::TABLE . " LIMIT 6")->fetchAll();
     }
-
-
     public function delete(int $id): void
     {
         $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
     }
     public function insert(array $category)
     {
