@@ -33,9 +33,9 @@
                                 {% if category.id in disabledCategories %}
                                     <button class="btn btn-lg btn-danger ml-3" disabled>Supprimer</button>
                                 {% else %}
-                                    <form action='/product/delete/' method="POST" class="btn btn-lg">
+                                    <form action='/categoryadmin/delete/' method="POST" class="btn btn-lg">
                                         <button class="btn btn-lg btn-danger">Supprimer</button>
-                                        <input type="hidden" name="id" value="{{ product.id }}">
+                                        <input type="hidden" name="id" value="{{ category.id }}">
                                     </form>
                                 {% endif %}
                             </td>
