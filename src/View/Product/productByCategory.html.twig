@@ -5,39 +5,42 @@
 
 {% block title %}Catalogue de vêtements{% endblock %}
 {% block content %}
-    <div class="container">
+    <section class="container">
         <div>
             <div class="title">
                 <h1>Nos choix</h1>
             </div>
         </div>
-        <div class="search">
-            <form method="POST">
-                <label>
-                    <input class="btn btn-dark" type="search" name="filter_search" placeholder="Recherche ..." required/>
-                </label>
-                <button>Valider</button>
-            </form>
-        </div>
-        <div class="filters">
-            <div class="filter-gender">
-                <div class="gender">Genre :</div>
+        <div class="filters row d-flex justify-content-md-between">
+
+            <div class="search">
+                <form method="POST">
+                    <label>
+                        <input class="btn btn-dark" type="search" name="filter_search" placeholder="Recherche ..." required/>
+                    </label>
+                    <button class="btn-search">Valider</button>
+                </form>
+            </div>
+            
+            <div class="genders row d-flex">
+                <div><p class="label-gender">Genre</p></div>
                 {% for gender in genders %}
                 <div>
                     <a class="btn btn-dark" href="/product/list/{{ categoryId }}/{{ gender }}" role="button">{{ gender }}</a>
                 </div>
                 {% endfor %}
-
             </div>
-            <div class="reload">
-                <a href="/product/list/{{ categoryId }}">réinitialiser</a>
-            </div>
+            
         </div>
-            <div>
-                {% if searched is not null %}
-                    <p>Filtre(s) sélectionné(s) : {{ gendered }} / {{ searched['filter_search'] }}</p>
-                {% endif %}
-            </div>
+        <div class="reload">
+            <a href="/product/list/{{ categoryId }}">réinitialiser</a>
+        </div>
+        
+        <div>
+            {% if searched is not null %}
+                <p>Filtre(s) sélectionné(s) : {{ gendered }} / {{ searched['filter_search'] }}</p>
+            {% endif %}
+        </div>
 
         <div class="row">
             {% for product in products %}
@@ -71,5 +74,5 @@
                 <strong>TEXTILE EUROPE</strong>
             </a>
         </div>
-    </div>
+    </section>
 {% endblock %}
