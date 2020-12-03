@@ -24,9 +24,11 @@ It uses some vendors/libraries such as Twig and Grumphp.
 
 1. Clone the repo from Github.
 2. Run `composer install`.
-3. Create a database and add tables according to this screenshot : 
+3. Create a database and add tables according to this screenshots : 
 
-![DTB screenshot](https://github.com/BarbaraGonthier/Hackathon-2020/blob/master/public/assets/images/DTB_hackathon.png)
+![DTB screenshot](https://github.com/BarbaraGonthier/Project-2-DesignBroderie/blob/dev/public/assets/images/pattern_product.png)
+
+![DTB screenshot](https://github.com/BarbaraGonthier/Project-2-DesignBroderie/blob/dev/public/assets/images/category_embroidery_order.png)
 
 4. Create *config/db.php* from *config/db.php.dist* file and add your DB parameters. Don't delete the *.dist* file, it must be kept.
 ```php
@@ -48,7 +50,7 @@ If you develop on Windows, you should edit your git configuration to change your
 ## URLs availables
 
 * Home page at [localhost:8000/](localhost:8000/)
-* Admin page at [localhost:8000/](localhost:8000/adminEquipment/index) and [localhost:8000/](localhost:8000/adminOrder/index)
+* Admin page at [localhost:8000/](localhost:8000/admin/index)
 
 ## How does URL routing work ?
 
