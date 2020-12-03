@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository is a Wild Code School web application project made on November 2020. This application is for an embroidery company to promote their product and receive orders, it includes a visitor interface and an administration interface.
+This repository is a Wild Code School web application project made on November 2020. This application is for an embroidery company to promote their products and receive orders, it includes a visitor interface and an administration interface to handle products and orders (CRUD).
 
 The structure is based on a simple PHP MVC structure from scratch.
 
