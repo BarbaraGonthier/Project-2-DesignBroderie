@@ -8,6 +8,12 @@ The structure is based on a simple PHP MVC structure from scratch.
 
 It uses some vendors/libraries such as Twig and Grumphp.
 
+![home](https://github.com/BarbaraGonthier/Project-2-DesignBroderie/blob/dev/public/assets/images/home.png)
+
+![products](https://github.com/BarbaraGonthier/Project-2-DesignBroderie/blob/dev/public/assets/images/products.png)
+
+![admin](https://github.com/BarbaraGonthier/Project-2-DesignBroderie/blob/dev/public/assets/images/admin.png)
+
 
 ### Check on Travis
 
